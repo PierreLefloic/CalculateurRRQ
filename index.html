@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculateur TRI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="logo-wrapper">
+    <img src="img/logo_CFFP.png" alt="Logo" class="logo">
+  </div>
+
+  <div class="header-box">
+    <h1 class="title">Calculateur TRI</h1>
+    <p class="description">Calculez le Taux de Rendement Interne de vos investissements avec notre outil professionnel. Entrez vos données et obtenez une analyse détaillée de vos projets financiers.</p>
+  </div>
+
+  <div class="container-row">
+    <div class="left-column">
+      <div class="container">
+        <!-- <h2>Simulation Tool</h2> -->
+        <div class="input-grid">
+          <label for="inputBirth">Date de naissance :</label>
+          <input id="inputBirth" type="date" max="9999-12-31">
+          <label for="inputCurrentYear">Année courante :</label>
+          <input id="inputCurrentYear" type="number" value="2025" min="1900" max="2100" placeholder="YYYY">
+        </div>
+
+          <!-- <label for="inputA">Input A:</label>
+          <input id="inputA" type="number" value="5">
+          <label for="inputB">Input B:</label>
+          <input id="inputB" type="number" value="3">
+          <button type="button" onclick="runCalc()" class="full-width">Run Simulation</button>
+          <p class="full-width">Result: <span id="output">-</span></p>
+        </form> -->
+      </div>
+
+      <div class="container">
+        <h2>Salaire</h2>
+        <div class="input-grid">
+          <label for="BeforeCurrentYear">Avant année courante (%) :</label>
+          <input id="BeforeCurrentYear" type="number" value="114" min="0" max="200">
+          <label for="AfterCurrentYear">Après année courante (%) :</label>
+          <input id="AfterCurrentYear" type="number" value="114" min="0" max="200">
+        </div>
+      </div>
+      
+      <div class="container">
+        <h2>Paramètres RRQ</h2>
+        <div class="input-grid">
+          <label for="RetAge">Âge de retraite :</label>
+          <select id="RetAge">
+            <option value="60">60</option>
+            <option value="61">61</option>
+            <option value="62">62</option>
+            <option value="63">63</option>
+            <option value="64">64</option>
+            <option value="65" selected>65</option>
+            <option value="66">66</option>
+            <option value="67">67</option>
+            <option value="68">68</option>
+            <option value="69">69</option>
+            <option value="70">70</option>
+            <option value="71">71</option>
+            <option value="72">72</option>
+          </select>
+          <label for="BenAge">Âge de la demande de prestation :</label>
+          <select id="BenAge">
+            <option value="60">60</option>
+            <option value="61">61</option>
+            <option value="62">62</option>
+            <option value="63">63</option>
+            <option value="64">64</option>
+            <option value="65" selected>65</option>
+            <option value="66">66</option>
+            <option value="67">67</option>
+            <option value="68">68</option>
+            <option value="69">69</option>
+            <option value="70">70</option>
+            <option value="71">71</option>
+            <option value="72">72</option>
+          </select>
+          <label for="AgeExp">Espérence de vie :</label>
+          <input id="AgeExp" type="number" value="85" min="60" max="120">
+
+        </div>
+      </div>
+      
+      <button>Lancer la simulation</button>
+    </div>
+    
+    <div class="right-column">
+      <div class="container tall-container">
+        <h2>Saisie du salaire pour chaque année</h2>
+        <div class="salary-grid">
+          <!-- Header Row -->
+          <p><strong>Âge</strong></p>
+          <p><strong>Année</strong></p>
+          <p><strong>Saisie ($)</strong></p>
+          <p><strong>Pourcentage</strong></p>
+          <p><strong>Salaire</strong></p>
+          
+          <!-- Data Rows - Age 17 to 72 -->
+          <p id="age_17">17</p><p id="year_17">2024</p><input type="number" id="salary_17" value="0" min="0"><p id="percentage_17">114%</p><p id="computed_salary_17">0</p>
+          <p>18</p><p id="year_18">2025</p><input type="number" id="salary_18" value="0" min="0"><p>114%</p><p id="computed_salary_18">0</p>
+          <p>19</p><p id="year_19">2026</p><input type="number" id="salary_19" value="0" min="0"><p>114%</p><p id="computed_salary_19">0</p>
+          <p>20</p><p id="year_20">2027</p><input type="number" id="salary_20" value="0" min="0"><p>114%</p><p id="computed_salary_20">0</p>
+          <p>21</p><p id="year_21">2028</p><input type="number" id="salary_21" value="0" min="0"><p>114%</p><p id="computed_salary_21">0</p>
+          <p>22</p><p id="year_22">2029</p><input type="number" id="salary_22" value="0" min="0"><p>114%</p><p id="computed_salary_22">0</p>
+          <p>23</p><p id="year_23">2030</p><input type="number" id="salary_23" value="0" min="0"><p>114%</p><p id="computed_salary_23">0</p>
+          <p>24</p><p id="year_24">2031</p><input type="number" id="salary_24" value="0" min="0"><p>114%</p><p id="computed_salary_24">0</p>
+          <p>25</p><p id="year_25">2032</p><input type="number" id="salary_25" value="0" min="0"><p>114%</p><p id="computed_salary_25">0</p>
+          <p>26</p><p id="year_26">2033</p><input type="number" id="salary_26" value="0" min="0"><p>114%</p><p id="computed_salary_26">0</p>
+          <p>27</p><p id="year_27">2034</p><input type="number" id="salary_27" value="0" min="0"><p>114%</p><p id="computed_salary_27">0</p>
+          <p>28</p><p id="year_28">2035</p><input type="number" id="salary_28" value="0" min="0"><p>114%</p><p id="computed_salary_28">0</p>
+          <p>29</p><p id="year_29">2036</p><input type="number" id="salary_29" value="0" min="0"><p>114%</p><p id="computed_salary_29">0</p>
+          <p>30</p><p id="year_30">2037</p><input type="number" id="salary_30" value="0" min="0"><p>114%</p><p id="computed_salary_30">0</p>
+          <p>31</p><p id="year_31">2038</p><input type="number" id="salary_31" value="0" min="0"><p>114%</p><p id="computed_salary_31">0</p>
+          <p>32</p><p id="year_32">2039</p><input type="number" id="salary_32" value="0" min="0"><p>114%</p><p id="computed_salary_32">0</p>
+          <p>33</p><p id="year_33">2040</p><input type="number" id="salary_33" value="0" min="0"><p>114%</p><p id="computed_salary_33">0</p>
+          <p>34</p><p id="year_34">2041</p><input type="number" id="salary_34" value="0" min="0"><p>114%</p><p id="computed_salary_34">0</p>
+          <p>35</p><p id="year_35">2042</p><input type="number" id="salary_35" value="0" min="0"><p>114%</p><p id="computed_salary_35">0</p>
+          <p>36</p><p id="year_36">2043</p><input type="number" id="salary_36" value="0" min="0"><p>114%</p><p id="computed_salary_36">0</p>
+          <p>37</p><p id="year_37">2044</p><input type="number" id="salary_37" value="0" min="0"><p>114%</p><p id="computed_salary_37">0</p>
+          <p>38</p><p id="year_38">2045</p><input type="number" id="salary_38" value="0" min="0"><p>114%</p><p id="computed_salary_38">0</p>
+          <p>39</p><p id="year_39">2046</p><input type="number" id="salary_39" value="0" min="0"><p>114%</p><p id="computed_salary_39">0</p>
+          <p>40</p><p id="year_40">2047</p><input type="number" id="salary_40" value="0" min="0"><p>114%</p><p id="computed_salary_40">0</p>
+          <p>41</p><p id="year_41">2048</p><input type="number" id="salary_41" value="0" min="0"><p>114%</p><p id="computed_salary_41">0</p>
+          <p>42</p><p id="year_42">2049</p><input type="number" id="salary_42" value="0" min="0"><p>114%</p><p id="computed_salary_42">0</p>
+          <p>43</p><p id="year_43">2050</p><input type="number" id="salary_43" value="0" min="0"><p>114%</p><p id="computed_salary_43">0</p>
+          <p>44</p><p id="year_44">2051</p><input type="number" id="salary_44" value="0" min="0"><p>114%</p><p id="computed_salary_44">0</p>
+          <p>45</p><p id="year_45">2052</p><input type="number" id="salary_45" value="0" min="0"><p>114%</p><p id="computed_salary_45">0</p>
+          <p>46</p><p id="year_46">2053</p><input type="number" id="salary_46" value="0" min="0"><p>114%</p><p id="computed_salary_46">0</p>
+          <p>47</p><p id="year_47">2054</p><input type="number" id="salary_47" value="0" min="0"><p>114%</p><p id="computed_salary_47">0</p>
+          <p>48</p><p id="year_48">2055</p><input type="number" id="salary_48" value="0" min="0"><p>114%</p><p id="computed_salary_48">0</p>
+          <p>49</p><p id="year_49">2056</p><input type="number" id="salary_49" value="0" min="0"><p>114%</p><p id="computed_salary_49">0</p>
+          <p>50</p><p id="year_50">2057</p><input type="number" id="salary_50" value="0" min="0"><p>114%</p><p id="computed_salary_50">0</p>
+          <p>51</p><p id="year_51">2058</p><input type="number" id="salary_51" value="0" min="0"><p>114%</p><p id="computed_salary_51">0</p>
+          <p>52</p><p id="year_52">2059</p><input type="number" id="salary_52" value="0" min="0"><p>114%</p><p id="computed_salary_52">0</p>
+          <p>53</p><p id="year_53">2060</p><input type="number" id="salary_53" value="0" min="0"><p>114%</p><p id="computed_salary_53">0</p>
+          <p>54</p><p id="year_54">2061</p><input type="number" id="salary_54" value="0" min="0"><p>114%</p><p id="computed_salary_54">0</p>
+          <p>55</p><p id="year_55">2062</p><input type="number" id="salary_55" value="0" min="0"><p>114%</p><p id="computed_salary_55">0</p>
+          <p>56</p><p id="year_56">2063</p><input type="number" id="salary_56" value="0" min="0"><p>114%</p><p id="computed_salary_56">0</p>
+          <p>57</p><p id="year_57">2064</p><input type="number" id="salary_57" value="0" min="0"><p>114%</p><p id="computed_salary_57">0</p>
+          <p>58</p><p id="year_58">2065</p><input type="number" id="salary_58" value="0" min="0"><p>114%</p><p id="computed_salary_58">0</p>
+          <p>59</p><p id="year_59">2066</p><input type="number" id="salary_59" value="0" min="0"><p>114%</p><p id="computed_salary_59">0</p>
+          <p>60</p><p id="year_60">2067</p><input type="number" id="salary_60" value="0" min="0"><p>114%</p><p id="computed_salary_60">0</p>
+          <p>61</p><p id="year_61">2068</p><input type="number" id="salary_61" value="0" min="0"><p>114%</p><p id="computed_salary_61">0</p>
+          <p>62</p><p id="year_62">2069</p><input type="number" id="salary_62" value="0" min="0"><p>114%</p><p id="computed_salary_62">0</p>
+          <p>63</p><p id="year_63">2070</p><input type="number" id="salary_63" value="0" min="0"><p>114%</p><p id="computed_salary_63">0</p>
+          <p>64</p><p id="year_64">2071</p><input type="number" id="salary_64" value="0" min="0"><p>114%</p><p id="computed_salary_64">0</p>
+          <p>65</p><p id="year_65">2072</p><input type="number" id="salary_65" value="0" min="0"><p>114%</p><p id="computed_salary_65">0</p>
+          <p>66</p><p id="year_66">2073</p><input type="number" id="salary_66" value="0" min="0"><p>114%</p><p id="computed_salary_66">0</p>
+          <p>67</p><p id="year_67">2074</p><input type="number" id="salary_67" value="0" min="0"><p>114%</p><p id="computed_salary_67">0</p>
+          <p>68</p><p id="year_68">2075</p><input type="number" id="salary_68" value="0" min="0"><p>114%</p><p id="computed_salary_68">0</p>
+          <p>69</p><p id="year_69">2076</p><input type="number" id="salary_69" value="0" min="0"><p>114%</p><p id="computed_salary_69">0</p>
+          <p>70</p><p id="year_70">2077</p><input type="number" id="salary_70" value="0" min="0"><p>114%</p><p id="computed_salary_70">0</p>
+          <p>71</p><p id="year_71">2078</p><input type="number" id="salary_71" value="0" min="0"><p>114%</p><p id="computed_salary_71">0</p>
+          <p>72</p><p id="year_72">2079</p><input type="number" id="salary_72" value="0" min="0"><p>114%</p><p id="computed_salary_72">0</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+  <script>
+    // Year validation
+    document.addEventListener('DOMContentLoaded', function() {
+      const yearInput = document.getElementById('inputCurrentYear');
+      const ageExpInput = document.getElementById('AgeExp');
+      const beforeCurrentYearInput = document.getElementById('BeforeCurrentYear');
+      const birthInput = document.getElementById('inputBirth');
+      const currentYear = new Date().getFullYear();
+      
+      // Set current year as default
+      yearInput.value = currentYear;
+      
+      // Function to update salary grid years based on birth date
+      function updateSalaryGridYears() {
+        const birthDate = new Date(birthInput.value);
+        if (birthInput.value && !isNaN(birthDate.getTime())) {
+          const birthYear = birthDate.getFullYear();
+          const birthMonth = birthDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 for 1-12
+          
+          // Update years for ages 17 to 72
+          for (let age = 17; age <= 72; age++) {
+            const yearElement = document.getElementById(`year_${age}`);
+            if (yearElement) {
+              yearElement.textContent = birthYear + age + 1;
+            }
+          }
+          
+          // Handle graying out for age 17 if birth month is December (12)
+          const age17Elements = [
+            document.getElementById('age_17'),
+            document.getElementById('year_17'),
+            document.getElementById('salary_17'),
+            document.getElementById('percentage_17'),
+            document.getElementById('computed_salary_17')
+          ];
+          
+          if (birthMonth === 12) {
+            // Gray out age 17 row and disable input
+            age17Elements.forEach(element => {
+              if (element) {
+                element.classList.add('grayed-out');
+              }
+            });
+            const salary17Input = document.getElementById('salary_17');
+            if (salary17Input) {
+              salary17Input.disabled = true;
+            }
+          } else {
+            // Remove gray out and enable input
+            age17Elements.forEach(element => {
+              if (element) {
+                element.classList.remove('grayed-out');
+              }
+            });
+            const salary17Input = document.getElementById('salary_17');
+            if (salary17Input) {
+              salary17Input.disabled = false;
+            }
+          }
+        }
+      }
+      
+      // Listen for birth date changes
+      birthInput.addEventListener('change', updateSalaryGridYears);
+      birthInput.addEventListener('input', updateSalaryGridYears);
+      
+      // Initialize years on page load if birth date is already set
+      updateSalaryGridYears();
+      
+      // Debug logging for BeforeCurrentYear field
+      beforeCurrentYearInput.addEventListener('input', function() {
+        console.log('BeforeCurrentYear input changed to:', this.value);
+      });
+      
+      beforeCurrentYearInput.addEventListener('change', function() {
+        console.log('BeforeCurrentYear change event, value:', this.value);
+      });
+      
+      beforeCurrentYearInput.addEventListener('blur', function() {
+        console.log('BeforeCurrentYear blur event, value:', this.value);
+      });
+      
+      // Year input validation
+      yearInput.addEventListener('input', function() {
+        const value = parseInt(this.value);
+        
+        // Remove invalid characters (keep only numbers)
+        this.value = this.value.replace(/[^0-9]/g, '');
+        
+        // Limit to 4 digits
+        if (this.value.length > 4) {
+          this.value = this.value.slice(0, 4);
+        }
+      });
+      
+      // Year input blur validation
+      yearInput.addEventListener('blur', function() {
+        const value = parseInt(this.value);
+        
+        if (isNaN(value) || value < 1900 || value > 2100) {
+          this.setCustomValidity('Veuillez entrer une année valide entre 1900 et 2100');
+          this.reportValidity(); // Shows the tooltip
+          this.value = currentYear; // Reset to current year
+        } else {
+          this.setCustomValidity(''); // Clear any previous custom validity
+        }
+      });
+      
+      // Age expectancy validation
+      ageExpInput.addEventListener('blur', function() {
+        const value = parseInt(this.value);
+        const defaultValue = 85;
+        
+        if (!Number.isInteger(Number(this.value)) || value < 60 || value > 120) {
+          this.setCustomValidity('Veuillez entrer un âge valide entre 60 et 120');
+          this.reportValidity(); // Shows the tooltip
+          this.value = defaultValue; // Reset to default value (85)
+        } else {
+          this.setCustomValidity(''); // Clear any previous custom validity
+        }
+      });
+    });
+  </script>
+</body>
+</html>

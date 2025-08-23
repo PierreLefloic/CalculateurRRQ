@@ -1,0 +1,31 @@
+<div style="font-family: Arial, sans-serif; background: #f9f9f9; display: flex; justify-content: center; padding: 40px;">
+  <div style="background: white; padding: 20px 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 400px; width:100%;">
+    <h1 style="font-size: 1.5em; margin-bottom: 20px;">My Simulation Tool</h1>
+    
+    <label style="display:block; margin:10px 0;">
+      Input A: <input id="inputA" type="number" value="5">
+    </label>
+    
+    <label style="display:block; margin:10px 0;">
+      Input B: <input id="inputB" type="number" value="3">
+    </label>
+    
+    <button onclick="runCalc()" style="margin:15px 0; padding:8px 15px; background:#0073aa; color:white; border:none; border-radius:5px; cursor:pointer;">
+      Run Simulation
+    </button>
+    
+    <p><strong>Result:</strong> <span id="output">-</span></p>
+  </div>
+</div>
+
+<script>
+function runCalc() {
+  let a = parseFloat(document.getElementById("inputA").value) || 0;
+  let b = parseFloat(document.getElementById("inputB").value) || 0;
+
+  // Example calculation (replace with your Excel logic)
+  let result = a * b;
+
+  document.getElementById("output").textContent = result.toFixed(2);
+}
+</script>

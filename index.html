@@ -334,6 +334,13 @@
     </div>
   </div>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top-btn hidden" title="Retour en haut">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18,15 12,9 6,15"></polyline>
+    </svg>
+  </button>
+
   <script src="script.js"></script>
   <script>
     // Year validation
@@ -611,6 +618,46 @@
         header.addEventListener('mouseleave', function() {
           tooltip.classList.remove('show');
         });
+      });
+    });
+    
+    // Back to Top Button functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const backToTopBtn = document.getElementById('backToTop');
+      
+      // Show/hide button based on scroll position
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.remove('hidden');
+        } else {
+          backToTopBtn.classList.add('hidden');
+        }
+      });
+      
+      // Smooth scroll to top when clicked
+      backToTopBtn.addEventListener('click', function() {
+        const startPosition = window.pageYOffset;
+        const duration = 800; // 0.8 seconds
+        let start = null;
+        
+        function smoothScrollToTop(timestamp) {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          const percentage = Math.min(progress / duration, 1);
+          
+          // Easing function for smooth animation
+          const ease = percentage < 0.5 
+            ? 2 * percentage * percentage 
+            : 1 - Math.pow(-2 * percentage + 2, 2) / 2;
+          
+          window.scrollTo(0, startPosition * (1 - ease));
+          
+          if (progress < duration) {
+            requestAnimationFrame(smoothScrollToTop);
+          }
+        }
+        
+        requestAnimationFrame(smoothScrollToTop);
       });
     });
   </script>

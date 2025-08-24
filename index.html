@@ -474,6 +474,11 @@
       const resultsTable = document.querySelector('.results-table');
       
       launchButton.addEventListener('click', function() {
+        // Show results section if it's the first time
+        if (!resultsSection.classList.contains('visible')) {
+          resultsSection.classList.add('visible');
+        }
+        
         // Show loading indicator
         loadingOverlay.classList.remove('hidden');
         resultsWrapper.classList.add('loading');

@@ -161,30 +161,32 @@ body {
   cursor: not-allowed;
 }
 
-button {
-  background-color: white;
-  color: #081024;
-  border-color: #2E9DCE;
-  border-width: 4px;
-  border-style: solid;
-  padding: 24px 24px;
-  border-radius: 10px;
-  font-size: 1.5em;
-  font-weight: bold;
+button:not(.back-to-top-btn) {
+  background: linear-gradient(135deg, #2E9DCE 0%, #247ba3 100%);
+  color: white;
+  border: none;
+  padding: 20px 32px;
+  border-radius: 12px;
+  font-size: 1.4em;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: 20px;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(46, 157, 206, 0.25);
+  letter-spacing: 0.5px;
 }
 
-button:hover {
-  background-color: #2E9DCE;
+button:not(.back-to-top-btn):hover {
+  background: linear-gradient(135deg, #247ba3 0%, #1a5f7a 100%);
+  box-shadow: 0 12px 40px rgba(46, 157, 206, 0.35);
+  transform: translateY(-2px);
 }
 
-button:active {
-  background-color: #054058;
-  transform: translateY(1px);
+button:not(.back-to-top-btn):active {
+  background: linear-gradient(135deg, #1a5f7a 0%, #154d66 100%);
+  transform: translateY(0);
+  box-shadow: 0 6px 24px rgba(46, 157, 206, 0.3);
 }
 
 .results-section {
@@ -378,42 +380,46 @@ label {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
-  background-color: #2E9DCE;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #2E9DCE 0%, #247ba3 100%);
   color: white;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(46, 157, 206, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(46, 157, 206, 0.25);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .back-to-top-btn:hover {
-  background-color: #247ba3;
-  box-shadow: 0 6px 25px rgba(46, 157, 206, 0.4);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #247ba3 0%, #1a5f7a 100%);
+  box-shadow: 0 12px 40px rgba(46, 157, 206, 0.35);
+  transform: translateY(-4px) scale(1.05);
 }
 
 .back-to-top-btn:active {
-  transform: translateY(0);
+  transform: translateY(-2px) scale(0.98);
+  transition: all 0.15s ease;
 }
 
 .back-to-top-btn.hidden {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(20px) scale(0.8);
   pointer-events: none;
 }
 
 .back-to-top-btn svg {
-  transition: transform 0.2s ease;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .back-to-top-btn:hover svg {

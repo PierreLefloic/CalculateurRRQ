@@ -86,7 +86,7 @@
         </div>
       </div>
       
-      <button>Lancer la simulation</button>
+      <button id="launchSimulation">Lancer la simulation</button>
     </div>
     
     <div class="right-column">
@@ -163,7 +163,176 @@
     </div>
   </div>
 
-
+  <!-- Results Section -->
+  <div class="results-section">
+    <div class="results-container">
+      <h2>Résultats de la simulation</h2>
+      <div id="simulation-results" class="results-wrapper">
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Simulation en cours...</p>
+        </div>
+        <div class="results-table">
+          <!-- Prestation annuelle spanning header -->
+          <div class="results-header"></div>
+          <div class="results-header"></div>
+          <div class="results-header"></div>
+          <div class="results-header"></div>
+          <div class="results-header"></div>
+          <div class="results-header"></div>
+          <div class="results-header"></div>
+          <div class="results-header prestation-header">Prestation annuelle</div>
+          <div class="results-header"></div>
+          
+          <!-- Header Row -->
+          <div class="results-header" title="Âge de la personne pour cette année de calcul">Âge</div>
+          <div class="results-header" title="Année civile correspondant à cet âge">Année</div>
+          <div class="results-header" title="Taux de rendement interne calculé pour cette année, exprimé en pourcentage">Taux de rendement interne</div>
+          <div class="results-header" title="Salaire admissible au Régime de rentes du Québec (RRQ) pour cette année">Salaire admissible</div>
+          <div class="results-header" title="Maximum des gains annuels (MGA) - plafond de cotisation au RRQ pour cette année">MGA</div>
+          <div class="results-header" title="Maximum du salaire admissible (MSGA) - seuil d'exemption de base du RRQ">MSGA</div>
+          <div class="results-header" title="Montant de la cotisation annuelle au RRQ en dollars de l'année courante">Cotisation annuelle<br><small>En dollars courant</small></div>
+          <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2064">Accumulée<br><small>En dollars de 2064</small></div>
+          <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2064">Additionnelle<br><small>En dollars de 2064</small></div>
+          <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2025">Accumulée<br><small>En dollars de 2025</small></div>
+          <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025">Additionnelle<br><small>En dollars de 2025</small></div>
+          <div class="results-header" title="Nombre d'années restantes avant l'âge de retraite choisi">Nombre d'année avant la retraite</div>
+          
+          <!-- Sample Data Rows (we'll replace with real data later) -->
+          <div class="results-cell">28</div>
+          <div class="results-cell">2025</div>
+          <div class="results-cell">6,06%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">66580</div>
+          <div class="results-cell">81200</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">6546</div>
+          <div class="results-cell">648</div>
+          <div class="results-cell">1973</div>
+          <div class="results-cell">195</div>
+          <div class="results-cell">40</div>
+          
+          <div class="results-cell">29</div>
+          <div class="results-cell">2026</div>
+          <div class="results-cell">6,13%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">68960</div>
+          <div class="results-cell">83700</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">7194</div>
+          <div class="results-cell">628</div>
+          <div class="results-cell">2168</div>
+          <div class="results-cell">189</div>
+          <div class="results-cell">39</div>
+          
+          <div class="results-cell">30</div>
+          <div class="results-cell">2027</div>
+          <div class="results-cell">6,19%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">71140</div>
+          <div class="results-cell">86400</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">7822</div>
+          <div class="results-cell">609</div>
+          <div class="results-cell">2357</div>
+          <div class="results-cell">184</div>
+          <div class="results-cell">38</div>
+          
+          <div class="results-cell">31</div>
+          <div class="results-cell">2028</div>
+          <div class="results-cell">6,26%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">73440</div>
+          <div class="results-cell">89000</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">8431</div>
+          <div class="results-cell">591</div>
+          <div class="results-cell">2541</div>
+          <div class="results-cell">178</div>
+          <div class="results-cell">37</div>
+          
+          <div class="results-cell">32</div>
+          <div class="results-cell">2029</div>
+          <div class="results-cell">6,32%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">75860</div>
+          <div class="results-cell">91800</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">9022</div>
+          <div class="results-cell">573</div>
+          <div class="results-cell">2719</div>
+          <div class="results-cell">173</div>
+          <div class="results-cell">36</div>
+          
+          <div class="results-cell">33</div>
+          <div class="results-cell">2030</div>
+          <div class="results-cell">6,39%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">78220</div>
+          <div class="results-cell">94700</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">9595</div>
+          <div class="results-cell">555</div>
+          <div class="results-cell">2892</div>
+          <div class="results-cell">167</div>
+          <div class="results-cell">35</div>
+          
+          <div class="results-cell">34</div>
+          <div class="results-cell">2031</div>
+          <div class="results-cell">6,47%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">80640</div>
+          <div class="results-cell">97500</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">10150</div>
+          <div class="results-cell">539</div>
+          <div class="results-cell">3059</div>
+          <div class="results-cell">163</div>
+          <div class="results-cell">34</div>
+          
+          <div class="results-cell">35</div>
+          <div class="results-cell">2032</div>
+          <div class="results-cell">6,55%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">83140</div>
+          <div class="results-cell">100600</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">10690</div>
+          <div class="results-cell">523</div>
+          <div class="results-cell">3222</div>
+          <div class="results-cell">158</div>
+          <div class="results-cell">33</div>
+          
+          <div class="results-cell">36</div>
+          <div class="results-cell">2033</div>
+          <div class="results-cell">6,63%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">85720</div>
+          <div class="results-cell">103700</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">11212</div>
+          <div class="results-cell">507</div>
+          <div class="results-cell">3379</div>
+          <div class="results-cell">153</div>
+          <div class="results-cell">32</div>
+          
+          <div class="results-cell">37</div>
+          <div class="results-cell">2034</div>
+          <div class="results-cell">6,72%</div>
+          <div class="results-cell">20000</div>
+          <div class="results-cell">88380</div>
+          <div class="results-cell">107000</div>
+          <div class="results-cell">-1056</div>
+          <div class="results-cell">11720</div>
+          <div class="results-cell">492</div>
+          <div class="results-cell">3532</div>
+          <div class="results-cell">148</div>
+          <div class="results-cell">31</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
   <script>
@@ -286,6 +455,162 @@
         } else {
           this.setCustomValidity(''); // Clear any previous custom validity
         }
+      });
+    });
+    
+    // Launch simulation button functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const launchButton = document.getElementById('launchSimulation');
+      const resultsSection = document.querySelector('.results-section');
+      const loadingOverlay = document.getElementById('loading-overlay');
+      const resultsWrapper = document.getElementById('simulation-results');
+      const resultsTable = document.querySelector('.results-table');
+      
+      launchButton.addEventListener('click', function() {
+        // Show loading indicator
+        loadingOverlay.classList.remove('hidden');
+        resultsWrapper.classList.add('loading');
+        
+        // Prepare results table for animation
+        resultsTable.classList.add('fade-in');
+        resultsTable.classList.remove('show');
+        
+        // Disable button during simulation
+        launchButton.disabled = true;
+        launchButton.textContent = 'Simulation en cours...';
+        
+        // Get current scroll position and target position
+        const startPosition = window.pageYOffset;
+        const targetPosition = resultsSection.offsetTop;
+        const distance = targetPosition - startPosition;
+        const duration = 1000; // 1 second
+        let start = null;
+        
+        // Smooth scroll animation function
+        function smoothScroll(timestamp) {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          const percentage = Math.min(progress / duration, 1);
+          
+          // Easing function for smooth animation
+          const ease = percentage < 0.5 
+            ? 2 * percentage * percentage 
+            : 1 - Math.pow(-2 * percentage + 2, 2) / 2;
+          
+          window.scrollTo(0, startPosition + (distance * ease));
+          
+          if (progress < duration) {
+            requestAnimationFrame(smoothScroll);
+          }
+        }
+        
+        // Start the animation
+        requestAnimationFrame(smoothScroll);
+        
+        // TODO: Here we'll add the actual simulation logic later
+        // For now, we'll simulate a delay to show the loading state
+        setTimeout(function() {
+          // Hide loading indicator
+          loadingOverlay.classList.add('hidden');
+          resultsWrapper.classList.remove('loading');
+          
+          // Animate results appearing
+          setTimeout(function() {
+            resultsTable.classList.remove('fade-in');
+            resultsTable.classList.add('show');
+          }, 100); // Small delay to ensure loading overlay is hidden first
+          
+          // Re-enable button
+          launchButton.disabled = false;
+          launchButton.textContent = 'Lancer la simulation';
+          
+          // TODO: Replace this with actual simulation results
+          console.log('Simulation completed - results would be populated here');
+        }, 3000); // 3 second delay to demonstrate loading
+      });
+    });
+    
+    // Custom tooltip functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create tooltip element
+      const tooltip = document.createElement('div');
+      tooltip.className = 'custom-tooltip';
+      document.body.appendChild(tooltip);
+      
+      // Add event listeners to all results headers with title attributes
+      const headersWithTooltips = document.querySelectorAll('.results-header[title]');
+      
+      headersWithTooltips.forEach(header => {
+        // Store the title content and remove the title attribute to prevent default tooltip
+        const titleContent = header.getAttribute('title');
+        header.removeAttribute('title');
+        header.setAttribute('data-tooltip', titleContent);
+        
+        header.addEventListener('mouseenter', function(e) {
+          const title = this.getAttribute('data-tooltip');
+          tooltip.textContent = title;
+          tooltip.classList.add('show');
+          
+          // Position tooltip
+          const rect = this.getBoundingClientRect();
+          const tooltipRect = tooltip.getBoundingClientRect();
+          
+          // Calculate ideal centered position
+          let idealLeft = rect.left + (rect.width / 2) - (280 / 2);
+          let top = rect.top - tooltipRect.height - 15;
+          
+          // Adjust for viewport boundaries
+          let actualLeft = idealLeft;
+          if (actualLeft < 10) actualLeft = 10;
+          if (actualLeft + 280 > window.innerWidth - 10) {
+            actualLeft = window.innerWidth - 290;
+          }
+          
+          // Position below if no space above
+          let showBelow = false;
+          if (top < 10) {
+            top = rect.bottom + 15;
+            showBelow = true;
+          }
+          
+          tooltip.style.left = actualLeft + 'px';
+          tooltip.style.top = top + 'px';
+          
+          // Calculate arrow position relative to the element center
+          const elementCenter = rect.left + (rect.width / 2);
+          const tooltipLeft = actualLeft;
+          const arrowLeft = elementCenter - tooltipLeft;
+          
+          // Clamp arrow position to stay within tooltip bounds (with some margin)
+          const clampedArrowLeft = Math.max(20, Math.min(260, arrowLeft));
+          
+          // Update arrow position
+          const existingArrow = tooltip.querySelector('.tooltip-arrow');
+          if (existingArrow) {
+            existingArrow.remove();
+          }
+          
+          const arrow = document.createElement('div');
+          arrow.className = 'tooltip-arrow';
+          arrow.style.position = 'absolute';
+          arrow.style.left = clampedArrowLeft + 'px';
+          arrow.style.transform = 'translateX(-50%)';
+          arrow.style.border = '8px solid transparent';
+          
+          if (showBelow) {
+            arrow.style.top = '-16px';
+            arrow.style.borderBottomColor = '#2c3e50';
+          } else {
+            arrow.style.bottom = '-16px';
+            arrow.style.borderTopColor = '#2c3e50';
+          }
+          
+          tooltip.appendChild(arrow);
+        });
+        
+        header.addEventListener('mouseleave', function() {
+          tooltip.classList.remove('show');
+        });
       });
     });
   </script>

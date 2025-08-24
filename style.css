@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 0px;
   margin: 0;
 }
 
@@ -187,8 +187,189 @@ button:active {
   transform: translateY(1px);
 }
 
+.results-section {
+  background-color: white;
+  width: 100%;
+  margin-top: 40px;
+  padding: 40px 0;
+  min-height: 1200px;
+  overflow: visible;
+}
+
+.results-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.results-container h2 {
+  color: #081024;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#simulation-results {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  color: #081024;
+  overflow-x: auto;
+}
+
+.results-table {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px 12px;
+  align-items: center;
+  max-height: 1000px;
+  padding: 10px;
+  min-width: 1400px;
+  position: relative;
+  overflow: visible;
+}
+
+.results-header {
+  margin: 0;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.prestation-header {
+  grid-column: span 4;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #333;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+.results-header small {
+  font-size: 0.8em;
+  font-weight: normal;
+  display: block;
+  margin-top: 4px;
+}
+
+.results-cell {
+  margin: 0;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
 label {
   display: block;
   margin: 10px 0;
+}
+
+/* Custom tooltip styling for results headers */
+.results-header[data-tooltip] {
+  cursor: help;
+}
+
+/* Results wrapper for positioning overlay */
+.results-wrapper {
+  position: relative;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 8px;
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #e3e3e3;
+  border-top: 6px solid #2E9DCE;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #081024;
+  margin: 0;
+}
+
+/* Results grayed out during loading */
+.results-wrapper.loading .results-table {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Results animation */
+.results-table {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.results-table.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.results-table.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tooltip container */
+.custom-tooltip {
+  position: fixed;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: normal;
+  max-width: 280px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  border: 1px solid #95a5a6;
+  font-weight: normal;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-tooltip.show {
+  opacity: 1;
 }
 

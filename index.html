@@ -342,6 +342,7 @@
   </button>
 
   <script src="script.js"></script>
+  <script src="tri-calculator.js"></script>
   <script>
     // Year validation
     document.addEventListener('DOMContentLoaded', function() {
@@ -514,26 +515,37 @@
         // Start the animation
         requestAnimationFrame(smoothScroll);
         
-        // TODO: Here we'll add the actual simulation logic later
-        // For now, we'll simulate a delay to show the loading state
+        // Initialize TRI Calculator and run simulation
+        const calculator = new TRICalculator();
+        
+        // Simulate processing delay for user experience
         setTimeout(function() {
-          // Hide loading indicator
-          loadingOverlay.classList.add('hidden');
-          resultsWrapper.classList.remove('loading');
+          // Run the actual TRI calculation
+          const results = calculator.runSimulation();
           
-          // Animate results appearing
-          setTimeout(function() {
-            resultsTable.classList.remove('fade-in');
-            resultsTable.classList.add('show');
-          }, 100); // Small delay to ensure loading overlay is hidden first
+          if (results) {
+            // Hide loading indicator
+            loadingOverlay.classList.add('hidden');
+            resultsWrapper.classList.remove('loading');
+            
+            // Animate results appearing
+            setTimeout(function() {
+              resultsTable.classList.remove('fade-in');
+              resultsTable.classList.add('show');
+            }, 100); // Small delay to ensure loading overlay is hidden first
+            
+            console.log('TRI Simulation completed successfully with', results.length, 'data points');
+          } else {
+            // Error handling
+            loadingOverlay.classList.add('hidden');
+            resultsWrapper.classList.remove('loading');
+            alert('Error running simulation. Please check your inputs and try again.');
+          }
           
           // Re-enable button
           launchButton.disabled = false;
           launchButton.textContent = 'Lancer la simulation';
-          
-          // TODO: Replace this with actual simulation results
-          console.log('Simulation completed - results would be populated here');
-        }, 3000); // 3 second delay to demonstrate loading
+        }, 1500); // 1.5 second delay for better UX
       });
     });
     

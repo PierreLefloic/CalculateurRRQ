@@ -80,7 +80,7 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="AgeExp">Espérence de vie :</label>
+          <label for="AgeExp">Espérance de vie :</label>
           <input id="AgeExp" type="number" value="85" min="60" max="120">
 
         </div>
@@ -356,49 +356,56 @@
       
       // Function to update salary grid years based on birth date
       function updateSalaryGridYears() {
-        const birthDate = new Date(birthInput.value);
-        if (birthInput.value && !isNaN(birthDate.getTime())) {
-          const birthYear = birthDate.getFullYear();
-          const birthMonth = birthDate.getMonth() + 1; // getMonth() returns 0-11, so add 1 for 1-12
-          
-          // Update years for ages 17 to 72
-          for (let age = 17; age <= 72; age++) {
-            const yearElement = document.getElementById(`year_${age}`);
-            if (yearElement) {
-              yearElement.textContent = birthYear + age + 1;
-            }
-          }
-          
-          // Handle graying out for age 17 if birth month is December (12)
-          const age17Elements = [
-            document.getElementById('age_17'),
-            document.getElementById('year_17'),
-            document.getElementById('salary_17'),
-            document.getElementById('percentage_17'),
-            document.getElementById('computed_salary_17')
-          ];
-          
-          if (birthMonth === 12) {
-            // Gray out age 17 row and disable input
-            age17Elements.forEach(element => {
-              if (element) {
-                element.classList.add('grayed-out');
+        const birthDateValue = birthInput.value;
+        if (birthDateValue) {
+          // Parse the date more reliably by splitting the string
+          const dateParts = birthDateValue.split('-');
+          if (dateParts.length === 3) {
+            const birthYear = parseInt(dateParts[0]);
+            const birthMonth = parseInt(dateParts[1]); // Already 1-12 format
+            const birthDay = parseInt(dateParts[2]);
+            
+            console.log('Birth date parsed:', { birthYear, birthMonth, birthDay }); // Debug log
+            
+            // Update years for ages 17 to 72
+            for (let age = 17; age <= 72; age++) {
+              const yearElement = document.getElementById(`year_${age}`);
+              if (yearElement) {
+                yearElement.textContent = birthYear + age + 1;
               }
-            });
-            const salary17Input = document.getElementById('salary_17');
-            if (salary17Input) {
-              salary17Input.disabled = true;
             }
-          } else {
-            // Remove gray out and enable input
-            age17Elements.forEach(element => {
-              if (element) {
-                element.classList.remove('grayed-out');
+            
+            // Handle graying out for age 17 if birth month is December (12)
+            const age17Elements = [
+              document.getElementById('age_17'),
+              document.getElementById('year_17'),
+              document.getElementById('salary_17'),
+              document.getElementById('percentage_17'),
+              document.getElementById('computed_salary_17')
+            ];
+            
+            if (birthMonth === 12) {
+              // Gray out age 17 row and disable input
+              age17Elements.forEach(element => {
+                if (element) {
+                  element.classList.add('grayed-out');
+                }
+              });
+              const salary17Input = document.getElementById('salary_17');
+              if (salary17Input) {
+                salary17Input.disabled = true;
               }
-            });
-            const salary17Input = document.getElementById('salary_17');
-            if (salary17Input) {
-              salary17Input.disabled = false;
+            } else {
+              // Remove gray out and enable input
+              age17Elements.forEach(element => {
+                if (element) {
+                  element.classList.remove('grayed-out');
+                }
+              });
+              const salary17Input = document.getElementById('salary_17');
+              if (salary17Input) {
+                salary17Input.disabled = false;
+              }
             }
           }
         }

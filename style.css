@@ -71,6 +71,7 @@ body {
 
 .container {
   background: white;
+  color: #081024;
   padding: 20px 30px;
   border-radius: 0px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -102,12 +103,14 @@ body {
   width: 100%;
   padding: 6px;
   box-sizing: border-box;
+  color: #081024;
 }
 
 .input-grid select {
   width: 100%;
   padding: 6px;
   box-sizing: border-box;
+  color: #081024;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -148,6 +151,7 @@ body {
   text-align: right;
   font-size: 0.9em;
   border-radius: 3px;
+  color: #081024;
 }
 
 .salary-grid .grayed-out {

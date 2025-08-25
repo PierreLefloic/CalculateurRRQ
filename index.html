@@ -633,6 +633,136 @@
       });
     });
     
+    // Results table row/column highlighting
+    document.addEventListener('DOMContentLoaded', function() {
+      function addTableHoverEffects() {
+        const resultsTable = document.querySelector('.results-table');
+        if (!resultsTable) return;
+        
+        // Add mousemove listener to the entire table container
+        resultsTable.addEventListener('mousemove', function(e) {
+          handleTableHover(e);
+        });
+        
+        resultsTable.addEventListener('mouseleave', function() {
+          clearHighlights();
+        });
+      }
+      
+      function handleTableHover(e) {
+        const resultsTable = e.currentTarget;
+        const rect = resultsTable.getBoundingClientRect();
+        const allCells = Array.from(resultsTable.children);
+        
+        // Calculate mouse position relative to table
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        // Find the closest cell based on mouse position
+        let closestCell = null;
+        let closestDistance = Infinity;
+        let closestIndex = -1;
+        
+        allCells.forEach((cell, index) => {
+          const cellRect = cell.getBoundingClientRect();
+          const cellX = cellRect.left - rect.left + cellRect.width / 2;
+          const cellY = cellRect.top - rect.top + cellRect.height / 2;
+          
+          const distance = Math.sqrt(Math.pow(mouseX - cellX, 2) + Math.pow(mouseY - cellY, 2));
+          
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestCell = cell;
+            closestIndex = index;
+          }
+        });
+        
+        if (closestCell) {
+          highlightRowAndColumn(closestIndex, allCells);
+        }
+      }
+      
+      function highlightRowAndColumn(cellIndex, allCells) {
+        const totalColumns = 12;
+        
+        // Find the actual data start (skip the spanning header row)
+        let dataStartIndex = 0;
+        let foundMainHeaders = false;
+        
+        // Look for the main header row (starts with "Âge")
+        for (let i = 0; i < allCells.length; i++) {
+          if (allCells[i].textContent.trim() === 'Âge') {
+            dataStartIndex = i;
+            foundMainHeaders = true;
+            break;
+          }
+        }
+        
+        // If we're in the spanning header area, use different logic
+        if (cellIndex < dataStartIndex) {
+          // Just highlight the current cell for spanning headers
+          clearHighlights();
+          allCells[cellIndex].classList.add('highlight-intersection');
+          return;
+        }
+        
+        // Calculate row and column relative to the main data area
+        const relativeIndex = cellIndex - dataStartIndex;
+        const currentRow = Math.floor(relativeIndex / totalColumns);
+        const currentCol = relativeIndex % totalColumns;
+        const isHeaderRow = currentRow === 0; // Check if we're on the header row
+        
+        clearHighlights();
+        
+        // Highlight cells in the main data area
+        for (let i = dataStartIndex; i < allCells.length; i++) {
+          const relIdx = i - dataStartIndex;
+          const cellRow = Math.floor(relIdx / totalColumns);
+          const cellCol = relIdx % totalColumns;
+          
+          // Highlight current row (but skip if hovering over header)
+          if (cellRow === currentRow && !isHeaderRow) {
+            allCells[i].classList.add('highlight-row');
+          }
+          
+          // Highlight current column (always show column highlight)
+          if (cellCol === currentCol) {
+            allCells[i].classList.add('highlight-col');
+          }
+          
+          // Highlight intersection (current cell)
+          if (cellRow === currentRow && cellCol === currentCol) {
+            allCells[i].classList.add('highlight-intersection');
+          }
+        }
+        
+        // Always highlight the column header when hovering anywhere in that column
+        const headerIndex = dataStartIndex + currentCol;
+        if (headerIndex < allCells.length) {
+          allCells[headerIndex].classList.add('highlight-col');
+        }
+      }
+      
+      function clearHighlights() {
+        const allCells = document.querySelectorAll('.results-cell, .results-header');
+        allCells.forEach(cell => {
+          cell.classList.remove('highlight-row', 'highlight-col', 'highlight-intersection');
+        });
+      }
+      
+      // Initialize hover effects
+      addTableHoverEffects();
+      
+      // Re-add hover effects after table is updated
+      const originalUpdateTable = window.TRICalculator?.prototype?.updateResultsTable;
+      if (originalUpdateTable) {
+        window.TRICalculator.prototype.updateResultsTable = function(results) {
+          originalUpdateTable.call(this, results);
+          setTimeout(addTableHoverEffects, 100); // Small delay to ensure DOM is updated
+        };
+      }
+    });
+    
     // Back to Top Button functionality
     document.addEventListener('DOMContentLoaded', function() {
       const backToTopBtn = document.getElementById('backToTop');

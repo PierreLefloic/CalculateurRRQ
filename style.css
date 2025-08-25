@@ -248,15 +248,6 @@ button:not(.back-to-top-btn):active {
   overflow: visible;
 }
 
-.results-header {
-  margin: 0;
-  padding: 4px 8px;
-  text-align: center;
-  font-size: 0.9em;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
 .prestation-header {
   grid-column: span 4;
   background-color: #f8f9fa;
@@ -279,7 +270,58 @@ button:not(.back-to-top-btn):active {
   padding: 4px 8px;
   text-align: center;
   font-size: 0.9em;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
 }
+
+.results-header {
+  margin: 0;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* Row and column highlighting */
+.results-table .highlight-row {
+  position: relative;
+}
+
+.results-table .highlight-row::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -6px;
+  right: -6px;
+  background-color: rgba(46, 157, 206, 0.2);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.results-table .highlight-col {
+  position: relative;
+}
+
+.results-table .highlight-col::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -6px;
+  right: -6px;
+  background-color: rgba(46, 157, 206, 0.15);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* .results-table .highlight-intersection {
+  background-color: rgba(46, 157, 206, 0.3) !important;
+  position: relative;
+  z-index: 1;
+} */
 
 label {
   display: block;

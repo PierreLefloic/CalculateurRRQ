@@ -97,25 +97,68 @@ body {
 .input-grid label {
   text-align: right;
   margin: 0;
+  font-weight: 600;
+  color: #344563;
+  font-size: 14px;
 }
 
 .input-grid input {
   width: 100%;
-  padding: 6px;
+  padding: 12px 16px;
   box-sizing: border-box;
   color: #081024;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border: 2px solid #e1e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-grid input:focus {
+  outline: none;
+  border-color: #2E9DCE;
+  box-shadow: 0 0 0 3px rgba(46, 157, 206, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.input-grid input:hover:not(:focus) {
+  border-color: #b8c8d9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .input-grid select {
   width: 100%;
-  padding: 6px;
+  padding: 12px 16px;
   box-sizing: border-box;
   color: #081024;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  background-color: #ffffff;
+  border: 2px solid #e1e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23081024' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.input-grid select:focus {
+  outline: none;
+  border-color: #2E9DCE;
+  box-shadow: 0 0 0 3px rgba(46, 157, 206, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.input-grid select:hover:not(:focus) {
+  border-color: #b8c8d9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 /* Custom checkbox styling */
@@ -137,7 +180,7 @@ body {
   width: 20px;
   height: 20px;
   background-color: white;
-  border: 2px solid #ccc;
+  border: 2px solid #b8c8d9;
   border-radius: 4px;
   cursor: pointer;
   position: relative;
@@ -194,13 +237,41 @@ body {
 
 .salary-grid input {
   width: 100%;
-  padding: 4px 8px;
+  padding: 8px 12px;
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 2px solid #e1e8f0;
   text-align: right;
   font-size: 0.9em;
-  border-radius: 3px;
+  font-weight: 500;
+  border-radius: 6px;
   color: #081024;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Remove spinner arrows from number inputs */
+.salary-grid input[type="number"]::-webkit-outer-spin-button,
+.salary-grid input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.salary-grid input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.salary-grid input:focus {
+  outline: none;
+  border-color: #2E9DCE;
+  box-shadow: 0 0 0 2px rgba(46, 157, 206, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.salary-grid input:hover:not(:focus):not(:disabled) {
+  border-color: #b8c8d9;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .salary-grid .grayed-out {
@@ -209,9 +280,11 @@ body {
 }
 
 .salary-grid .grayed-out input {
-  background-color: #f5f5f5;
-  color: #999;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-color: #e9ecef;
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* Current year row highlight */

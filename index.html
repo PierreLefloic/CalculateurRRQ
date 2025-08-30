@@ -968,6 +968,33 @@
         requestAnimationFrame(smoothScrollToTop);
       });
     });
+    
+    // Auto-select input content on click
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all input fields (both in input-grid and salary-grid)
+      const allInputs = document.querySelectorAll('input[type="number"], input[type="date"], .salary-grid input');
+      
+      allInputs.forEach(input => {
+        // Auto-select all content when clicking on the input
+        input.addEventListener('click', function() {
+          // Only auto-select if the input is not disabled
+          if (!this.disabled) {
+            this.select();
+          }
+        });
+        
+        // Also auto-select when focusing via keyboard (Tab key)
+        input.addEventListener('focus', function(e) {
+          // Only auto-select if focus came from keyboard (not mouse click)
+          // We use a small delay to ensure the click event has been processed
+          if (!this.disabled) {
+            setTimeout(() => {
+              this.select();
+            }, 10);
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>

@@ -20,15 +20,26 @@ function initializeAnimations() {
  */
 function setupSimulationButton() {
   const launchButton = document.getElementById('launchSimulation');
+  const launchButtonMobile = document.getElementById('launchSimulation-mobile');
   const resultsSection = document.querySelector('.results-section');
   const resultsTable = document.querySelector('.results-table');
   const summaryTable = document.querySelector('.summary-table');
   
-  if (!launchButton || !resultsSection) return;
+  if (!resultsSection) return;
   
-  launchButton.addEventListener('click', function() {
-    startSimulationFlow();
-  });
+  // Bind event listener to desktop button if it exists
+  if (launchButton) {
+    launchButton.addEventListener('click', function() {
+      startSimulationFlow();
+    });
+  }
+  
+  // Bind event listener to mobile button if it exists
+  if (launchButtonMobile) {
+    launchButtonMobile.addEventListener('click', function() {
+      startSimulationFlow();
+    });
+  }
   
   function startSimulationFlow() {
     // Show results section immediately but hide all content

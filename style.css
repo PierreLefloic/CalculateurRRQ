@@ -902,83 +902,8 @@ label {
 
 /* Mobile devices */
 @media screen and (max-width: 768px), screen and (max-device-width: 768px) {
-  
-  /* DIAGNOSTIC: Add visible borders to see what's happening */
-  body::before {
-    content: "MOBILE MODE ACTIVE - 768px";
-    display: block;
-    background: red;
-    color: white;
-    text-align: center;
-    padding: 5px;
-    font-weight: bold;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-  }
-  
-  .container-row {
-    border: 3px solid red !important;
-  }
-  
-  .left-column {
-    border: 3px solid blue !important;
-  }
-  
-  .left-column::before {
-    content: "LEFT COLUMN - ORDER: " attr(style);
-    display: block;
-    background: blue;
-    color: white;
-    padding: 5px;
-    font-weight: bold;
-  }
-  
-  .right-column {
-    border: 3px solid green !important;
-  }
-  
-  .right-column::before {
-    content: "RIGHT COLUMN (SALARY GRID)";
-    display: block;
-    background: green;
-    color: white;
-    padding: 5px;
-    font-weight: bold;
-  }
-  
-  .mobile-button {
-    border: 3px solid orange !important;
-    background: orange !important;
-  }
-  
-  .mobile-button::before {
-    content: "MOBILE BUTTON";
-    display: block;
-    background: darkorange;
-    color: white;
-    padding: 5px;
-    font-weight: bold;
-  }
-  
-  #launchSimulation {
-    border: 3px solid purple !important;
-    background: purple !important;
-  }
-  
-  #launchSimulation::before {
-    content: "DESKTOP BUTTON (should be hidden)";
-    display: block;
-    background: darkpurple;
-    color: white;
-    padding: 5px;
-    font-weight: bold;
-  }
-  
   body {
-    padding: 30px 0 40px 0;
+    padding: 0 0 40px 0;
     -webkit-text-size-adjust: 100%;
   }
   
@@ -1217,13 +1142,6 @@ label {
 
 /* Small mobile devices */
 @media screen and (max-width: 480px) {
-  
-  /* DIAGNOSTIC: Override for smaller screens */
-  body::before {
-    content: "MOBILE MODE ACTIVE - 480px";
-    background: purple;
-  }
-  
   .header-box {
     padding: 12px 15px;
   }

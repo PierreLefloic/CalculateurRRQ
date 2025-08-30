@@ -194,6 +194,7 @@ body {
   border-color: #2E9DCE;
 }
 
+
 .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
   background: linear-gradient(135deg, #2E9DCE 0%, #247ba3 100%);
   border: none;

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculateur TRI</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -26,14 +27,6 @@
           <label for="inputCurrentYear">Année courante :</label>
           <input id="inputCurrentYear" type="number" value="2025" min="1900" max="2100" placeholder="YYYY">
         </div>
-
-          <!-- <label for="inputA">Input A:</label>
-          <input id="inputA" type="number" value="5">
-          <label for="inputB">Input B:</label>
-          <input id="inputB" type="number" value="3">
-          <button type="button" onclick="runCalc()" class="full-width">Run Simulation</button>
-          <p class="full-width">Result: <span id="output">-</span></p>
-        </form> -->
       </div>
 
       <div class="container">
@@ -188,6 +181,9 @@
 
       </div>
     </div>
+    
+    <!-- Mobile button positioned after salary table -->
+    <button id="launchSimulation-mobile" class="mobile-button">Lancer la simulation</button>
   </div>
 
   <!-- Results Section -->

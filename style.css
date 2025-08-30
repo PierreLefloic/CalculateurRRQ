@@ -142,11 +142,12 @@ body {
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23081024' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23344563' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 12px center;
-  background-size: 16px;
-  padding-right: 40px;
+  background-size: 18px;
+  padding-right: 44px;
+  position: relative;
 }
 
 .input-grid select:focus {
@@ -154,11 +155,54 @@ body {
   border-color: #2E9DCE;
   box-shadow: 0 0 0 3px rgba(46, 157, 206, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
   transform: translateY(-1px);
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E9DCE' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
 }
 
 .input-grid select:hover:not(:focus) {
   border-color: #b8c8d9;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Enhanced dropdown option styling */
+.input-grid select option {
+  padding: 8px 16px;
+  background-color: #ffffff;
+  color: #081024;
+  font-weight: 500;
+  border: none;
+}
+
+.input-grid select option:hover {
+  background-color: rgba(46, 157, 206, 0.1);
+}
+
+.input-grid select option:checked {
+  background-color: #2E9DCE;
+  color: #ffffff;
+}
+
+.input-grid select option:hover {
+  background-color: rgba(46, 157, 206, 0.1);
+}
+
+.input-grid select option:checked {
+  background-color: #2E9DCE;
+  color: #ffffff;
+}
+
+/* Dropdown arrow rotation animation */
+.input-grid select:focus {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E9DCE' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='18,15 12,9 6,15'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Additional styling for better consistency */
+.input-grid select:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-color: #e9ecef;
+  cursor: not-allowed;
+  opacity: 0.7;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
 }
 
 /* Custom checkbox styling */
@@ -819,4 +863,369 @@ label {
   text-decoration: none;
   color: #2E9DCE;
   transition: 0.2s;
+}
+
+/* Hide mobile button on desktop */
+.mobile-button {
+  display: none !important;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet and below */
+@media screen and (max-width: 1024px) {
+  .container-row {
+    max-width: 100%;
+    gap: 24px;
+    padding: 0 20px;
+  }
+  
+  .left-column {
+    max-width: 100%;
+  }
+  
+  .right-column {
+    max-width: 100%;
+  }
+  
+  .results-container {
+    padding: 0 20px;
+  }
+  
+  #summary-results {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 0 0 40px 0;
+  }
+  
+  /* Header adjustments */
+  .header-box {
+    padding: 15px 20px;
+    margin: 0 auto 15px auto;
+  }
+  
+  .title {
+    font-size: 1.6em;
+    margin-bottom: 8px;
+  }
+  
+  .description {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  
+  .logo {
+    max-width: 300px;
+  }
+  
+  /* Switch to single column layout */
+  .container-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+    margin: 15px auto 0 auto;
+    padding: 0 15px;
+    max-width: 100% !important;
+    position: relative !important;
+  }
+  
+  .left-column {
+    gap: 20px;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    order: 1 !important;
+  }
+  
+  .right-column {
+    max-width: 100% !important;
+    width: 100% !important;
+    order: 2 !important;
+  }
+  
+  /* Hide desktop button and show mobile button */
+  #launchSimulation {
+    display: none !important;
+  }
+  
+  .mobile-button {
+    display: block !important;
+    order: 3 !important;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 100%;
+    /* Copy the same styling as the original button */
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #2E9DCE 0%, #1E7BA8 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(46, 157, 206, 0.2);
+  }
+  
+  /* Container adjustments */
+  .container {
+    padding: 15px 20px;
+    border-radius: 8px;
+  }
+  
+  .tall-container {
+    min-height: auto;
+  }
+  
+  /* Form adjustments */
+  .input-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+    text-align: left;
+  }
+  
+  .input-grid label {
+    text-align: left;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  .input-grid input,
+  .input-grid select {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .input-grid .full-width {
+    width: 100%;
+  }
+  
+  /* Checkbox adjustments */
+  .checkbox-container {
+    justify-self: start;
+  }
+  
+  /* Button adjustments */
+  button:not(.back-to-top-btn) {
+    padding: 16px 24px;
+    font-size: 1.2em;
+    margin-top: 15px;
+  }
+  
+  /* Salary grid adjustments */
+  .salary-grid {
+    grid-template-columns: 0.6fr 0.8fr 3fr 1fr 2fr;
+    gap: 6px 8px;
+    padding: 8px;
+    font-size: 0.85em;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .salary-grid p {
+    padding: 3px 6px;
+    font-size: 0.8em;
+  }
+  
+  .salary-grid input {
+    padding: 6px 8px;
+    font-size: 0.8em;
+  }
+  
+  /* Results section adjustments */
+  .results-section {
+    padding: 30px 0;
+  }
+  
+  .results-container {
+    padding: 0 15px;
+  }
+  
+  .results-container h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+  
+  #simulation-results,
+  #summary-results {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Results table adjustments */
+  .results-table {
+    grid-template-columns: 0.5fr 0.5fr 0.8fr 1fr 1fr 1fr;
+    gap: 6px 8px;
+    padding: 8px;
+    min-width: 700px; /* Maintain readability */
+  }
+  
+  .results-cell,
+  .results-header {
+    padding: 6px 4px;
+    font-size: 0.8em;
+  }
+  
+  .prestation-header {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+  
+  .results-header small {
+    font-size: 0.7em;
+  }
+  
+  /* Summary table adjustments */
+  .summary-table {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 6px 8px;
+    padding: 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 400px;
+  }
+  
+  .summary-header,
+  .summary-label {
+    padding: 8px;
+    font-size: 0.8em;
+  }
+  
+  /* Back to top button adjustments */
+  .back-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .back-to-top-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Tooltip adjustments */
+  .custom-tooltip {
+    max-width: 250px;
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+  
+  /* Footer adjustments */
+  .footer {
+    padding-top: 30px;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .footer-text {
+    font-size: 0.9em;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  .header-box {
+    padding: 12px 15px;
+  }
+  
+  .title {
+    font-size: 1.4em;
+  }
+  
+  .logo {
+    max-width: 250px;
+  }
+  
+  .container-row {
+    padding: 0 10px;
+  }
+  
+  .container {
+    padding: 12px 15px;
+  }
+  
+  .input-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .input-grid input,
+  .input-grid select {
+    padding: 12px 14px;
+  }
+  
+  button:not(.back-to-top-btn) {
+    padding: 14px 20px;
+    font-size: 1.1em;
+  }
+  
+  .salary-grid {
+    grid-template-columns: 0.5fr 0.7fr 2.5fr 0.8fr 1.5fr;
+    gap: 4px 6px;
+    padding: 6px;
+  }
+  
+  .salary-grid p {
+    padding: 2px 4px;
+    font-size: 0.75em;
+  }
+  
+  .salary-grid input {
+    padding: 5px 6px;
+    font-size: 0.75em;
+  }
+  
+  #simulation-results,
+  #summary-results {
+    padding: 15px;
+  }
+  
+  .results-table {
+    grid-template-columns: 0.4fr 0.4fr 0.7fr 0.8fr 0.8fr 0.8fr;
+    gap: 4px 6px;
+    min-width: 600px;
+  }
+  
+  .results-cell,
+  .results-header {
+    padding: 4px 2px;
+    font-size: 0.75em;
+  }
+  
+  .summary-table {
+    min-width: 350px;
+  }
+  
+  .custom-tooltip {
+    max-width: 200px;
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}
+
+/* Landscape mobile adjustments */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .salary-grid {
+    max-height: 300px;
+  }
+  
+  .results-table {
+    max-height: 400px;
+  }
 }

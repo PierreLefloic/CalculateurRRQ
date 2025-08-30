@@ -12,7 +12,7 @@
   </div>
 
   <div class="header-box">
-    <h1 class="title">Calculateur TRI</h1>
+    <h1 class="title">Simulateur de prestation du RRQ</h1>
     <p class="description">Calculez le Taux de Rendement Interne de vos investissements avec notre outil professionnel. Entrez vos données et obtenez une analyse détaillée de vos projets financiers.</p>
   </div>
 
@@ -43,6 +43,15 @@
           <input id="BeforeCurrentYear" type="number" value="114" min="0" max="200">
           <label for="AfterCurrentYear">Après année courante (%) :</label>
           <input id="AfterCurrentYear" type="number" value="114" min="0" max="200">
+          <label for="InPercent">Saisie en pourcentage :</label>
+          <div class="checkbox-container">
+            <input id="InPercent" type="checkbox">
+            <label for="InPercent" class="custom-checkbox">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20,6 9,17 4,12"></polyline>
+              </svg>
+            </label>
+          </div>
         </div>
       </div>
       
@@ -83,7 +92,24 @@
           </select>
           <label for="AgeExp">Espérance de vie :</label>
           <input id="AgeExp" type="number" value="85" min="60" max="120">
-
+          <label for="SelfEmployed">Travailleur autonome :</label>
+          <div class="checkbox-container">
+            <input id="SelfEmployed" type="checkbox">
+            <label for="SelfEmployed" class="custom-checkbox">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20,6 9,17 4,12"></polyline>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <h2>Paramètres économiques</h2>
+        <div class="input-grid">
+          <label for="InflationRate">Taux d'inflation (%) :</label>
+          <input id="InflationRate" type="number" value="2" min="0" max="100">
+          <label for="SalaryIncrease">Croissance des salaires (%) :</label>
+          <input id="SalaryIncrease" type="number" value="3" min="0" max="100">
         </div>
       </div>
       
@@ -97,67 +123,67 @@
           <!-- Header Row -->
           <p><strong>Âge</strong></p>
           <p><strong>Année</strong></p>
-          <p><strong>Saisie ($)</strong></p>
+          <p id="saisie-header"><strong>Saisie ($)</strong></p>
           <p><strong>Pourcentage</strong></p>
           <p><strong>Salaire</strong></p>
           
           <!-- Data Rows - Age 17 to 72 -->
           <p id="age_17">17</p><p id="year_17">2024</p><input type="number" id="salary_17" value="0" min="0"><p id="percentage_17">114%</p><p id="computed_salary_17">0</p>
-          <p>18</p><p id="year_18">2025</p><input type="number" id="salary_18" value="0" min="0"><p>114%</p><p id="computed_salary_18">0</p>
-          <p>19</p><p id="year_19">2026</p><input type="number" id="salary_19" value="0" min="0"><p>114%</p><p id="computed_salary_19">0</p>
-          <p>20</p><p id="year_20">2027</p><input type="number" id="salary_20" value="0" min="0"><p>114%</p><p id="computed_salary_20">0</p>
-          <p>21</p><p id="year_21">2028</p><input type="number" id="salary_21" value="0" min="0"><p>114%</p><p id="computed_salary_21">0</p>
-          <p>22</p><p id="year_22">2029</p><input type="number" id="salary_22" value="0" min="0"><p>114%</p><p id="computed_salary_22">0</p>
-          <p>23</p><p id="year_23">2030</p><input type="number" id="salary_23" value="0" min="0"><p>114%</p><p id="computed_salary_23">0</p>
-          <p>24</p><p id="year_24">2031</p><input type="number" id="salary_24" value="0" min="0"><p>114%</p><p id="computed_salary_24">0</p>
-          <p>25</p><p id="year_25">2032</p><input type="number" id="salary_25" value="0" min="0"><p>114%</p><p id="computed_salary_25">0</p>
-          <p>26</p><p id="year_26">2033</p><input type="number" id="salary_26" value="0" min="0"><p>114%</p><p id="computed_salary_26">0</p>
-          <p>27</p><p id="year_27">2034</p><input type="number" id="salary_27" value="0" min="0"><p>114%</p><p id="computed_salary_27">0</p>
-          <p>28</p><p id="year_28">2035</p><input type="number" id="salary_28" value="0" min="0"><p>114%</p><p id="computed_salary_28">0</p>
-          <p>29</p><p id="year_29">2036</p><input type="number" id="salary_29" value="0" min="0"><p>114%</p><p id="computed_salary_29">0</p>
-          <p>30</p><p id="year_30">2037</p><input type="number" id="salary_30" value="0" min="0"><p>114%</p><p id="computed_salary_30">0</p>
-          <p>31</p><p id="year_31">2038</p><input type="number" id="salary_31" value="0" min="0"><p>114%</p><p id="computed_salary_31">0</p>
-          <p>32</p><p id="year_32">2039</p><input type="number" id="salary_32" value="0" min="0"><p>114%</p><p id="computed_salary_32">0</p>
-          <p>33</p><p id="year_33">2040</p><input type="number" id="salary_33" value="0" min="0"><p>114%</p><p id="computed_salary_33">0</p>
-          <p>34</p><p id="year_34">2041</p><input type="number" id="salary_34" value="0" min="0"><p>114%</p><p id="computed_salary_34">0</p>
-          <p>35</p><p id="year_35">2042</p><input type="number" id="salary_35" value="0" min="0"><p>114%</p><p id="computed_salary_35">0</p>
-          <p>36</p><p id="year_36">2043</p><input type="number" id="salary_36" value="0" min="0"><p>114%</p><p id="computed_salary_36">0</p>
-          <p>37</p><p id="year_37">2044</p><input type="number" id="salary_37" value="0" min="0"><p>114%</p><p id="computed_salary_37">0</p>
-          <p>38</p><p id="year_38">2045</p><input type="number" id="salary_38" value="0" min="0"><p>114%</p><p id="computed_salary_38">0</p>
-          <p>39</p><p id="year_39">2046</p><input type="number" id="salary_39" value="0" min="0"><p>114%</p><p id="computed_salary_39">0</p>
-          <p>40</p><p id="year_40">2047</p><input type="number" id="salary_40" value="0" min="0"><p>114%</p><p id="computed_salary_40">0</p>
-          <p>41</p><p id="year_41">2048</p><input type="number" id="salary_41" value="0" min="0"><p>114%</p><p id="computed_salary_41">0</p>
-          <p>42</p><p id="year_42">2049</p><input type="number" id="salary_42" value="0" min="0"><p>114%</p><p id="computed_salary_42">0</p>
-          <p>43</p><p id="year_43">2050</p><input type="number" id="salary_43" value="0" min="0"><p>114%</p><p id="computed_salary_43">0</p>
-          <p>44</p><p id="year_44">2051</p><input type="number" id="salary_44" value="0" min="0"><p>114%</p><p id="computed_salary_44">0</p>
-          <p>45</p><p id="year_45">2052</p><input type="number" id="salary_45" value="0" min="0"><p>114%</p><p id="computed_salary_45">0</p>
-          <p>46</p><p id="year_46">2053</p><input type="number" id="salary_46" value="0" min="0"><p>114%</p><p id="computed_salary_46">0</p>
-          <p>47</p><p id="year_47">2054</p><input type="number" id="salary_47" value="0" min="0"><p>114%</p><p id="computed_salary_47">0</p>
-          <p>48</p><p id="year_48">2055</p><input type="number" id="salary_48" value="0" min="0"><p>114%</p><p id="computed_salary_48">0</p>
-          <p>49</p><p id="year_49">2056</p><input type="number" id="salary_49" value="0" min="0"><p>114%</p><p id="computed_salary_49">0</p>
-          <p>50</p><p id="year_50">2057</p><input type="number" id="salary_50" value="0" min="0"><p>114%</p><p id="computed_salary_50">0</p>
-          <p>51</p><p id="year_51">2058</p><input type="number" id="salary_51" value="0" min="0"><p>114%</p><p id="computed_salary_51">0</p>
-          <p>52</p><p id="year_52">2059</p><input type="number" id="salary_52" value="0" min="0"><p>114%</p><p id="computed_salary_52">0</p>
-          <p>53</p><p id="year_53">2060</p><input type="number" id="salary_53" value="0" min="0"><p>114%</p><p id="computed_salary_53">0</p>
-          <p>54</p><p id="year_54">2061</p><input type="number" id="salary_54" value="0" min="0"><p>114%</p><p id="computed_salary_54">0</p>
-          <p>55</p><p id="year_55">2062</p><input type="number" id="salary_55" value="0" min="0"><p>114%</p><p id="computed_salary_55">0</p>
-          <p>56</p><p id="year_56">2063</p><input type="number" id="salary_56" value="0" min="0"><p>114%</p><p id="computed_salary_56">0</p>
-          <p>57</p><p id="year_57">2064</p><input type="number" id="salary_57" value="0" min="0"><p>114%</p><p id="computed_salary_57">0</p>
-          <p>58</p><p id="year_58">2065</p><input type="number" id="salary_58" value="0" min="0"><p>114%</p><p id="computed_salary_58">0</p>
-          <p>59</p><p id="year_59">2066</p><input type="number" id="salary_59" value="0" min="0"><p>114%</p><p id="computed_salary_59">0</p>
-          <p>60</p><p id="year_60">2067</p><input type="number" id="salary_60" value="0" min="0"><p>114%</p><p id="computed_salary_60">0</p>
-          <p>61</p><p id="year_61">2068</p><input type="number" id="salary_61" value="0" min="0"><p>114%</p><p id="computed_salary_61">0</p>
-          <p>62</p><p id="year_62">2069</p><input type="number" id="salary_62" value="0" min="0"><p>114%</p><p id="computed_salary_62">0</p>
-          <p>63</p><p id="year_63">2070</p><input type="number" id="salary_63" value="0" min="0"><p>114%</p><p id="computed_salary_63">0</p>
-          <p>64</p><p id="year_64">2071</p><input type="number" id="salary_64" value="0" min="0"><p>114%</p><p id="computed_salary_64">0</p>
-          <p>65</p><p id="year_65">2072</p><input type="number" id="salary_65" value="0" min="0"><p>114%</p><p id="computed_salary_65">0</p>
-          <p>66</p><p id="year_66">2073</p><input type="number" id="salary_66" value="0" min="0"><p>114%</p><p id="computed_salary_66">0</p>
-          <p>67</p><p id="year_67">2074</p><input type="number" id="salary_67" value="0" min="0"><p>114%</p><p id="computed_salary_67">0</p>
-          <p>68</p><p id="year_68">2075</p><input type="number" id="salary_68" value="0" min="0"><p>114%</p><p id="computed_salary_68">0</p>
-          <p>69</p><p id="year_69">2076</p><input type="number" id="salary_69" value="0" min="0"><p>114%</p><p id="computed_salary_69">0</p>
-          <p>70</p><p id="year_70">2077</p><input type="number" id="salary_70" value="0" min="0"><p>114%</p><p id="computed_salary_70">0</p>
-          <p>71</p><p id="year_71">2078</p><input type="number" id="salary_71" value="0" min="0"><p>114%</p><p id="computed_salary_71">0</p>
-          <p>72</p><p id="year_72">2079</p><input type="number" id="salary_72" value="0" min="0"><p>114%</p><p id="computed_salary_72">0</p>
+          <p>18</p><p id="year_18">2025</p><input type="number" id="salary_18" value="0" min="0"><p id="percentage_18">114%</p><p id="computed_salary_18">0</p>
+          <p>19</p><p id="year_19">2026</p><input type="number" id="salary_19" value="0" min="0"><p id="percentage_19">114%</p><p id="computed_salary_19">0</p>
+          <p>20</p><p id="year_20">2027</p><input type="number" id="salary_20" value="0" min="0"><p id="percentage_20">114%</p><p id="computed_salary_20">0</p>
+          <p>21</p><p id="year_21">2028</p><input type="number" id="salary_21" value="0" min="0"><p id="percentage_21">114%</p><p id="computed_salary_21">0</p>
+          <p>22</p><p id="year_22">2029</p><input type="number" id="salary_22" value="0" min="0"><p id="percentage_22">114%</p><p id="computed_salary_22">0</p>
+          <p>23</p><p id="year_23">2030</p><input type="number" id="salary_23" value="0" min="0"><p id="percentage_23">114%</p><p id="computed_salary_23">0</p>
+          <p>24</p><p id="year_24">2031</p><input type="number" id="salary_24" value="0" min="0"><p id="percentage_24">114%</p><p id="computed_salary_24">0</p>
+          <p>25</p><p id="year_25">2032</p><input type="number" id="salary_25" value="0" min="0"><p id="percentage_25">114%</p><p id="computed_salary_25">0</p>
+          <p>26</p><p id="year_26">2033</p><input type="number" id="salary_26" value="0" min="0"><p id="percentage_26">114%</p><p id="computed_salary_26">0</p>
+          <p>27</p><p id="year_27">2034</p><input type="number" id="salary_27" value="0" min="0"><p id="percentage_27">114%</p><p id="computed_salary_27">0</p>
+          <p>28</p><p id="year_28">2035</p><input type="number" id="salary_28" value="0" min="0"><p id="percentage_28">114%</p><p id="computed_salary_28">0</p>
+          <p>29</p><p id="year_29">2036</p><input type="number" id="salary_29" value="0" min="0"><p id="percentage_29">114%</p><p id="computed_salary_29">0</p>
+          <p>30</p><p id="year_30">2037</p><input type="number" id="salary_30" value="0" min="0"><p id="percentage_30">114%</p><p id="computed_salary_30">0</p>
+          <p>31</p><p id="year_31">2038</p><input type="number" id="salary_31" value="0" min="0"><p id="percentage_31">114%</p><p id="computed_salary_31">0</p>
+          <p>32</p><p id="year_32">2039</p><input type="number" id="salary_32" value="0" min="0"><p id="percentage_32">114%</p><p id="computed_salary_32">0</p>
+          <p>33</p><p id="year_33">2040</p><input type="number" id="salary_33" value="0" min="0"><p id="percentage_33">114%</p><p id="computed_salary_33">0</p>
+          <p>34</p><p id="year_34">2041</p><input type="number" id="salary_34" value="0" min="0"><p id="percentage_34">114%</p><p id="computed_salary_34">0</p>
+          <p>35</p><p id="year_35">2042</p><input type="number" id="salary_35" value="0" min="0"><p id="percentage_35">114%</p><p id="computed_salary_35">0</p>
+          <p>36</p><p id="year_36">2043</p><input type="number" id="salary_36" value="0" min="0"><p id="percentage_36">114%</p><p id="computed_salary_36">0</p>
+          <p>37</p><p id="year_37">2044</p><input type="number" id="salary_37" value="0" min="0"><p id="percentage_37">114%</p><p id="computed_salary_37">0</p>
+          <p>38</p><p id="year_38">2045</p><input type="number" id="salary_38" value="0" min="0"><p id="percentage_38">114%</p><p id="computed_salary_38">0</p>
+          <p>39</p><p id="year_39">2046</p><input type="number" id="salary_39" value="0" min="0"><p id="percentage_39">114%</p><p id="computed_salary_39">0</p>
+          <p>40</p><p id="year_40">2047</p><input type="number" id="salary_40" value="0" min="0"><p id="percentage_40">114%</p><p id="computed_salary_40">0</p>
+          <p>41</p><p id="year_41">2048</p><input type="number" id="salary_41" value="0" min="0"><p id="percentage_41">114%</p><p id="computed_salary_41">0</p>
+          <p>42</p><p id="year_42">2049</p><input type="number" id="salary_42" value="0" min="0"><p id="percentage_42">114%</p><p id="computed_salary_42">0</p>
+          <p>43</p><p id="year_43">2050</p><input type="number" id="salary_43" value="0" min="0"><p id="percentage_43">114%</p><p id="computed_salary_43">0</p>
+          <p>44</p><p id="year_44">2051</p><input type="number" id="salary_44" value="0" min="0"><p id="percentage_44">114%</p><p id="computed_salary_44">0</p>
+          <p>45</p><p id="year_45">2052</p><input type="number" id="salary_45" value="0" min="0"><p id="percentage_45">114%</p><p id="computed_salary_45">0</p>
+          <p>46</p><p id="year_46">2053</p><input type="number" id="salary_46" value="0" min="0"><p id="percentage_46">114%</p><p id="computed_salary_46">0</p>
+          <p>47</p><p id="year_47">2054</p><input type="number" id="salary_47" value="0" min="0"><p id="percentage_47">114%</p><p id="computed_salary_47">0</p>
+          <p>48</p><p id="year_48">2055</p><input type="number" id="salary_48" value="0" min="0"><p id="percentage_48">114%</p><p id="computed_salary_48">0</p>
+          <p>49</p><p id="year_49">2056</p><input type="number" id="salary_49" value="0" min="0"><p id="percentage_49">114%</p><p id="computed_salary_49">0</p>
+          <p>50</p><p id="year_50">2057</p><input type="number" id="salary_50" value="0" min="0"><p id="percentage_50">114%</p><p id="computed_salary_50">0</p>
+          <p>51</p><p id="year_51">2058</p><input type="number" id="salary_51" value="0" min="0"><p id="percentage_51">114%</p><p id="computed_salary_51">0</p>
+          <p>52</p><p id="year_52">2059</p><input type="number" id="salary_52" value="0" min="0"><p id="percentage_52">114%</p><p id="computed_salary_52">0</p>
+          <p>53</p><p id="year_53">2060</p><input type="number" id="salary_53" value="0" min="0"><p id="percentage_53">114%</p><p id="computed_salary_53">0</p>
+          <p>54</p><p id="year_54">2061</p><input type="number" id="salary_54" value="0" min="0"><p id="percentage_54">114%</p><p id="computed_salary_54">0</p>
+          <p>55</p><p id="year_55">2062</p><input type="number" id="salary_55" value="0" min="0"><p id="percentage_55">114%</p><p id="computed_salary_55">0</p>
+          <p>56</p><p id="year_56">2063</p><input type="number" id="salary_56" value="0" min="0"><p id="percentage_56">114%</p><p id="computed_salary_56">0</p>
+          <p>57</p><p id="year_57">2064</p><input type="number" id="salary_57" value="0" min="0"><p id="percentage_57">114%</p><p id="computed_salary_57">0</p>
+          <p>58</p><p id="year_58">2065</p><input type="number" id="salary_58" value="0" min="0"><p id="percentage_58">114%</p><p id="computed_salary_58">0</p>
+          <p>59</p><p id="year_59">2066</p><input type="number" id="salary_59" value="0" min="0"><p id="percentage_59">114%</p><p id="computed_salary_59">0</p>
+          <p>60</p><p id="year_60">2067</p><input type="number" id="salary_60" value="0" min="0"><p id="percentage_60">114%</p><p id="computed_salary_60">0</p>
+          <p>61</p><p id="year_61">2068</p><input type="number" id="salary_61" value="0" min="0"><p id="percentage_61">114%</p><p id="computed_salary_61">0</p>
+          <p>62</p><p id="year_62">2069</p><input type="number" id="salary_62" value="0" min="0"><p id="percentage_62">114%</p><p id="computed_salary_62">0</p>
+          <p>63</p><p id="year_63">2070</p><input type="number" id="salary_63" value="0" min="0"><p id="percentage_63">114%</p><p id="computed_salary_63">0</p>
+          <p>64</p><p id="year_64">2071</p><input type="number" id="salary_64" value="0" min="0"><p id="percentage_64">114%</p><p id="computed_salary_64">0</p>
+          <p>65</p><p id="year_65">2072</p><input type="number" id="salary_65" value="0" min="0"><p id="percentage_65">114%</p><p id="computed_salary_65">0</p>
+          <p>66</p><p id="year_66">2073</p><input type="number" id="salary_66" value="0" min="0"><p id="percentage_66">114%</p><p id="computed_salary_66">0</p>
+          <p>67</p><p id="year_67">2074</p><input type="number" id="salary_67" value="0" min="0"><p id="percentage_67">114%</p><p id="computed_salary_67">0</p>
+          <p>68</p><p id="year_68">2075</p><input type="number" id="salary_68" value="0" min="0"><p id="percentage_68">114%</p><p id="computed_salary_68">0</p>
+          <p>69</p><p id="year_69">2076</p><input type="number" id="salary_69" value="0" min="0"><p id="percentage_69">114%</p><p id="computed_salary_69">0</p>
+          <p>70</p><p id="year_70">2077</p><input type="number" id="salary_70" value="0" min="0"><p id="percentage_70">114%</p><p id="computed_salary_70">0</p>
+          <p>71</p><p id="year_71">2078</p><input type="number" id="salary_71" value="0" min="0"><p id="percentage_71">114%</p><p id="computed_salary_71">0</p>
+          <p>72</p><p id="year_72">2079</p><input type="number" id="salary_72" value="0" min="0"><p id="percentage_72">114%</p><p id="computed_salary_72">0</p>
         </div>
 
       </div>
@@ -166,8 +192,39 @@
 
   <!-- Results Section -->
   <div class="results-section">
+    <!-- Summary Results Container (now first) -->
     <div class="results-container">
-      <h2>Résultats de la simulation</h2>
+      <h2>Résumé des prestations</h2>
+      <div id="summary-results" class="results-wrapper">
+        <div class="summary-table">
+          <!-- Column headers spanning -->
+          <div class="results-header"></div>
+          <div class="results-header summary-header" title="Montants en dollars constants de 2025">En dollars de<br>2025</div>
+          <div class="results-header summary-header" title="Montants en dollars constants de 2030">En dollars de<br>2030</div>
+          
+          <!-- Data Rows -->
+          <div class="results-header summary-label" title="Prestation annuelle totale du Régime de rentes du Québec">Prestation annuelle du RRQ</div>
+          <div class="results-cell">17 898 $</div>
+          <div class="results-cell">21 027 $</div>
+          
+          <div class="results-header summary-label" title="Montant de la prestation de base du régime">Régime de base</div>
+          <div class="results-cell">16 645 $</div>
+          <div class="results-cell">19 555 $</div>
+          
+          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 1">Régime supplémentaire - volet 1</div>
+          <div class="results-cell">1 252 $</div>
+          <div class="results-cell">1 471 $</div>
+          
+          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 2">Régime supplémentaire - volet 2</div>
+          <div class="results-cell">0 $</div>
+          <div class="results-cell">0 $</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Detailed Results Container (now second) -->
+    <div class="results-container summary-container">
+      <h2>Résultats détaillés de la simulation</h2>
       <div id="simulation-results" class="results-wrapper">
         <!-- Loading overlay -->
         <div id="loading-overlay" class="loading-overlay hidden">
@@ -180,162 +237,98 @@
           <div class="results-header"></div>
           <div class="results-header"></div>
           <div class="results-header"></div>
-          <div class="results-header"></div>
-          <div class="results-header"></div>
-          <div class="results-header"></div>
           <div class="results-header prestation-header" title="Montant total des prestations annuelles">Prestation annuelle</div>
-          <div class="results-header"></div>
           
           <!-- Header Row -->
           <div class="results-header" title="Âge de la personne pour cette année de calcul">Âge</div>
           <div class="results-header" title="Année civile correspondant à cet âge">Année</div>
           <div class="results-header" title="Taux de rendement interne calculé pour cette année, exprimé en pourcentage">Taux de rendement interne</div>
-          <div class="results-header" title="Salaire admissible au Régime de rentes du Québec (RRQ) pour cette année">Salaire admissible</div>
-          <div class="results-header" title="Maximum des gains annuels (MGA) - plafond de cotisation au RRQ pour cette année">MGA</div>
-          <div class="results-header" title="Maximum du salaire admissible (MSGA) - seuil d'exemption de base du RRQ">MSGA</div>
           <div class="results-header" title="Montant de la cotisation annuelle au RRQ en dollars de l'année courante">Cotisation annuelle<br><small>En dollars courant</small></div>
-          <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2064">Accumulée<br><small>En dollars de 2064</small></div>
-          <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2064">Additionnelle<br><small>En dollars de 2064</small></div>
           <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2025">Accumulée<br><small>En dollars de 2025</small></div>
           <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025">Additionnelle<br><small>En dollars de 2025</small></div>
-          <div class="results-header" title="Nombre d'années restantes avant l'âge de retraite choisi">Nombre d'année avant la retraite</div>
           
           <!-- Sample Data Rows (we'll replace with real data later) -->
           <div class="results-cell">28</div>
           <div class="results-cell">2025</div>
           <div class="results-cell">6,06%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">66580</div>
-          <div class="results-cell">81200</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">6546</div>
-          <div class="results-cell">648</div>
           <div class="results-cell">1973</div>
           <div class="results-cell">195</div>
-          <div class="results-cell">40</div>
           
           <div class="results-cell">29</div>
           <div class="results-cell">2026</div>
           <div class="results-cell">6,13%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">68960</div>
-          <div class="results-cell">83700</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">7194</div>
-          <div class="results-cell">628</div>
           <div class="results-cell">2168</div>
           <div class="results-cell">189</div>
-          <div class="results-cell">39</div>
           
           <div class="results-cell">30</div>
           <div class="results-cell">2027</div>
           <div class="results-cell">6,19%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">71140</div>
-          <div class="results-cell">86400</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">7822</div>
-          <div class="results-cell">609</div>
           <div class="results-cell">2357</div>
           <div class="results-cell">184</div>
-          <div class="results-cell">38</div>
           
           <div class="results-cell">31</div>
           <div class="results-cell">2028</div>
           <div class="results-cell">6,26%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">73440</div>
-          <div class="results-cell">89000</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">8431</div>
-          <div class="results-cell">591</div>
           <div class="results-cell">2541</div>
           <div class="results-cell">178</div>
-          <div class="results-cell">37</div>
           
           <div class="results-cell">32</div>
           <div class="results-cell">2029</div>
           <div class="results-cell">6,32%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">75860</div>
-          <div class="results-cell">91800</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">9022</div>
-          <div class="results-cell">573</div>
           <div class="results-cell">2719</div>
           <div class="results-cell">173</div>
-          <div class="results-cell">36</div>
           
           <div class="results-cell">33</div>
           <div class="results-cell">2030</div>
           <div class="results-cell">6,39%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">78220</div>
-          <div class="results-cell">94700</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">9595</div>
-          <div class="results-cell">555</div>
           <div class="results-cell">2892</div>
           <div class="results-cell">167</div>
-          <div class="results-cell">35</div>
           
           <div class="results-cell">34</div>
           <div class="results-cell">2031</div>
           <div class="results-cell">6,47%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">80640</div>
-          <div class="results-cell">97500</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">10150</div>
-          <div class="results-cell">539</div>
           <div class="results-cell">3059</div>
           <div class="results-cell">163</div>
-          <div class="results-cell">34</div>
           
           <div class="results-cell">35</div>
           <div class="results-cell">2032</div>
           <div class="results-cell">6,55%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">83140</div>
-          <div class="results-cell">100600</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">10690</div>
-          <div class="results-cell">523</div>
           <div class="results-cell">3222</div>
           <div class="results-cell">158</div>
-          <div class="results-cell">33</div>
           
           <div class="results-cell">36</div>
           <div class="results-cell">2033</div>
           <div class="results-cell">6,63%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">85720</div>
-          <div class="results-cell">103700</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">11212</div>
-          <div class="results-cell">507</div>
           <div class="results-cell">3379</div>
           <div class="results-cell">153</div>
-          <div class="results-cell">32</div>
           
           <div class="results-cell">37</div>
           <div class="results-cell">2034</div>
           <div class="results-cell">6,72%</div>
-          <div class="results-cell">20000</div>
-          <div class="results-cell">88380</div>
-          <div class="results-cell">107000</div>
           <div class="results-cell">-1056</div>
-          <div class="results-cell">11720</div>
-          <div class="results-cell">492</div>
           <div class="results-cell">3532</div>
           <div class="results-cell">148</div>
-          <div class="results-cell">31</div>
         </div>
       </div>
     </div>
   </div>
 
-  <p class="footer-text">Tous droits réservés © Chaire en fiscalité et en finances publiques</p>
+  
+  <footer class="footer">
+    <p class="footer-text">Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.</p>
+    <p class="footer-text">Les auteurs collaborent aux travaux de la <a href="https://cffp.recherche.usherbrooke.ca/" target="_blank">Chaire de recherche en fiscalité et en finances publiques</a>, qu'ils remercient pour l'appui financier qui a rendu possible la réalisation de cet outil.</p>
+    <p class="footer-text">Outil interactif conçu et réalisé par <strong>Pierre Lefloïc</strong>.</p>
+    <p class="footer-text">Pour plus d'information, voir l'étude [Lien web à venir].</p>
+  </footer>
 
   <!-- Back to Top Button -->
   <button id="backToTop" class="back-to-top-btn hidden" title="Retour en haut">
@@ -415,11 +408,32 @@
       }
       
       // Listen for birth date changes
-      birthInput.addEventListener('change', updateSalaryGridYears);
-      birthInput.addEventListener('input', updateSalaryGridYears);
+      birthInput.addEventListener('change', function() {
+        updateSalaryGridYears();
+        setTimeout(() => {
+          updatePercentageValues();
+        }, 100);
+      });
+      birthInput.addEventListener('input', function() {
+        updateSalaryGridYears();
+        setTimeout(() => {
+          updatePercentageValues();
+        }, 100);
+      });
       
-      // Initialize years on page load if birth date is already set
+      // Listen for current year changes
+      yearInput.addEventListener('input', function() {
+        updatePercentageValues();
+      });
+      yearInput.addEventListener('change', function() {
+        updatePercentageValues();
+      });
+      
+      // Initialize years on page load
       updateSalaryGridYears();
+      setTimeout(() => {
+        updatePercentageValues();
+      }, 100);
       
       // Debug logging for BeforeCurrentYear field
       beforeCurrentYearInput.addEventListener('input', function() {
@@ -473,6 +487,67 @@
           this.setCustomValidity(''); // Clear any previous custom validity
         }
       });
+      
+      // Function to update percentage values in salary grid
+      function updatePercentageValues() {
+        const currentYear = parseInt(yearInput.value);
+        const beforeCurrentYearValue = beforeCurrentYearInput.value;
+        const afterCurrentYearValue = document.getElementById('AfterCurrentYear').value;
+        
+        if (!isNaN(currentYear) && beforeCurrentYearValue && afterCurrentYearValue) {
+          // Update percentage values for ages 17 to 72
+          for (let age = 17; age <= 72; age++) {
+            const yearElement = document.getElementById(`year_${age}`);
+            const percentageElement = document.getElementById(`percentage_${age}`);
+            
+            if (yearElement && percentageElement) {
+              const rowYear = parseInt(yearElement.textContent);
+              
+              if (!isNaN(rowYear)) {
+                if (rowYear < currentYear) {
+                  // Years before current year
+                  percentageElement.textContent = beforeCurrentYearValue + '%';
+                } else {
+                  // Current year and years after (including current year)
+                  percentageElement.textContent = afterCurrentYearValue + '%';
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      // InPercent checkbox functionality - update "Saisie" header text
+      const inPercentCheckbox = document.getElementById('InPercent');
+      const saisieHeader = document.getElementById('saisie-header');
+      
+      if (inPercentCheckbox && saisieHeader) {
+        inPercentCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+            saisieHeader.innerHTML = '<strong>Saisie (%)</strong>';
+          } else {
+            saisieHeader.innerHTML = '<strong>Saisie ($)</strong>';
+          }
+        });
+      }
+      
+      // Add event listeners for percentage updates
+      const afterCurrentYearInput = document.getElementById('AfterCurrentYear');
+      
+      // Update percentages when BeforeCurrentYear changes
+      beforeCurrentYearInput.addEventListener('input', updatePercentageValues);
+      beforeCurrentYearInput.addEventListener('change', updatePercentageValues);
+      
+      // Update percentages when AfterCurrentYear changes
+      if (afterCurrentYearInput) {
+        afterCurrentYearInput.addEventListener('input', updatePercentageValues);
+        afterCurrentYearInput.addEventListener('change', updatePercentageValues);
+      }
+      
+      // Initialize percentage values on page load
+      setTimeout(() => {
+        updatePercentageValues();
+      }, 100);
     });
     
     // Launch simulation button functionality
@@ -482,20 +557,31 @@
       const loadingOverlay = document.getElementById('loading-overlay');
       const resultsWrapper = document.getElementById('simulation-results');
       const resultsTable = document.querySelector('.results-table');
+      const summaryTable = document.querySelector('.summary-table');
       
       launchButton.addEventListener('click', function() {
-        // Show results section if it's the first time
-        if (!resultsSection.classList.contains('visible')) {
-          resultsSection.classList.add('visible');
+        // Show results section immediately but hide all content
+        resultsSection.classList.add('visible');
+        
+        // Hide all content in results section immediately
+        const resultContainers = resultsSection.querySelectorAll('.results-container');
+        resultContainers.forEach(container => {
+          container.style.display = 'none';
+        });
+        
+        // Create and show blue loading curtain immediately to avoid white flash
+        const existingLoader = resultsSection.querySelector('.blue-loading-curtain');
+        if (existingLoader) {
+          existingLoader.remove();
         }
         
-        // Show loading indicator
-        loadingOverlay.classList.remove('hidden');
-        resultsWrapper.classList.add('loading');
-        
-        // Prepare results table for animation
-        resultsTable.classList.add('fade-in');
-        resultsTable.classList.remove('show');
+        const blueCurtain = document.createElement('div');
+        blueCurtain.className = 'blue-loading-curtain';
+        blueCurtain.innerHTML = `
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Simulation en cours...</p>
+        `;
+        resultsSection.appendChild(blueCurtain);
         
         // Disable button during simulation
         launchButton.disabled = true;
@@ -523,32 +609,109 @@
           
           if (progress < duration) {
             requestAnimationFrame(smoothScroll);
+          } else {
+            // Scroll completed, simulation continues on blue background
+            startSimulation();
           }
         }
         
-        // Start the animation
-        requestAnimationFrame(smoothScroll);
-        
-        // TODO: Here we'll add the actual simulation logic later
-        // For now, we'll simulate a delay to show the loading state
-        setTimeout(function() {
-          // Hide loading indicator
-          loadingOverlay.classList.add('hidden');
-          resultsWrapper.classList.remove('loading');
-          
-          // Animate results appearing
+        function startSimulation() {
+          // Start simulation after scrolling completes
           setTimeout(function() {
-            resultsTable.classList.remove('fade-in');
-            resultsTable.classList.add('show');
-          }, 100); // Small delay to ensure loading overlay is hidden first
-          
-          // Re-enable button
-          launchButton.disabled = false;
-          launchButton.textContent = 'Lancer la simulation';
-          
-          // TODO: Replace this with actual simulation results
-          console.log('Simulation completed - results would be populated here');
-        }, 3000); // 3 second delay to demonstrate loading
+            // First, fade out the spinner and text immediately
+            blueCurtain.classList.add('fade-spinner');
+            
+            // After spinner fades out, THEN make the layout changes
+            setTimeout(function() {
+              // Now show content containers and prepare tables (this causes the shift)
+              resultContainers.forEach(container => {
+                container.style.display = 'block';
+              });
+              
+              // Populate results
+              // TODO: Replace this with actual simulation results
+              console.log('Simulation completed - results would be populated here');
+              
+              // Prepare tables for animation
+              resultsTable.classList.add('fade-in');
+              resultsTable.classList.remove('show');
+              
+              if (summaryTable) {
+                summaryTable.classList.add('fade-in');
+                summaryTable.classList.remove('show');
+              }
+              
+              // Small delay to ensure DOM changes are complete, then start curtain animation
+              setTimeout(function() {
+                blueCurtain.classList.add('wipe-down');
+                
+                // Start smooth scroll at the same time as curtain animation
+                setTimeout(function() {
+                  const resultsSection = document.querySelector('.results-section');
+                  if (resultsSection) {
+                    const rect = resultsSection.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    const sectionHeight = rect.height;
+                    
+                    // Calculate scroll to center the results section
+                    const startPosition = window.scrollY;
+                    const targetScroll = startPosition + rect.top - (viewportHeight - sectionHeight) / 2;
+                    const finalTarget = Math.max(0, targetScroll - 200); // Offset by 200px for better positioning
+                    const distance = finalTarget - startPosition;
+                    
+                    // Only scroll if there's a significant distance
+                    if (Math.abs(distance) > 50) {
+                      const duration = 800; // 0.8 seconds
+                      let start = null;
+                      
+                      function smoothScrollToResults(timestamp) {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        const percentage = Math.min(progress / duration, 1);
+                        
+                        // Easing function for smooth animation
+                        const ease = percentage < 0.5 
+                          ? 2 * percentage * percentage 
+                          : 1 - Math.pow(-2 * percentage + 2, 2) / 2;
+                        
+                        window.scrollTo(0, startPosition + (distance * ease));
+                        
+                        if (progress < duration) {
+                          requestAnimationFrame(smoothScrollToResults);
+                        }
+                      }
+                      
+                      requestAnimationFrame(smoothScrollToResults);
+                    }
+                  }
+                }, 100); // Small delay to let curtain start moving
+                
+                // After curtain animation, show the results
+                setTimeout(function() {
+                  resultsTable.classList.remove('fade-in');
+                  resultsTable.classList.add('show');
+                  
+                  if (summaryTable) {
+                    summaryTable.classList.remove('fade-in');
+                    summaryTable.classList.add('show');
+                  }
+                  
+                  // Remove the blue curtain after animation completes
+                  setTimeout(function() {
+                    blueCurtain.remove();
+                  }, 500);
+                }, 800); // Wait for curtain animation
+              }, 100); // Small delay for DOM updates
+            }, 500); // Wait for spinner fade-out
+            
+            // Re-enable button
+            launchButton.disabled = false;
+            launchButton.textContent = 'Lancer la simulation';
+          }, 3000); // 3 second delay to demonstrate loading
+        }
+        
+        // Start the scroll animation
+        requestAnimationFrame(smoothScroll);
       });
     });
     
@@ -686,7 +849,7 @@
       }
       
       function highlightRowAndColumn(cellIndex, allCells) {
-        const totalColumns = 12;
+        const totalColumns = 6;
         
         // Find the actual data start (skip the spanning header row)
         let dataStartIndex = 0;

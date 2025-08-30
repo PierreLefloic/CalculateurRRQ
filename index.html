@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculateur TRI</title>
+  <title data-i18n="pageTitle">Calculateur TRI</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 </head>
 <body>
   <div class="logo-wrapper">
-    <img src="img/logo_CFFP.png" alt="Logo" class="logo">
+    <img src="img/logo_CFFP.png" alt="Logo" class="logo" data-i18n-alt="logoAlt">
+    <div class="language-switcher">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
   </div>
 
   <div class="header-box">
-    <h1 class="title">Simulateur de prestation du RRQ</h1>
-    <p class="description">Calculez le Taux de Rendement Interne de vos investissements avec notre outil professionnel. Entrez vos données et obtenez une analyse détaillée de vos projets financiers.</p>
+    <h1 class="title" data-i18n="title">Simulateur de prestation du RRQ</h1>
+    <p class="description" data-i18n="description">Calculez le Taux de Rendement Interne de vos investissements avec notre outil professionnel. Entrez vos données et obtenez une analyse détaillée de vos projets financiers.</p>
   </div>
 
   <div class="container-row">
@@ -22,21 +26,21 @@
       <div class="container">
         <!-- <h2>Simulation Tool</h2> -->
         <div class="input-grid">
-          <label for="inputBirth">Date de naissance :</label>
+          <label for="inputBirth" data-i18n="birthDate">Date de naissance :</label>
           <input id="inputBirth" type="date" max="9999-12-31">
-          <label for="inputCurrentYear">Année courante :</label>
-          <input id="inputCurrentYear" type="number" value="2025" min="1900" max="2100" placeholder="YYYY">
+          <label for="inputCurrentYear" data-i18n="currentYear">Année courante :</label>
+          <input id="inputCurrentYear" type="number" value="2025" min="1900" max="2100" placeholder="YYYY" data-i18n-placeholder="yearPlaceholder">
         </div>
       </div>
 
       <div class="container">
-        <h2>Salaire</h2>
+        <h2 data-i18n="salary">Salaire</h2>
         <div class="input-grid">
-          <label for="BeforeCurrentYear">Avant année courante (%) :</label>
+          <label for="BeforeCurrentYear" data-i18n="beforeCurrentYear">Avant année courante (%) :</label>
           <input id="BeforeCurrentYear" type="number" value="114" min="0" max="200">
-          <label for="AfterCurrentYear">Après année courante (%) :</label>
+          <label for="AfterCurrentYear" data-i18n="afterCurrentYear">Après année courante (%) :</label>
           <input id="AfterCurrentYear" type="number" value="114" min="0" max="200">
-          <label for="InPercent">Saisie en pourcentage :</label>
+          <label for="InPercent" data-i18n="inPercent">Saisie en pourcentage :</label>
           <div class="checkbox-container">
             <input id="InPercent" type="checkbox">
             <label for="InPercent" class="custom-checkbox">
@@ -49,9 +53,9 @@
       </div>
       
       <div class="container">
-        <h2>Paramètres RRQ</h2>
+        <h2 data-i18n="rrqParams">Paramètres RRQ</h2>
         <div class="input-grid">
-          <label for="RetAge">Âge de retraite :</label>
+          <label for="RetAge" data-i18n="retirementAge">Âge de retraite :</label>
           <select id="RetAge">
             <option value="60">60</option>
             <option value="61">61</option>
@@ -67,7 +71,7 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="BenAge">Âge de la demande de prestation :</label>
+          <label for="BenAge" data-i18n="benefitAge">Âge de la demande de prestation :</label>
           <select id="BenAge">
             <option value="60">60</option>
             <option value="61">61</option>
@@ -83,9 +87,9 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="AgeExp">Espérance de vie :</label>
+          <label for="AgeExp" data-i18n="lifeExpectancy">Espérance de vie :</label>
           <input id="AgeExp" type="number" value="85" min="60" max="120">
-          <label for="SelfEmployed">Travailleur autonome :</label>
+          <label for="SelfEmployed" data-i18n="selfEmployed">Travailleur autonome :</label>
           <div class="checkbox-container">
             <input id="SelfEmployed" type="checkbox">
             <label for="SelfEmployed" class="custom-checkbox">
@@ -97,28 +101,28 @@
         </div>
       </div>
       <div class="container">
-        <h2>Paramètres économiques</h2>
+        <h2 data-i18n="economicParams">Paramètres économiques</h2>
         <div class="input-grid">
-          <label for="InflationRate">Taux d'inflation (%) :</label>
+          <label for="InflationRate" data-i18n="inflationRate">Taux d'inflation (%) :</label>
           <input id="InflationRate" type="number" value="2" min="0" max="100">
-          <label for="SalaryIncrease">Croissance des salaires (%) :</label>
+          <label for="SalaryIncrease" data-i18n="salaryIncrease">Croissance des salaires (%) :</label>
           <input id="SalaryIncrease" type="number" value="3" min="0" max="100">
         </div>
       </div>
       
-      <button id="launchSimulation">Lancer la simulation</button>
+      <button id="launchSimulation" data-i18n="launchSimulation">Lancer la simulation</button>
     </div>
     
     <div class="right-column">
       <div class="container tall-container">
-        <h2>Saisie du salaire pour chaque année</h2>
+        <h2 data-i18n="salaryGridTitle">Saisie du salaire pour chaque année</h2>
         <div class="salary-grid">
           <!-- Header Row -->
-          <p><strong>Âge</strong></p>
-          <p><strong>Année</strong></p>
-          <p id="saisie-header"><strong>Saisie ($)</strong></p>
-          <p><strong>Pourcentage</strong></p>
-          <p><strong>Salaire</strong></p>
+          <p><strong data-i18n="age">Âge</strong></p>
+          <p><strong data-i18n="year">Année</strong></p>
+          <p id="saisie-header"><strong data-i18n="salary_input">Saisie ($)</strong></p>
+          <p><strong data-i18n="percentage">Pourcentage</strong></p>
+          <p><strong data-i18n="salary_computed">Salaire</strong></p>
           
           <!-- Data Rows - Age 17 to 72 -->
           <p id="age_17">17</p><p id="year_17">2024</p><input type="number" id="salary_17" value="0" min="0"><p id="percentage_17">114%</p><p id="computed_salary_17">0</p>
@@ -183,35 +187,35 @@
     </div>
     
     <!-- Mobile button positioned after salary table -->
-    <button id="launchSimulation-mobile" class="mobile-button">Lancer la simulation</button>
+    <button id="launchSimulation-mobile" class="mobile-button" data-i18n="launchSimulation">Lancer la simulation</button>
   </div>
 
   <!-- Results Section -->
   <div class="results-section">
     <!-- Summary Results Container (now first) -->
     <div class="results-container">
-      <h2>Résumé des prestations</h2>
+      <h2 data-i18n="summaryTitle">Résumé des prestations</h2>
       <div id="summary-results" class="results-wrapper">
         <div class="summary-table">
           <!-- Column headers spanning -->
           <div class="results-header"></div>
-          <div class="results-header summary-header" title="Montants en dollars constants de 2025">En dollars de<br>2025</div>
-          <div class="results-header summary-header" title="Montants en dollars constants de 2030">En dollars de<br>2030</div>
+          <div class="results-header summary-header" title="Montants en dollars constants de 2025" data-i18n="dollarsOf2025" data-i18n-title="tooltipDollars2025">En dollars de<br>2025</div>
+          <div class="results-header summary-header" title="Montants en dollars constants de 2030" data-i18n="dollarsOf2030" data-i18n-title="tooltipDollars2030">En dollars de<br>2030</div>
           
           <!-- Data Rows -->
-          <div class="results-header summary-label" title="Prestation annuelle totale du Régime de rentes du Québec">Prestation annuelle du RRQ</div>
+          <div class="results-header summary-label" title="Prestation annuelle totale du Régime de rentes du Québec" data-i18n="annualRRQBenefit" data-i18n-title="tooltipAnnualRRQ">Prestation annuelle du RRQ</div>
           <div class="results-cell">17 898 $</div>
           <div class="results-cell">21 027 $</div>
           
-          <div class="results-header summary-label" title="Montant de la prestation de base du régime">Régime de base</div>
+          <div class="results-header summary-label" title="Montant de la prestation de base du régime" data-i18n="basicRegime" data-i18n-title="tooltipBasicRegime">Régime de base</div>
           <div class="results-cell">16 645 $</div>
           <div class="results-cell">19 555 $</div>
           
-          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 1">Régime supplémentaire - volet 1</div>
+          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 1" data-i18n="supplementaryRegime1" data-i18n-title="tooltipSupp1">Régime supplémentaire - volet 1</div>
           <div class="results-cell">1 252 $</div>
           <div class="results-cell">1 471 $</div>
           
-          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 2">Régime supplémentaire - volet 2</div>
+          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 2" data-i18n="supplementaryRegime2" data-i18n-title="tooltipSupp2">Régime supplémentaire - volet 2</div>
           <div class="results-cell">0 $</div>
           <div class="results-cell">0 $</div>
         </div>
@@ -220,12 +224,12 @@
     
     <!-- Detailed Results Container (now second) -->
     <div class="results-container summary-container">
-      <h2>Résultats détaillés de la simulation</h2>
+      <h2 data-i18n="detailedResultsTitle">Résultats détaillés de la simulation</h2>
       <div id="simulation-results" class="results-wrapper">
         <!-- Loading overlay -->
         <div id="loading-overlay" class="loading-overlay hidden">
           <div class="loading-spinner"></div>
-          <p class="loading-text">Simulation en cours...</p>
+          <p class="loading-text" data-i18n="simulationInProgress">Simulation en cours...</p>
         </div>
         <div class="results-table">
           <!-- Prestation annuelle spanning header -->
@@ -233,15 +237,15 @@
           <div class="results-header"></div>
           <div class="results-header"></div>
           <div class="results-header"></div>
-          <div class="results-header prestation-header" title="Montant total des prestations annuelles">Prestation annuelle</div>
+          <div class="results-header prestation-header" title="Montant total des prestations annuelles" data-i18n="annualBenefit" data-i18n-title="tooltipAnnualTotal">Prestation annuelle</div>
           
           <!-- Header Row -->
-          <div class="results-header" title="Âge de la personne pour cette année de calcul">Âge</div>
-          <div class="results-header" title="Année civile correspondant à cet âge">Année</div>
-          <div class="results-header" title="Taux de rendement interne calculé pour cette année, exprimé en pourcentage">Taux de rendement interne</div>
-          <div class="results-header" title="Montant de la cotisation annuelle au RRQ en dollars de l'année courante">Cotisation annuelle<br><small>En dollars courant</small></div>
-          <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2025">Accumulée<br><small>En dollars de 2025</small></div>
-          <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025">Additionnelle<br><small>En dollars de 2025</small></div>
+          <div class="results-header" title="Âge de la personne pour cette année de calcul" data-i18n="age" data-i18n-title="tooltipAge">Âge</div>
+          <div class="results-header" title="Année civile correspondant à cet âge" data-i18n="year" data-i18n-title="tooltipYear">Année</div>
+          <div class="results-header" title="Taux de rendement interne calculé pour cette année, exprimé en pourcentage" data-i18n="internalReturnRate" data-i18n-title="tooltipRate">Taux de rendement interne</div>
+          <div class="results-header" title="Montant de la cotisation annuelle au RRQ en dollars de l'année courante" data-i18n="annualContribution" data-i18n-title="tooltipContribution">Cotisation annuelle<br><small>En dollars courant</small></div>
+          <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2025" data-i18n="accumulatedBenefit" data-i18n-title="tooltipAccumulated">Accumulée<br><small>En dollars de 2025</small></div>
+          <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025" data-i18n="additionalBenefit" data-i18n-title="tooltipAdditional">Additionnelle<br><small>En dollars de 2025</small></div>
           
           <!-- Sample Data Rows (we'll replace with real data later) -->
           <div class="results-cell">28</div>
@@ -320,19 +324,20 @@
 
   
   <footer class="footer">
-    <p class="footer-text">Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.</p>
-    <p class="footer-text">Les auteurs collaborent aux travaux de la <a href="https://cffp.recherche.usherbrooke.ca/" target="_blank">Chaire de recherche en fiscalité et en finances publiques</a>, qu'ils remercient pour l'appui financier qui a rendu possible la réalisation de cet outil.</p>
-    <p class="footer-text">Outil interactif conçu et réalisé par <strong>Pierre Lefloïc</strong>.</p>
-    <p class="footer-text">Pour plus d'information, voir l'étude [Lien web à venir].</p>
+    <p class="footer-text" data-i18n="footerText1">Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.</p>
+    <p class="footer-text" data-i18n="footerText2">Les auteurs collaborent aux travaux de la <a href="https://cffp.recherche.usherbrooke.ca/" target="_blank">Chaire de recherche en fiscalité et en finances publiques</a>, qu'ils remercient pour l'appui financier qui a rendu possible la réalisation de cet outil.</p>
+    <p class="footer-text" data-i18n="footerText3">Outil interactif conçu et réalisé par <strong>Pierre Lefloïc</strong>.</p>
+    <p class="footer-text" data-i18n="footerText4">Pour plus d'information, voir l'étude [Lien web à venir].</p>
   </footer>
 
   <!-- Back to Top Button -->
-  <button id="backToTop" class="back-to-top-btn hidden" title="Retour en haut">
+  <button id="backToTop" class="back-to-top-btn hidden" title="Retour en haut" data-i18n-title="backToTop">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="18,15 12,9 6,15"></polyline>
     </svg>
   </button>
 
+  <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/calculator.js"></script>

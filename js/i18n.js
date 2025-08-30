@@ -1,0 +1,386 @@
+/**
+ * TRI Calculator - Internationalization (i18n)
+ * Handles French/English translations
+ */
+
+// Translation object
+const translations = {
+  fr: {
+    // Meta
+    pageTitle: "Calculateur TRI",
+    logoAlt: "Logo CFFP",
+    yearPlaceholder: "AAAA",
+    datePlaceholder: "aaaa-mm-jj",
+    
+    // Header
+    title: "Simulateur de prestation du RRQ",
+    description: "Calculez le Taux de Rendement Interne de vos investissements avec notre outil professionnel. Entrez vos données et obtenez une analyse détaillée de vos projets financiers.",
+    
+    // Form labels
+    birthDate: "Date de naissance :",
+    currentYear: "Année courante :",
+    salary: "Salaire",
+    beforeCurrentYear: "Avant année courante (%) :",
+    afterCurrentYear: "Après année courante (%) :",
+    inPercent: "Saisie en pourcentage :",
+    rrqParams: "Paramètres RRQ",
+    retirementAge: "Âge de retraite :",
+    benefitAge: "Âge de la demande de prestation :",
+    lifeExpectancy: "Espérance de vie :",
+    selfEmployed: "Travailleur autonome :",
+    economicParams: "Paramètres économiques",
+    inflationRate: "Taux d'inflation (%) :",
+    salaryIncrease: "Croissance des salaires (%) :",
+    
+    // Salary grid
+    salaryGridTitle: "Saisie du salaire pour chaque année",
+    age: "Âge",
+    year: "Année",
+    salary_input: "Saisie ($)",
+    percentage: "Pourcentage",
+    salary_computed: "Salaire",
+    
+    // Buttons
+    launchSimulation: "Lancer la simulation",
+    simulationInProgress: "Simulation en cours...",
+    backToTop: "Retour en haut",
+    
+    // Results
+    summaryTitle: "Résumé des prestations",
+    detailedResultsTitle: "Résultats détaillés de la simulation",
+    dollarsOf2025: "En dollars de<br>2025",
+    dollarsOf2030: "En dollars de<br>2030",
+    annualRRQBenefit: "Prestation annuelle du RRQ",
+    basicRegime: "Régime de base",
+    supplementaryRegime1: "Régime supplémentaire - volet 1",
+    supplementaryRegime2: "Régime supplémentaire - volet 2",
+    annualBenefit: "Prestation annuelle",
+    internalReturnRate: "Taux de rendement interne",
+    annualContribution: "Cotisation annuelle<br><small>En dollars courant</small>",
+    accumulatedBenefit: "Accumulée<br><small>En dollars de 2025</small>",
+    additionalBenefit: "Additionnelle<br><small>En dollars de 2025</small>",
+    
+    // Footer
+    footerText1: "Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.",
+    footerText2: "Les auteurs collaborent aux travaux de la <a href=\"https://cffp.recherche.usherbrooke.ca/\" target=\"_blank\">Chaire de recherche en fiscalité et en finances publiques</a>, qu'ils remercient pour l'appui financier qui a rendu possible la réalisation de cet outil.",
+    footerText3: "Outil interactif conçu et réalisé par <strong>Pierre Lefloïc</strong>.",
+    footerText4: "Pour plus d'information, voir l'étude [Lien web à venir].",
+    
+    // Loading
+    loadingText: "Simulation en cours...",
+    
+    // Tooltips
+    tooltipAge: "Âge de la personne pour cette année de calcul",
+    tooltipYear: "Année civile correspondant à cet âge", 
+    tooltipRate: "Taux de rendement interne calculé pour cette année, exprimé en pourcentage",
+    tooltipContribution: "Montant de la cotisation annuelle au RRQ en dollars de l'année courante",
+    tooltipAccumulated: "Montant accumulé des prestations RRQ en dollars constants de 2025",
+    tooltipAdditional: "Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025",
+    tooltipAnnualTotal: "Montant total des prestations annuelles",
+    tooltipDollars2025: "Montants en dollars constants de 2025",
+    tooltipDollars2030: "Montants en dollars constants de 2030",
+    tooltipAnnualRRQ: "Prestation annuelle totale du Régime de rentes du Québec",
+    tooltipBasicRegime: "Montant de la prestation de base du régime",
+    tooltipSupp1: "Montant du régime supplémentaire - volet 1",
+    tooltipSupp2: "Montant du régime supplémentaire - volet 2",
+    
+    // JavaScript dynamic text
+    simulationInProgress: "Simulation en cours...",
+    validationErrors: "Erreurs de validation",
+    inputPercent: "Saisie (%)",
+    inputDollar: "Saisie ($)",
+    
+    // Form validation messages
+    yearValidation: "Veuillez entrer une année valide entre 1900 et 2100",
+    ageValidation: "Veuillez entrer un âge valide entre 60 et 120",
+    
+    // Calculator error messages
+    currentYearInvalid: "Année courante invalide",
+    lifeExpectancyInvalid: "Espérance de vie invalide",
+    salaryRequired: "Au moins un salaire doit être spécifié"
+  },
+  
+  en: {
+    // Meta
+    pageTitle: "IRR Calculator",
+    logoAlt: "CFFP Logo",
+    yearPlaceholder: "YYYY",
+    datePlaceholder: "yyyy-mm-dd",
+    
+    // Header
+    title: "QPP Benefit Simulator",
+    description: "Calculate the Internal Rate of Return of your investments with our professional tool. Enter your data and get a detailed analysis of your financial projects.",
+    
+    // Form labels
+    birthDate: "Date of birth:",
+    currentYear: "Current year:",
+    salary: "Salary",
+    beforeCurrentYear: "Before current year (%):",
+    afterCurrentYear: "After current year (%):",
+    inPercent: "Enter as percentage:",
+    rrqParams: "QPP Parameters",
+    retirementAge: "Retirement age:",
+    benefitAge: "Benefit application age:",
+    lifeExpectancy: "Life expectancy:",
+    selfEmployed: "Self-employed:",
+    economicParams: "Economic Parameters",
+    inflationRate: "Inflation rate (%):",
+    salaryIncrease: "Salary growth (%):",
+    
+    // Salary grid
+    salaryGridTitle: "Salary input for each year",
+    age: "Age",
+    year: "Year",
+    salary_input: "Input ($)",
+    percentage: "Percentage",
+    salary_computed: "Salary",
+    
+    // Buttons
+    launchSimulation: "Launch simulation",
+    simulationInProgress: "Simulation in progress...",
+    backToTop: "Back to top",
+    
+    // Results
+    summaryTitle: "Benefit Summary",
+    detailedResultsTitle: "Detailed Simulation Results",
+    dollarsOf2025: "In 2025<br>dollars",
+    dollarsOf2030: "In 2030<br>dollars",
+    annualRRQBenefit: "Annual QPP benefit",
+    basicRegime: "Basic plan",
+    supplementaryRegime1: "Supplementary plan - component 1",
+    supplementaryRegime2: "Supplementary plan - component 2",
+    annualBenefit: "Annual benefit",
+    internalReturnRate: "Internal rate of return",
+    annualContribution: "Annual contribution<br><small>In current dollars</small>",
+    accumulatedBenefit: "Accumulated<br><small>In 2025 dollars</small>",
+    additionalBenefit: "Additional<br><small>In 2025 dollars</small>",
+    
+    // Footer
+    footerText1: "Collective work involving <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> and <strong>Luc Godbout</strong>.",
+    footerText2: "The authors collaborate with the <a href=\"https://cffp.recherche.usherbrooke.ca/\" target=\"_blank\">Research Chair in Taxation and Public Finance</a>, which they thank for the financial support that made this tool possible.",
+    footerText3: "Interactive tool designed and developed by <strong>Pierre Lefloïc</strong>.",
+    footerText4: "For more information, see the study [Web link coming soon].",
+    
+    // Loading
+    loadingText: "Simulation in progress...",
+    
+    // Tooltips
+    tooltipAge: "Person's age for this calculation year",
+    tooltipYear: "Calendar year corresponding to this age",
+    tooltipRate: "Internal rate of return calculated for this year, expressed as a percentage",
+    tooltipContribution: "Annual QPP contribution amount in current year dollars",
+    tooltipAccumulated: "Accumulated QPP benefits amount in constant 2025 dollars",
+    tooltipAdditional: "Additional QPP benefits amount for this year in constant 2025 dollars",
+    tooltipAnnualTotal: "Total annual benefits amount",
+    tooltipDollars2025: "Amounts in constant 2025 dollars",
+    tooltipDollars2030: "Amounts in constant 2030 dollars",
+    tooltipAnnualRRQ: "Total annual Quebec Pension Plan benefit",
+    tooltipBasicRegime: "Basic plan benefit amount",
+    tooltipSupp1: "Supplementary plan amount - component 1",
+    tooltipSupp2: "Supplementary plan amount - component 2",
+    
+    // JavaScript dynamic text
+    simulationInProgress: "Simulation in progress...",
+    validationErrors: "Validation errors",
+    inputPercent: "Input (%)",
+    inputDollar: "Input ($)",
+    
+    // Form validation messages
+    yearValidation: "Please enter a valid year between 1900 and 2100",
+    ageValidation: "Please enter a valid age between 60 and 120",
+    
+    // Calculator error messages
+    currentYearInvalid: "Invalid current year",
+    lifeExpectancyInvalid: "Invalid life expectancy",
+    salaryRequired: "At least one salary must be specified"
+  }
+};
+
+// Current language state
+let currentLanguage = 'fr'; // Default to French
+
+// Initialize i18n system
+function initializeI18n() {
+  // Check localStorage for saved language preference
+  const savedLanguage = localStorage.getItem('language');
+  if (savedLanguage && translations[savedLanguage]) {
+    currentLanguage = savedLanguage;
+  } else {
+    // Try to detect browser language
+    const browserLang = navigator.language.toLowerCase();
+    if (browserLang.startsWith('en')) {
+      currentLanguage = 'en';
+    }
+  }
+  
+  // Add event listeners to existing language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const lang = this.getAttribute('data-lang');
+      if (lang) {
+        setLanguage(lang);
+      }
+    });
+  });
+  
+  // Apply initial language
+  setLanguage(currentLanguage);
+}
+
+// Set language and update all text
+function setLanguage(lang) {
+  if (!translations[lang]) return;
+  
+  currentLanguage = lang;
+  localStorage.setItem('language', lang);
+  
+  // Update language switcher buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Find button with the matching data-lang attribute
+  document.querySelector(`[data-lang="${lang}"]`)?.classList.add('active');
+  
+  // Update all translatable elements
+  updateTranslations();
+  
+  // Update dynamic JavaScript content
+  updateDynamicContent();
+}
+
+// Update dynamic content that's set by JavaScript
+function updateDynamicContent() {
+  // Update salary grid header if it exists
+  const saisieHeader = document.querySelector('#saisieHeader strong') || 
+                       document.querySelector('[id*="saisie"] strong');
+  if (saisieHeader) {
+    const inPercentRadio = document.querySelector('#inPercent');
+    if (inPercentRadio && inPercentRadio.checked) {
+      saisieHeader.parentElement.innerHTML = '<strong>' + translations[currentLanguage].inputPercent + '</strong>';
+    } else {
+      saisieHeader.parentElement.innerHTML = '<strong>' + translations[currentLanguage].inputDollar + '</strong>';
+    }
+  }
+  
+  // Update launch button text if simulation is not in progress
+  const launchButton = document.getElementById('launchButton');
+  const launchButtonMobile = document.getElementById('launchButtonMobile');
+  
+  if (launchButton && !launchButton.disabled) {
+    launchButton.textContent = translations[currentLanguage].launchSimulation;
+  }
+  
+  if (launchButtonMobile && !launchButtonMobile.disabled) {
+    launchButtonMobile.textContent = translations[currentLanguage].launchSimulation;
+  }
+  
+  // Update form validation messages
+  const yearInput = document.getElementById('currentYear');
+  const ageExpInput = document.getElementById('lifeExpectancy');
+  
+  if (yearInput) {
+    // Re-validate if there was a previous validation error
+    const yearValue = parseInt(yearInput.value);
+    if (yearValue && (yearValue < 1900 || yearValue > 2100)) {
+      yearInput.setCustomValidity(translations[currentLanguage].yearValidation);
+    }
+  }
+  
+  if (ageExpInput) {
+    // Re-validate if there was a previous validation error  
+    const ageValue = parseInt(ageExpInput.value);
+    if (ageValue && (ageValue < 60 || ageValue > 120)) {
+      ageExpInput.setCustomValidity(translations[currentLanguage].ageValidation);
+    }
+  }
+}
+
+// Update all text content based on current language
+function updateTranslations() {
+  const t = translations[currentLanguage];
+  
+  // Update page title
+  const titleElement = document.querySelector('title[data-i18n]');
+  if (titleElement) {
+    const key = titleElement.getAttribute('data-i18n');
+    if (t[key]) {
+      titleElement.textContent = t[key];
+    }
+  }
+  
+  // Update elements with data-i18n attributes
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (t[key]) {
+      if (element.tagName === 'TITLE') {
+        element.textContent = t[key];
+      } else if (element.innerHTML.includes('<')) {
+        element.innerHTML = t[key];
+      } else {
+        element.textContent = t[key];
+      }
+    }
+  });
+  
+  // Update alt attributes
+  document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+    const key = element.getAttribute('data-i18n-alt');
+    if (t[key]) {
+      element.setAttribute('alt', t[key]);
+    }
+  });
+  
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (t[key]) {
+      element.setAttribute('placeholder', t[key]);
+    }
+  });
+  
+  // Update tooltips (legacy)
+  document.querySelectorAll('[data-tooltip-key]').forEach(element => {
+    const key = element.getAttribute('data-tooltip-key');
+    if (t[key]) {
+      element.setAttribute('data-tooltip', t[key]);
+      element.setAttribute('title', t[key]);
+    }
+  });
+  
+  // Update title attributes 
+  document.querySelectorAll('[data-i18n-title]').forEach(element => {
+    const key = element.getAttribute('data-i18n-title');
+    if (t[key]) {
+      element.setAttribute('title', t[key]);
+    }
+  });
+  
+  // Update placeholders
+  document.querySelectorAll('[data-placeholder-key]').forEach(element => {
+    const key = element.getAttribute('data-placeholder-key');
+    if (t[key]) {
+      element.setAttribute('placeholder', t[key]);
+    }
+  });
+}
+
+// Get translated text
+function t(key) {
+  return translations[currentLanguage][key] || key;
+}
+
+// Get current language
+function getCurrentLanguage() {
+  return currentLanguage;
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  initializeI18n();
+});
+
+// Make functions globally available
+window.setLanguage = setLanguage;
+window.t = t;
+window.getCurrentLanguage = getCurrentLanguage;

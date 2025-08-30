@@ -191,7 +191,7 @@ function initializeApp() {
     const value = parseInt(yearInput.value);
     
     if (isNaN(value) || value < 1900 || value > 2100) {
-      yearInput.setCustomValidity('Veuillez entrer une année valide entre 1900 et 2100');
+      yearInput.setCustomValidity(translations[currentLanguage].yearValidation);
       yearInput.reportValidity(); // Shows the tooltip
       yearInput.value = currentYear; // Reset to current year
     } else {
@@ -207,7 +207,7 @@ function initializeApp() {
     const defaultValue = 85;
     
     if (!Number.isInteger(Number(ageExpInput.value)) || value < 60 || value > 120) {
-      ageExpInput.setCustomValidity('Veuillez entrer un âge valide entre 60 et 120');
+      ageExpInput.setCustomValidity(translations[currentLanguage].ageValidation);
       ageExpInput.reportValidity(); // Shows the tooltip
       ageExpInput.value = defaultValue; // Reset to default value (85)
     } else {
@@ -220,9 +220,9 @@ function initializeApp() {
    */
   function handlePercentCheckboxChange() {
     if (inPercentCheckbox.checked) {
-      saisieHeader.innerHTML = '<strong>Saisie (%)</strong>';
+      saisieHeader.innerHTML = '<strong>' + translations[currentLanguage].inputPercent + '</strong>';
     } else {
-      saisieHeader.innerHTML = '<strong>Saisie ($)</strong>';
+      saisieHeader.innerHTML = '<strong>' + translations[currentLanguage].inputDollar + '</strong>';
     }
   }
   

@@ -61,13 +61,19 @@ function setupSimulationButton() {
     blueCurtain.className = 'blue-loading-curtain';
     blueCurtain.innerHTML = `
       <div class="loading-spinner"></div>
-      <p class="loading-text">Simulation en cours...</p>
+      <p class="loading-text">${translations[currentLanguage].simulationInProgress}</p>
     `;
     resultsSection.appendChild(blueCurtain);
     
     // Disable button during simulation
-    launchButton.disabled = true;
-    launchButton.textContent = 'Simulation en cours...';
+    if (launchButton) {
+      launchButton.disabled = true;
+      launchButton.textContent = translations[currentLanguage].simulationInProgress;
+    }
+    if (launchButtonMobile) {
+      launchButtonMobile.disabled = true;
+      launchButtonMobile.textContent = translations[currentLanguage].simulationInProgress;
+    }
     
     // Start scroll animation
     animateScrollToResults(resultsSection, () => {
@@ -162,8 +168,14 @@ function setupSimulationButton() {
       }, 500); // Wait for spinner fade-out
       
       // Re-enable button
-      launchButton.disabled = false;
-      launchButton.textContent = 'Lancer la simulation';
+      if (launchButton) {
+        launchButton.disabled = false;
+        launchButton.textContent = translations[currentLanguage].launchSimulation;
+      }
+      if (launchButtonMobile) {
+        launchButtonMobile.disabled = false;
+        launchButtonMobile.textContent = translations[currentLanguage].launchSimulation;
+      }
     }, 3000); // 3 second delay to demonstrate loading
   }
   
@@ -361,7 +373,7 @@ function setupTableHighlighting() {
     
     // Look for the main header row (starts with "Âge")
     for (let i = 0; i < allCells.length; i++) {
-      if (allCells[i].textContent.trim() === 'Âge') {
+      if (allCells[i].textContent.trim() === translations[currentLanguage].age) {
         dataStartIndex = i;
         break;
       }

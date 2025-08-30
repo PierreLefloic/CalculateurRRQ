@@ -19,6 +19,47 @@ body {
   width: 100%;
 }
 
+/* Logo wrapper positioning */
+.logo-wrapper {
+  position: relative;
+}
+
+/* Language switcher - discrete positioning */
+.language-switcher {
+  position: absolute;
+  top: 10px;
+  right: -200px;
+  display: flex;
+  gap: 2px;
+  z-index: 10;
+}
+
+.lang-btn {
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  background: transparent;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lang-btn:hover {
+  background: rgba(46, 157, 206, 0.15);
+  transform: translateY(-1px);
+}
+
+.lang-btn.active {
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(46, 157, 206, 0.3);
+}
+
 .title {
   text-align: left;
   color: #fff;
@@ -337,7 +378,9 @@ body {
   position: relative;
 }
 
-button:not(.back-to-top-btn) {
+button#launchSimulation,
+button#launchSimulation-mobile,
+button.mobile-button {
   background: linear-gradient(135deg, #2E9DCE 0%, #247ba3 100%);
   color: white;
   border: none;
@@ -353,13 +396,17 @@ button:not(.back-to-top-btn) {
   letter-spacing: 0.5px;
 }
 
-button:not(.back-to-top-btn):hover {
+button#launchSimulation:hover,
+button#launchSimulation-mobile:hover,
+button.mobile-button:hover {
   background: linear-gradient(135deg, #247ba3 0%, #1a5f7a 100%);
   box-shadow: 0 12px 40px rgba(46, 157, 206, 0.35);
   transform: translateY(-2px);
 }
 
-button:not(.back-to-top-btn):active {
+button#launchSimulation:active,
+button#launchSimulation-mobile:active,
+button.mobile-button:active {
   background: linear-gradient(135deg, #1a5f7a 0%, #154d66 100%);
   transform: translateY(0);
   box-shadow: 0 6px 24px rgba(46, 157, 206, 0.3);
@@ -913,6 +960,25 @@ label {
     margin: 0 auto 15px auto;
   }
   
+  /* Mobile language switcher */
+  .language-switcher {
+    top: 5px;
+    right: -50px;
+    gap: 1px;
+  }
+  
+  .lang-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+    min-width: 28px;
+    border-radius: 4px;
+  }
+  
+  .lang-btn:hover {
+    background: rgba(46, 157, 206, 0.15);
+    transform: none; /* Remove lifting effect on mobile */
+  }
+  
   .title {
     font-size: 1.6em;
     margin-bottom: 8px;
@@ -1018,7 +1084,9 @@ label {
   }
   
   /* Button adjustments */
-  button:not(.back-to-top-btn) {
+  button#launchSimulation,
+  button#launchSimulation-mobile,
+  button.mobile-button {
     padding: 16px 24px;
     font-size: 1.2em;
     margin-top: 15px;
@@ -1146,6 +1214,20 @@ label {
     padding: 12px 15px;
   }
   
+  /* Extra small mobile language switcher */
+  .language-switcher {
+    top: 3px;
+    right: -50px;
+    gap: 1px;
+  }
+  
+  .lang-btn {
+    padding: 4px 6px;
+    font-size: 10px;
+    min-width: 24px;
+    font-weight: 500;
+  }
+  
   .title {
     font-size: 1.4em;
   }
@@ -1186,7 +1268,9 @@ label {
     padding: 12px 14px;
   }
   
-  button:not(.back-to-top-btn) {
+  button#launchSimulation,
+  button#launchSimulation-mobile,
+  button.mobile-button {
     padding: 14px 20px;
     font-size: 1.1em;
   }

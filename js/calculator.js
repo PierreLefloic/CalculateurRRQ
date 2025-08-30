@@ -167,11 +167,11 @@ class TRICalculator {
     }
     
     if (!this.parameters.currentYear || this.parameters.currentYear < 1900 || this.parameters.currentYear > 2100) {
-      errors.push('Année courante invalide');
+      errors.push(translations[currentLanguage].currentYearInvalid);
     }
     
     if (!this.parameters.lifeExpectancy || this.parameters.lifeExpectancy < 60 || this.parameters.lifeExpectancy > 120) {
-      errors.push('Espérance de vie invalide');
+      errors.push(translations[currentLanguage].lifeExpectancyInvalid);
     }
     
     // Check if at least some salary data is provided
@@ -179,7 +179,7 @@ class TRICalculator {
     const hasSalaryData = salaryValues.some(value => value > 0);
     
     if (!hasSalaryData) {
-      errors.push('Au moins un salaire doit être spécifié');
+      errors.push(translations[currentLanguage].salaryRequired);
     }
     
     return errors;
@@ -223,7 +223,7 @@ window.runTRICalculation = function() {
   const errors = calculator.validateInputs();
   if (errors.length > 0) {
     console.error('Validation errors:', errors);
-    alert('Erreurs de validation:\n' + errors.join('\n'));
+    alert(translations[currentLanguage].validationErrors + ':\n' + errors.join('\n'));
     return null;
   }
   

@@ -901,9 +901,10 @@ label {
 }
 
 /* Mobile devices */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), screen and (max-device-width: 768px) {
   body {
     padding: 0 0 40px 0;
+    -webkit-text-size-adjust: 100%;
   }
   
   /* Header adjustments */
@@ -934,7 +935,8 @@ label {
     margin: 15px auto 0 auto;
     padding: 0 15px;
     max-width: 100% !important;
-    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .left-column {
@@ -1158,6 +1160,20 @@ label {
   
   .container {
     padding: 12px 15px;
+  }
+  
+  /* Ensure mobile button is shown on small screens too */
+  #launchSimulation {
+    display: none !important;
+  }
+  
+  .mobile-button {
+    display: block !important;
+    order: 3 !important;
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
   }
   
   .input-grid {

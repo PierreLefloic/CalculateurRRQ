@@ -143,6 +143,11 @@ body {
   font-size: 14px;
 }
 
+/* Style for labels with tooltips */
+.input-grid label[data-tooltip] {
+  cursor: help;
+}
+
 .input-grid input {
   width: 100%;
   padding: 12px 16px;

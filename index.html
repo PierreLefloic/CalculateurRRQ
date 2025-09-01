@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="pageTitle">Calculateur TRI</title>
+  <title data-i18n="pageTitle">Calculateur RRQ</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 </head>
@@ -28,9 +28,9 @@
       <div class="container">
         <!-- <h2>Simulation Tool</h2> -->
         <div class="input-grid">
-          <label for="inputBirth" data-i18n="birthDate">Date de naissance :</label>
+          <label for="inputBirth" data-tooltip="Entrez votre date de naissance pour calculer votre âge et les années de cotisation" data-i18n="birthDate" data-i18n-tooltip="tooltipBirthDate">Date de naissance :</label>
           <input id="inputBirth" type="date" max="9999-12-31">
-          <label for="inputCurrentYear" data-i18n="currentYear">Année courante :</label>
+          <label for="inputCurrentYear" data-tooltip="Année de référence pour les calculs de la simulation" data-i18n="currentYear" data-i18n-tooltip="tooltipCurrentYear">Année courante :</label>
           <input id="inputCurrentYear" type="number" value="2025" min="1900" max="2100" placeholder="YYYY" data-i18n-placeholder="yearPlaceholder">
         </div>
       </div>
@@ -38,11 +38,11 @@
       <div class="container">
         <h2 data-i18n="salary">Salaire</h2>
         <div class="input-grid">
-          <label for="BeforeCurrentYear" data-i18n="beforeCurrentYear">Avant année courante (%) :</label>
+          <label for="BeforeCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 114%)" data-i18n="beforeCurrentYear" data-i18n-tooltip="tooltipBeforeCurrentYear">Avant année courante (%) :</label>
           <input id="BeforeCurrentYear" type="number" value="114" min="0" max="200">
-          <label for="AfterCurrentYear" data-i18n="afterCurrentYear">Après année courante (%) :</label>
+          <label for="AfterCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 114%)" data-i18n="afterCurrentYear" data-i18n-tooltip="tooltipAfterCurrentYear">Après année courante (%) :</label>
           <input id="AfterCurrentYear" type="number" value="114" min="0" max="200">
-          <label for="InPercent" data-i18n="inPercent">Saisie en pourcentage :</label>
+          <label for="InPercent" data-tooltip="Cochez cette case si vous voulez saisir les salaires en pourcentage du MGA plutôt qu'en montants absolus" data-i18n="inPercent" data-i18n-tooltip="tooltipInPercent">Saisie en pourcentage :</label>
           <div class="checkbox-container">
             <input id="InPercent" type="checkbox">
             <label for="InPercent" class="custom-checkbox">
@@ -57,7 +57,7 @@
       <div class="container">
         <h2 data-i18n="rrqParams">Paramètres RRQ</h2>
         <div class="input-grid">
-          <label for="RetAge" data-i18n="retirementAge">Âge de retraite :</label>
+          <label for="RetAge" data-tooltip="Âge auquel vous prévoyez arrêter de travailler et de cotiser au RRQ" data-i18n="retirementAge" data-i18n-tooltip="tooltipRetirementAge">Âge de retraite :</label>
           <select id="RetAge">
             <option value="60">60</option>
             <option value="61">61</option>
@@ -73,7 +73,7 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="BenAge" data-i18n="benefitAge">Âge de la demande de prestation :</label>
+          <label for="BenAge" data-tooltip="Âge auquel vous prévoyez commencer à recevoir vos prestations du RRQ" data-i18n="benefitAge" data-i18n-tooltip="tooltipBenefitAge">Âge de la demande de prestation :</label>
           <select id="BenAge">
             <option value="60">60</option>
             <option value="61">61</option>
@@ -89,9 +89,9 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="AgeExp" data-i18n="lifeExpectancy">Espérance de vie :</label>
+          <label for="AgeExp" data-tooltip="Âge jusqu'auquel vous prévoyez recevoir les prestations du RRQ" data-i18n="lifeExpectancy" data-i18n-tooltip="tooltipLifeExpectancy">Espérance de vie :</label>
           <input id="AgeExp" type="number" value="85" min="60" max="120">
-          <label for="SelfEmployed" data-i18n="selfEmployed">Travailleur autonome :</label>
+          <label for="SelfEmployed" data-tooltip="Cochez cette case si vous êtes travailleur autonome (cotisations différentes)" data-i18n="selfEmployed" data-i18n-tooltip="tooltipSelfEmployed">Travailleur autonome :</label>
           <div class="checkbox-container">
             <input id="SelfEmployed" type="checkbox">
             <label for="SelfEmployed" class="custom-checkbox">
@@ -105,9 +105,9 @@
       <div class="container">
         <h2 data-i18n="economicParams">Paramètres économiques</h2>
         <div class="input-grid">
-          <label for="InflationRate" data-i18n="inflationRate">Taux d'inflation (%) :</label>
+          <label for="InflationRate" data-tooltip="Taux d'inflation annuel prévu pour ajuster les montants futurs" data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
           <input id="InflationRate" type="number" value="2" min="0" max="100">
-          <label for="SalaryIncrease" data-i18n="salaryIncrease">Croissance des salaires (%) :</label>
+          <label for="SalaryIncrease" data-tooltip="Taux de croissance annuel prévu des salaires au-dessus de l'inflation" data-i18n="salaryIncrease" data-i18n-tooltip="tooltipSalaryIncrease">Croissance des salaires (%) :</label>
           <input id="SalaryIncrease" type="number" value="3" min="0" max="100">
         </div>
       </div>
@@ -127,62 +127,62 @@
           <p><strong data-i18n="salary_computed">Salaire</strong></p>
           
           <!-- Data Rows - Age 17 to 72 -->
-          <p id="age_17">17</p><p id="year_17">2024</p><input type="number" id="salary_17" value="0" min="0"><p id="percentage_17">114%</p><p id="computed_salary_17">0</p>
-          <p>18</p><p id="year_18">2025</p><input type="number" id="salary_18" value="0" min="0"><p id="percentage_18">114%</p><p id="computed_salary_18">0</p>
-          <p>19</p><p id="year_19">2026</p><input type="number" id="salary_19" value="0" min="0"><p id="percentage_19">114%</p><p id="computed_salary_19">0</p>
-          <p>20</p><p id="year_20">2027</p><input type="number" id="salary_20" value="0" min="0"><p id="percentage_20">114%</p><p id="computed_salary_20">0</p>
-          <p>21</p><p id="year_21">2028</p><input type="number" id="salary_21" value="0" min="0"><p id="percentage_21">114%</p><p id="computed_salary_21">0</p>
-          <p>22</p><p id="year_22">2029</p><input type="number" id="salary_22" value="0" min="0"><p id="percentage_22">114%</p><p id="computed_salary_22">0</p>
-          <p>23</p><p id="year_23">2030</p><input type="number" id="salary_23" value="0" min="0"><p id="percentage_23">114%</p><p id="computed_salary_23">0</p>
-          <p>24</p><p id="year_24">2031</p><input type="number" id="salary_24" value="0" min="0"><p id="percentage_24">114%</p><p id="computed_salary_24">0</p>
-          <p>25</p><p id="year_25">2032</p><input type="number" id="salary_25" value="0" min="0"><p id="percentage_25">114%</p><p id="computed_salary_25">0</p>
-          <p>26</p><p id="year_26">2033</p><input type="number" id="salary_26" value="0" min="0"><p id="percentage_26">114%</p><p id="computed_salary_26">0</p>
-          <p>27</p><p id="year_27">2034</p><input type="number" id="salary_27" value="0" min="0"><p id="percentage_27">114%</p><p id="computed_salary_27">0</p>
-          <p>28</p><p id="year_28">2035</p><input type="number" id="salary_28" value="0" min="0"><p id="percentage_28">114%</p><p id="computed_salary_28">0</p>
-          <p>29</p><p id="year_29">2036</p><input type="number" id="salary_29" value="0" min="0"><p id="percentage_29">114%</p><p id="computed_salary_29">0</p>
-          <p>30</p><p id="year_30">2037</p><input type="number" id="salary_30" value="0" min="0"><p id="percentage_30">114%</p><p id="computed_salary_30">0</p>
-          <p>31</p><p id="year_31">2038</p><input type="number" id="salary_31" value="0" min="0"><p id="percentage_31">114%</p><p id="computed_salary_31">0</p>
-          <p>32</p><p id="year_32">2039</p><input type="number" id="salary_32" value="0" min="0"><p id="percentage_32">114%</p><p id="computed_salary_32">0</p>
-          <p>33</p><p id="year_33">2040</p><input type="number" id="salary_33" value="0" min="0"><p id="percentage_33">114%</p><p id="computed_salary_33">0</p>
-          <p>34</p><p id="year_34">2041</p><input type="number" id="salary_34" value="0" min="0"><p id="percentage_34">114%</p><p id="computed_salary_34">0</p>
-          <p>35</p><p id="year_35">2042</p><input type="number" id="salary_35" value="0" min="0"><p id="percentage_35">114%</p><p id="computed_salary_35">0</p>
-          <p>36</p><p id="year_36">2043</p><input type="number" id="salary_36" value="0" min="0"><p id="percentage_36">114%</p><p id="computed_salary_36">0</p>
-          <p>37</p><p id="year_37">2044</p><input type="number" id="salary_37" value="0" min="0"><p id="percentage_37">114%</p><p id="computed_salary_37">0</p>
-          <p>38</p><p id="year_38">2045</p><input type="number" id="salary_38" value="0" min="0"><p id="percentage_38">114%</p><p id="computed_salary_38">0</p>
-          <p>39</p><p id="year_39">2046</p><input type="number" id="salary_39" value="0" min="0"><p id="percentage_39">114%</p><p id="computed_salary_39">0</p>
-          <p>40</p><p id="year_40">2047</p><input type="number" id="salary_40" value="0" min="0"><p id="percentage_40">114%</p><p id="computed_salary_40">0</p>
-          <p>41</p><p id="year_41">2048</p><input type="number" id="salary_41" value="0" min="0"><p id="percentage_41">114%</p><p id="computed_salary_41">0</p>
-          <p>42</p><p id="year_42">2049</p><input type="number" id="salary_42" value="0" min="0"><p id="percentage_42">114%</p><p id="computed_salary_42">0</p>
-          <p>43</p><p id="year_43">2050</p><input type="number" id="salary_43" value="0" min="0"><p id="percentage_43">114%</p><p id="computed_salary_43">0</p>
-          <p>44</p><p id="year_44">2051</p><input type="number" id="salary_44" value="0" min="0"><p id="percentage_44">114%</p><p id="computed_salary_44">0</p>
-          <p>45</p><p id="year_45">2052</p><input type="number" id="salary_45" value="0" min="0"><p id="percentage_45">114%</p><p id="computed_salary_45">0</p>
-          <p>46</p><p id="year_46">2053</p><input type="number" id="salary_46" value="0" min="0"><p id="percentage_46">114%</p><p id="computed_salary_46">0</p>
-          <p>47</p><p id="year_47">2054</p><input type="number" id="salary_47" value="0" min="0"><p id="percentage_47">114%</p><p id="computed_salary_47">0</p>
-          <p>48</p><p id="year_48">2055</p><input type="number" id="salary_48" value="0" min="0"><p id="percentage_48">114%</p><p id="computed_salary_48">0</p>
-          <p>49</p><p id="year_49">2056</p><input type="number" id="salary_49" value="0" min="0"><p id="percentage_49">114%</p><p id="computed_salary_49">0</p>
-          <p>50</p><p id="year_50">2057</p><input type="number" id="salary_50" value="0" min="0"><p id="percentage_50">114%</p><p id="computed_salary_50">0</p>
-          <p>51</p><p id="year_51">2058</p><input type="number" id="salary_51" value="0" min="0"><p id="percentage_51">114%</p><p id="computed_salary_51">0</p>
-          <p>52</p><p id="year_52">2059</p><input type="number" id="salary_52" value="0" min="0"><p id="percentage_52">114%</p><p id="computed_salary_52">0</p>
-          <p>53</p><p id="year_53">2060</p><input type="number" id="salary_53" value="0" min="0"><p id="percentage_53">114%</p><p id="computed_salary_53">0</p>
-          <p>54</p><p id="year_54">2061</p><input type="number" id="salary_54" value="0" min="0"><p id="percentage_54">114%</p><p id="computed_salary_54">0</p>
-          <p>55</p><p id="year_55">2062</p><input type="number" id="salary_55" value="0" min="0"><p id="percentage_55">114%</p><p id="computed_salary_55">0</p>
-          <p>56</p><p id="year_56">2063</p><input type="number" id="salary_56" value="0" min="0"><p id="percentage_56">114%</p><p id="computed_salary_56">0</p>
-          <p>57</p><p id="year_57">2064</p><input type="number" id="salary_57" value="0" min="0"><p id="percentage_57">114%</p><p id="computed_salary_57">0</p>
-          <p>58</p><p id="year_58">2065</p><input type="number" id="salary_58" value="0" min="0"><p id="percentage_58">114%</p><p id="computed_salary_58">0</p>
-          <p>59</p><p id="year_59">2066</p><input type="number" id="salary_59" value="0" min="0"><p id="percentage_59">114%</p><p id="computed_salary_59">0</p>
-          <p>60</p><p id="year_60">2067</p><input type="number" id="salary_60" value="0" min="0"><p id="percentage_60">114%</p><p id="computed_salary_60">0</p>
-          <p>61</p><p id="year_61">2068</p><input type="number" id="salary_61" value="0" min="0"><p id="percentage_61">114%</p><p id="computed_salary_61">0</p>
-          <p>62</p><p id="year_62">2069</p><input type="number" id="salary_62" value="0" min="0"><p id="percentage_62">114%</p><p id="computed_salary_62">0</p>
-          <p>63</p><p id="year_63">2070</p><input type="number" id="salary_63" value="0" min="0"><p id="percentage_63">114%</p><p id="computed_salary_63">0</p>
-          <p>64</p><p id="year_64">2071</p><input type="number" id="salary_64" value="0" min="0"><p id="percentage_64">114%</p><p id="computed_salary_64">0</p>
-          <p>65</p><p id="year_65">2072</p><input type="number" id="salary_65" value="0" min="0"><p id="percentage_65">114%</p><p id="computed_salary_65">0</p>
-          <p>66</p><p id="year_66">2073</p><input type="number" id="salary_66" value="0" min="0"><p id="percentage_66">114%</p><p id="computed_salary_66">0</p>
-          <p>67</p><p id="year_67">2074</p><input type="number" id="salary_67" value="0" min="0"><p id="percentage_67">114%</p><p id="computed_salary_67">0</p>
-          <p>68</p><p id="year_68">2075</p><input type="number" id="salary_68" value="0" min="0"><p id="percentage_68">114%</p><p id="computed_salary_68">0</p>
-          <p>69</p><p id="year_69">2076</p><input type="number" id="salary_69" value="0" min="0"><p id="percentage_69">114%</p><p id="computed_salary_69">0</p>
-          <p>70</p><p id="year_70">2077</p><input type="number" id="salary_70" value="0" min="0"><p id="percentage_70">114%</p><p id="computed_salary_70">0</p>
-          <p>71</p><p id="year_71">2078</p><input type="number" id="salary_71" value="0" min="0"><p id="percentage_71">114%</p><p id="computed_salary_71">0</p>
-          <p>72</p><p id="year_72">2079</p><input type="number" id="salary_72" value="0" min="0"><p id="percentage_72">114%</p><p id="computed_salary_72">0</p>
+          <p id="age_17">17</p><p id="year_17">2024</p><input type="number" id="salary_17" value="" min="0"><p id="percentage_17">114%</p><p id="computed_salary_17">0</p>
+          <p>18</p><p id="year_18">2025</p><input type="number" id="salary_18" value="" min="0"><p id="percentage_18">114%</p><p id="computed_salary_18">0</p>
+          <p>19</p><p id="year_19">2026</p><input type="number" id="salary_19" value="" min="0"><p id="percentage_19">114%</p><p id="computed_salary_19">0</p>
+          <p>20</p><p id="year_20">2027</p><input type="number" id="salary_20" value="" min="0"><p id="percentage_20">114%</p><p id="computed_salary_20">0</p>
+          <p>21</p><p id="year_21">2028</p><input type="number" id="salary_21" value="" min="0"><p id="percentage_21">114%</p><p id="computed_salary_21">0</p>
+          <p>22</p><p id="year_22">2029</p><input type="number" id="salary_22" value="" min="0"><p id="percentage_22">114%</p><p id="computed_salary_22">0</p>
+          <p>23</p><p id="year_23">2030</p><input type="number" id="salary_23" value="" min="0"><p id="percentage_23">114%</p><p id="computed_salary_23">0</p>
+          <p>24</p><p id="year_24">2031</p><input type="number" id="salary_24" value="" min="0"><p id="percentage_24">114%</p><p id="computed_salary_24">0</p>
+          <p>25</p><p id="year_25">2032</p><input type="number" id="salary_25" value="" min="0"><p id="percentage_25">114%</p><p id="computed_salary_25">0</p>
+          <p>26</p><p id="year_26">2033</p><input type="number" id="salary_26" value="" min="0"><p id="percentage_26">114%</p><p id="computed_salary_26">0</p>
+          <p>27</p><p id="year_27">2034</p><input type="number" id="salary_27" value="" min="0"><p id="percentage_27">114%</p><p id="computed_salary_27">0</p>
+          <p>28</p><p id="year_28">2035</p><input type="number" id="salary_28" value="" min="0"><p id="percentage_28">114%</p><p id="computed_salary_28">0</p>
+          <p>29</p><p id="year_29">2036</p><input type="number" id="salary_29" value="" min="0"><p id="percentage_29">114%</p><p id="computed_salary_29">0</p>
+          <p>30</p><p id="year_30">2037</p><input type="number" id="salary_30" value="" min="0"><p id="percentage_30">114%</p><p id="computed_salary_30">0</p>
+          <p>31</p><p id="year_31">2038</p><input type="number" id="salary_31" value="" min="0"><p id="percentage_31">114%</p><p id="computed_salary_31">0</p>
+          <p>32</p><p id="year_32">2039</p><input type="number" id="salary_32" value="" min="0"><p id="percentage_32">114%</p><p id="computed_salary_32">0</p>
+          <p>33</p><p id="year_33">2040</p><input type="number" id="salary_33" value="" min="0"><p id="percentage_33">114%</p><p id="computed_salary_33">0</p>
+          <p>34</p><p id="year_34">2041</p><input type="number" id="salary_34" value="" min="0"><p id="percentage_34">114%</p><p id="computed_salary_34">0</p>
+          <p>35</p><p id="year_35">2042</p><input type="number" id="salary_35" value="" min="0"><p id="percentage_35">114%</p><p id="computed_salary_35">0</p>
+          <p>36</p><p id="year_36">2043</p><input type="number" id="salary_36" value="" min="0"><p id="percentage_36">114%</p><p id="computed_salary_36">0</p>
+          <p>37</p><p id="year_37">2044</p><input type="number" id="salary_37" value="" min="0"><p id="percentage_37">114%</p><p id="computed_salary_37">0</p>
+          <p>38</p><p id="year_38">2045</p><input type="number" id="salary_38" value="" min="0"><p id="percentage_38">114%</p><p id="computed_salary_38">0</p>
+          <p>39</p><p id="year_39">2046</p><input type="number" id="salary_39" value="" min="0"><p id="percentage_39">114%</p><p id="computed_salary_39">0</p>
+          <p>40</p><p id="year_40">2047</p><input type="number" id="salary_40" value="" min="0"><p id="percentage_40">114%</p><p id="computed_salary_40">0</p>
+          <p>41</p><p id="year_41">2048</p><input type="number" id="salary_41" value="" min="0"><p id="percentage_41">114%</p><p id="computed_salary_41">0</p>
+          <p>42</p><p id="year_42">2049</p><input type="number" id="salary_42" value="" min="0"><p id="percentage_42">114%</p><p id="computed_salary_42">0</p>
+          <p>43</p><p id="year_43">2050</p><input type="number" id="salary_43" value="" min="0"><p id="percentage_43">114%</p><p id="computed_salary_43">0</p>
+          <p>44</p><p id="year_44">2051</p><input type="number" id="salary_44" value="" min="0"><p id="percentage_44">114%</p><p id="computed_salary_44">0</p>
+          <p>45</p><p id="year_45">2052</p><input type="number" id="salary_45" value="" min="0"><p id="percentage_45">114%</p><p id="computed_salary_45">0</p>
+          <p>46</p><p id="year_46">2053</p><input type="number" id="salary_46" value="" min="0"><p id="percentage_46">114%</p><p id="computed_salary_46">0</p>
+          <p>47</p><p id="year_47">2054</p><input type="number" id="salary_47" value="" min="0"><p id="percentage_47">114%</p><p id="computed_salary_47">0</p>
+          <p>48</p><p id="year_48">2055</p><input type="number" id="salary_48" value="" min="0"><p id="percentage_48">114%</p><p id="computed_salary_48">0</p>
+          <p>49</p><p id="year_49">2056</p><input type="number" id="salary_49" value="" min="0"><p id="percentage_49">114%</p><p id="computed_salary_49">0</p>
+          <p>50</p><p id="year_50">2057</p><input type="number" id="salary_50" value="" min="0"><p id="percentage_50">114%</p><p id="computed_salary_50">0</p>
+          <p>51</p><p id="year_51">2058</p><input type="number" id="salary_51" value="" min="0"><p id="percentage_51">114%</p><p id="computed_salary_51">0</p>
+          <p>52</p><p id="year_52">2059</p><input type="number" id="salary_52" value="" min="0"><p id="percentage_52">114%</p><p id="computed_salary_52">0</p>
+          <p>53</p><p id="year_53">2060</p><input type="number" id="salary_53" value="" min="0"><p id="percentage_53">114%</p><p id="computed_salary_53">0</p>
+          <p>54</p><p id="year_54">2061</p><input type="number" id="salary_54" value="" min="0"><p id="percentage_54">114%</p><p id="computed_salary_54">0</p>
+          <p>55</p><p id="year_55">2062</p><input type="number" id="salary_55" value="" min="0"><p id="percentage_55">114%</p><p id="computed_salary_55">0</p>
+          <p>56</p><p id="year_56">2063</p><input type="number" id="salary_56" value="" min="0"><p id="percentage_56">114%</p><p id="computed_salary_56">0</p>
+          <p>57</p><p id="year_57">2064</p><input type="number" id="salary_57" value="" min="0"><p id="percentage_57">114%</p><p id="computed_salary_57">0</p>
+          <p>58</p><p id="year_58">2065</p><input type="number" id="salary_58" value="" min="0"><p id="percentage_58">114%</p><p id="computed_salary_58">0</p>
+          <p>59</p><p id="year_59">2066</p><input type="number" id="salary_59" value="" min="0"><p id="percentage_59">114%</p><p id="computed_salary_59">0</p>
+          <p>60</p><p id="year_60">2067</p><input type="number" id="salary_60" value="" min="0"><p id="percentage_60">114%</p><p id="computed_salary_60">0</p>
+          <p>61</p><p id="year_61">2068</p><input type="number" id="salary_61" value="" min="0"><p id="percentage_61">114%</p><p id="computed_salary_61">0</p>
+          <p>62</p><p id="year_62">2069</p><input type="number" id="salary_62" value="" min="0"><p id="percentage_62">114%</p><p id="computed_salary_62">0</p>
+          <p>63</p><p id="year_63">2070</p><input type="number" id="salary_63" value="" min="0"><p id="percentage_63">114%</p><p id="computed_salary_63">0</p>
+          <p>64</p><p id="year_64">2071</p><input type="number" id="salary_64" value="" min="0"><p id="percentage_64">114%</p><p id="computed_salary_64">0</p>
+          <p>65</p><p id="year_65">2072</p><input type="number" id="salary_65" value="" min="0"><p id="percentage_65">114%</p><p id="computed_salary_65">0</p>
+          <p>66</p><p id="year_66">2073</p><input type="number" id="salary_66" value="" min="0"><p id="percentage_66">114%</p><p id="computed_salary_66">0</p>
+          <p>67</p><p id="year_67">2074</p><input type="number" id="salary_67" value="" min="0"><p id="percentage_67">114%</p><p id="computed_salary_67">0</p>
+          <p>68</p><p id="year_68">2075</p><input type="number" id="salary_68" value="" min="0"><p id="percentage_68">114%</p><p id="computed_salary_68">0</p>
+          <p>69</p><p id="year_69">2076</p><input type="number" id="salary_69" value="" min="0"><p id="percentage_69">114%</p><p id="computed_salary_69">0</p>
+          <p>70</p><p id="year_70">2077</p><input type="number" id="salary_70" value="" min="0"><p id="percentage_70">114%</p><p id="computed_salary_70">0</p>
+          <p>71</p><p id="year_71">2078</p><input type="number" id="salary_71" value="" min="0"><p id="percentage_71">114%</p><p id="computed_salary_71">0</p>
+          <p>72</p><p id="year_72">2079</p><input type="number" id="salary_72" value="" min="0"><p id="percentage_72">114%</p><p id="computed_salary_72">0</p>
         </div>
 
       </div>
@@ -343,5 +343,6 @@
   <script src="js/app.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/calculator.js"></script>
+  <script src="salaries.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 const translations = {
   fr: {
     // Meta
-    pageTitle: "Calculateur TRI",
+    pageTitle: "Calculateur RRQ",
     logoAlt: "Logo CFFP",
     yearPlaceholder: "AAAA",
     datePlaceholder: "aaaa-mm-jj",
@@ -84,6 +84,19 @@ const translations = {
     tooltipSupp1: "Montant du régime supplémentaire - volet 1",
     tooltipSupp2: "Montant du régime supplémentaire - volet 2",
     
+    // Input field tooltips
+    tooltipBirthDate: "Entrez votre date de naissance pour calculer votre âge et les années de cotisation",
+    tooltipCurrentYear: "Année de référence pour les calculs de la simulation",
+    tooltipBeforeCurrentYear: "Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 114%)",
+    tooltipAfterCurrentYear: "Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 114%)",
+    tooltipInPercent: "Cochez cette case si vous voulez saisir les salaires en pourcentage du MGA plutôt qu'en montants absolus",
+    tooltipRetirementAge: "Âge auquel vous prévoyez arrêter de travailler et de cotiser au RRQ",
+    tooltipBenefitAge: "Âge auquel vous prévoyez commencer à recevoir vos prestations du RRQ",
+    tooltipLifeExpectancy: "Âge jusqu'auquel vous prévoyez recevoir les prestations du RRQ",
+    tooltipSelfEmployed: "Cochez cette case si vous êtes travailleur autonome (cotisations différentes)",
+    tooltipInflationRate: "Taux d'inflation annuel prévu pour ajuster les montants futurs",
+    tooltipSalaryIncrease: "Taux de croissance annuel prévu des salaires au-dessus de l'inflation",
+    
     // JavaScript dynamic text
     simulationInProgress: "Simulation en cours...",
     validationErrors: "Erreurs de validation",
@@ -102,7 +115,7 @@ const translations = {
   
   en: {
     // Meta
-    pageTitle: "IRR Calculator",
+    pageTitle: "QPP Calculator",
     logoAlt: "CFFP Logo",
     yearPlaceholder: "YYYY",
     datePlaceholder: "yyyy-mm-dd",
@@ -157,7 +170,7 @@ const translations = {
     
     // Footer
     footerText1: "Collective work involving <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> and <strong>Luc Godbout</strong>.",
-    footerText2: "The authors collaborate with the <a href=\"https://cffp.recherche.usherbrooke.ca/\" target=\"_blank\">Research Chair in Taxation and Public Finance</a>, which they thank for the financial support that made this tool possible.",
+    footerText2: "The authors collaborate with the <a href=\"https://cffp.recherche.usherbrooke.ca/\" target=\"_blank\">Chaire de recherche en fiscalité et en finances publiques</a>, which they thank for the financial support that made this tool possible.",
     footerText3: "Interactive tool designed and developed by <strong>Pierre Lefloïc</strong>.",
     footerText4: "For more information, see the study [Web link coming soon].",
     
@@ -178,6 +191,19 @@ const translations = {
     tooltipBasicRegime: "Basic plan benefit amount",
     tooltipSupp1: "Supplementary plan amount - component 1",
     tooltipSupp2: "Supplementary plan amount - component 2",
+    
+    // Input field tooltips
+    tooltipBirthDate: "Enter your date of birth to calculate your age and contribution years",
+    tooltipCurrentYear: "Reference year for simulation calculations",
+    tooltipBeforeCurrentYear: "Salary percentage to use for years before the current year (default 114%)",
+    tooltipAfterCurrentYear: "Salary percentage to use for years after the current year (default 114%)",
+    tooltipInPercent: "Check this box if you want to enter salaries as percentage of YMPE rather than absolute amounts",
+    tooltipRetirementAge: "Age at which you plan to stop working and contributing to QPP",
+    tooltipBenefitAge: "Age at which you plan to start receiving your QPP benefits",
+    tooltipLifeExpectancy: "Age until which you expect to receive QPP benefits",
+    tooltipSelfEmployed: "Check this box if you are self-employed (different contribution rates)",
+    tooltipInflationRate: "Expected annual inflation rate to adjust future amounts",
+    tooltipSalaryIncrease: "Expected annual salary growth rate above inflation",
     
     // JavaScript dynamic text
     simulationInProgress: "Simulation in progress...",
@@ -353,6 +379,14 @@ function updateTranslations() {
     const key = element.getAttribute('data-i18n-title');
     if (t[key]) {
       element.setAttribute('title', t[key]);
+    }
+  });
+  
+  // Update tooltip attributes for custom tooltips
+  document.querySelectorAll('[data-i18n-tooltip]').forEach(element => {
+    const key = element.getAttribute('data-i18n-tooltip');
+    if (t[key]) {
+      element.setAttribute('data-tooltip', t[key]);
     }
   });
   

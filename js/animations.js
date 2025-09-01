@@ -229,10 +229,22 @@ function setupTooltips() {
   tooltip.className = 'custom-tooltip';
   document.body.appendChild(tooltip);
   
-  // Add event listeners to all results headers with title attributes
-  const headersWithTooltips = document.querySelectorAll('.results-header[title]');
+  // Add event listeners to all elements with data-tooltip attributes
+  const elementsWithTooltips = document.querySelectorAll('.results-header[data-tooltip], label[data-tooltip]');
   
-  headersWithTooltips.forEach(header => {
+  elementsWithTooltips.forEach(element => {
+    element.addEventListener('mouseenter', function(e) {
+      showTooltip(this, tooltip);
+    });
+    
+    element.addEventListener('mouseleave', function() {
+      hideTooltip(tooltip);
+    });
+  });
+  
+  // Also handle elements that get tooltips added dynamically (like results headers with title attributes)
+  const headersWithTitles = document.querySelectorAll('.results-header[title]');
+  headersWithTitles.forEach(header => {
     // Store the title content and remove the title attribute to prevent default tooltip
     const titleContent = header.getAttribute('title');
     header.removeAttribute('title');

@@ -301,7 +301,7 @@ class SalaryCalculator {
     }
 
     fillMissingValues() {
-        const salaryIncrease = this.getConfigValue('salary_increase', 3.0);
+        const salaryIncrease = this.getConfigValue('SalaryIncrease', 3.0);
         
         // Fill non_arrondi values
         for (let i = 0; i < this.non_arrondi.length; i++) {
@@ -361,13 +361,24 @@ class SalaryCalculator {
         
         // Listen to other configuration inputs that affect calculations
         const configInputs = ['inputCurrentYear', 'BeforeCurrentYear', 'AfterCurrentYear', 
-                             'RetAge', 'BenAge', 'AgeExp', 'InflationRate', 'SalaryIncrease'];
+                             'RetAge', 'BenAge', 'AgeExp', 'InflationRate'];
         configInputs.forEach(id => {
             const input = document.getElementById(id);
             if (input) {
                 input.addEventListener('change', () => this.calculateAll());
             }
         });
+        
+        // Special handling for SalaryIncrease - needs to reload MGA data
+        const salaryIncreaseInput = document.getElementById('SalaryIncrease');
+        if (salaryIncreaseInput) {
+            salaryIncreaseInput.addEventListener('change', async () => {
+                // Reload MGA data with new salary increase value
+                await this.loadMGAData();
+                // Then recalculate
+                this.calculateAll();
+            });
+        }
         
         // Listen to checkboxes
         const inPercentCheckbox = document.getElementById('InPercent');

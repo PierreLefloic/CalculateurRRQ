@@ -170,6 +170,15 @@ function calculateBenefit(ages, inputs, percentages, years, benefit_age, retirem
             const vlookupResult = mga_lookup_table[years[i]] || 0;
             const monthFromDate = birthdate[1]; // Month number
             
+            // Debug: Log the pro-rating calculation
+            console.log(`Pro-rating calculation for age ${ages[i]} (retirement_age-1):`, {
+                birthdate,
+                monthFromDate,
+                vlookupResult,
+                percentage: percentages[i],
+                calculation: `${percentages[i]} * ${vlookupResult} / 100 * 100 * ${monthFromDate} / 12`
+            });
+            
             // Pro-rated calculation with month factor
             const result = (percentages[i] * vlookupResult / 100 * 100 * monthFromDate / 12);
             return result;
@@ -407,16 +416,29 @@ class SalaryCalculator {
             return false;
         }
         
-        const dateValue = new Date(birthdateInput.value);
-        if (isNaN(dateValue.getTime())) {
+        // Parse date string manually to avoid timezone issues
+        const dateString = birthdateInput.value;
+        const dateParts = dateString.split('-');
+        
+        if (dateParts.length !== 3) {
+            return false;
+        }
+        
+        const year = parseInt(dateParts[0], 10);
+        const month = parseInt(dateParts[1], 10);
+        const day = parseInt(dateParts[2], 10);
+        
+        // Validate the parsed values
+        if (isNaN(year) || isNaN(month) || isNaN(day)) {
             return false;
         }
         
         // Check if date is reasonable (not in the future, not too old)
         const currentYear = new Date().getFullYear();
-        const birthYear = dateValue.getFullYear();
         
-        return birthYear >= (currentYear - 120) && birthYear <= currentYear;
+        return year >= (currentYear - 120) && year <= currentYear &&
+               month >= 1 && month <= 12 &&
+               day >= 1 && day <= 31;
     }
 
     getConfigFromHTML() {
@@ -429,13 +451,22 @@ class SalaryCalculator {
         let birthdate = [1980, 11, 15]; // Default fallback
         
         if (birthdateInput && birthdateInput.value) {
-            const dateValue = new Date(birthdateInput.value);
-            if (!isNaN(dateValue.getTime())) {
-                birthdate = [
-                    dateValue.getFullYear(),
-                    dateValue.getMonth() + 1, // JavaScript months are 0-based, but we need 1-based
-                    dateValue.getDate()
-                ];
+            // Parse date string manually to avoid timezone issues
+            const dateString = birthdateInput.value;
+            const dateParts = dateString.split('-');
+            
+            if (dateParts.length === 3) {
+                const year = parseInt(dateParts[0], 10);
+                const month = parseInt(dateParts[1], 10);
+                const day = parseInt(dateParts[2], 10);
+                
+                // Validate the parsed values
+                if (!isNaN(year) && !isNaN(month) && !isNaN(day) && 
+                    year > 1900 && year < 2100 && 
+                    month >= 1 && month <= 12 && 
+                    day >= 1 && day <= 31) {
+                    birthdate = [year, month, day];
+                }
             }
         }
         

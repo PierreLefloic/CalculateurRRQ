@@ -266,6 +266,14 @@ class IntegratedCalculator {
             const input = document.getElementById(`salary_${age}`);
             if (input) {
                 input.addEventListener('change', () => this.calculateAll());
+                
+                // Make Enter key behave like Tab for salary inputs
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.moveToNextSalaryInput(age);
+                    }
+                });
             }
         }
 
@@ -450,6 +458,25 @@ class IntegratedCalculator {
                 }
             });
         });
+    }
+
+    moveToNextSalaryInput(currentAge) {
+        // Find the next enabled salary input field
+        for (let nextAge = currentAge + 1; nextAge <= 72; nextAge++) {
+            const nextInput = document.getElementById(`salary_${nextAge}`);
+            if (nextInput && !nextInput.disabled) {
+                nextInput.focus();
+                nextInput.select();
+                return;
+            }
+        }
+        
+        // If we reach the end (age 72), we could focus on another element
+        // or just blur the current input to trigger calculation
+        const currentInput = document.getElementById(`salary_${currentAge}`);
+        if (currentInput) {
+            currentInput.blur();
+        }
     }
 
     // Quebec Pension Plan Calculation Functions

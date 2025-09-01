@@ -489,9 +489,14 @@ class SalaryCalculator {
         }
         
         // Calculate percentages
-        const percentages = ages.map(age => 
-            age < userConfig.benefit_age ? userConfig.percentage_before : userConfig.percentage_after
+        const percentages = years.map(year => 
+            year < userConfig.current_year ? userConfig.percentage_before : userConfig.percentage_after
         );
+        
+        // Debug: Log the percentages array to see what values are being used
+        console.log('Percentages array:', percentages);
+        console.log('User config - percentage_before:', userConfig.percentage_before, 'percentage_after:', userConfig.percentage_after);
+        console.log('Benefit age:', userConfig.benefit_age);
         
         // Calculate benefits for each age
         const results = [];

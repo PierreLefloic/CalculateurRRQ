@@ -558,8 +558,11 @@ class IntegratedCalculator {
     }
 
     collectSalaryInputs() {
+        const userConfig = this.getConfigFromHTML();
+        const age_start = userConfig.birthdate[1] !== 12 ? 17 : 18;
+        
         const inputs = [];
-        for (let age = 17; age <= 72; age++) {
+        for (let age = age_start; age <= 72; age++) {
             const input = document.getElementById(`salary_${age}`);
             if (input && input.value && parseFloat(input.value) > 0) {
                 inputs.push(parseFloat(input.value));
@@ -609,7 +612,21 @@ class IntegratedCalculator {
                 const result = (percentages[i] * vlookupResult / 100 * 100 * monthFromDate / 12);
                 return result;
             }
-            // Level 4b: Input is empty but age is NOT retirement_age-1
+            // Level 4a2: Special case when input is empty AND age equals 17 (pro-rating for first year)
+            else if (ages[i] === 17) {
+                const vlookupResult = mga_lookup_table[years[i]] || 0;
+                const monthFromDate = birthdate[1]; // Month number
+                
+                // Pro-rated calculation: months from month AFTER birth month to end of year (December)
+                // Contributions start the month after birthday
+                // If born in January (1), start contributing in February, work 11 months
+                // If born in November (11), start contributing in December, work 1 month
+                // If born in December (12), start contributing in January of next year, work 0 months (handled by age 18)
+                const monthsToWork = Math.max(0, 12 - monthFromDate); // Start contributing month after birthday
+                const result = (percentages[i] * vlookupResult / 100 * 100 * monthsToWork / 12);
+                return result;
+            }
+            // Level 4b: Input is empty but age is NOT retirement_age-1 or 17
             else {
                 const vlookupResult = mga_lookup_table[years[i]] || 0;
                 const result = percentages[i] * vlookupResult / 100 * 100;
@@ -678,8 +695,20 @@ class IntegratedCalculator {
     }
 
     updateResults(results) {
+        const userConfig = this.getConfigFromHTML();
+        const age_start = userConfig.birthdate[1] !== 12 ? 17 : 18;
+        
+        // Clear all results first
+        for (let age = 17; age <= 72; age++) {
+            const outputElement = document.getElementById(`computed_salary_${age}`);
+            if (outputElement) {
+                outputElement.textContent = '0';
+            }
+        }
+        
+        // Update results starting from the correct age
         for (let i = 0; i < results.length; i++) {
-            const age = 17 + i;
+            const age = age_start + i;
             const outputElement = document.getElementById(`computed_salary_${age}`);
             if (outputElement) {
                 const value = results[i];

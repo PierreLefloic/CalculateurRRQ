@@ -274,6 +274,13 @@ class IntegratedCalculator {
                         this.moveToNextSalaryInput(age);
                     }
                 });
+
+                // Add paste functionality for the first salary input (age 17)
+                if (age === 17) {
+                    input.addEventListener('paste', (e) => {
+                        this.handleSalaryPaste(e);
+                    });
+                }
             }
         }
 
@@ -476,6 +483,55 @@ class IntegratedCalculator {
         const currentInput = document.getElementById(`salary_${currentAge}`);
         if (currentInput) {
             currentInput.blur();
+        }
+    }
+
+    handleSalaryPaste(e) {
+        e.preventDefault();
+        
+        // Get the pasted data
+        const paste = (e.clipboardData || window.clipboardData).getData('text');
+        
+        // Split by newlines and/or tabs to handle Excel column data
+        const values = paste.split(/[\n\t\r]+/).filter(val => val.trim() !== '');
+        
+        if (values.length === 0) return;
+        
+        // Clean and validate the values
+        const cleanedValues = values.map(val => {
+            // Remove common formatting (spaces, commas, dollar signs)
+            const cleaned = val.trim().replace(/[$,\s]/g, '');
+            const number = parseFloat(cleaned);
+            return isNaN(number) ? null : Math.max(0, number); // Ensure non-negative
+        }).filter(val => val !== null);
+        
+        if (cleanedValues.length === 0) return;
+        
+        // Fill the salary inputs starting from age 17
+        let filledCount = 0;
+        for (let i = 0; i < cleanedValues.length && i < 56; i++) { // Max 56 fields (17 to 72)
+            const age = 17 + i;
+            const input = document.getElementById(`salary_${age}`);
+            
+            if (input && !input.disabled) {
+                input.value = cleanedValues[i];
+                filledCount++;
+            }
+        }
+        
+        // Show feedback to user
+        console.log(`Pasted ${filledCount} salary values from Excel data`);
+        
+        // Trigger calculation after pasting
+        this.calculateAll();
+        
+        // Optionally show a brief visual feedback
+        const firstInput = document.getElementById('salary_17');
+        if (firstInput) {
+            firstInput.style.backgroundColor = '#e8f5e8';
+            setTimeout(() => {
+                firstInput.style.backgroundColor = '';
+            }, 1000);
         }
     }
 

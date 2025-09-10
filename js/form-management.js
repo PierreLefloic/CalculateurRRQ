@@ -1,6 +1,7 @@
 /**
- * Integrated Quebec Pension Plan Calculator
- * Combines form management, validation, and real-time calculations
+ * Known Issues:
+ * first year prorated calculation does not work if in percentage (1980-10-10 with 100% for example)
+ * 
  */
 
 // Global variables for MGA data
@@ -526,13 +527,13 @@ class IntegratedCalculator {
         this.calculateAll();
         
         // Optionally show a brief visual feedback
-        const firstInput = document.getElementById('salary_17');
-        if (firstInput) {
-            firstInput.style.backgroundColor = '#e8f5e8';
-            setTimeout(() => {
-                firstInput.style.backgroundColor = '';
-            }, 1000);
-        }
+        // const firstInput = document.getElementById('salary_17');
+        // if (firstInput) {
+        //     firstInput.style.backgroundColor = '#e8f5e8';
+        //     setTimeout(() => {
+        //         firstInput.style.backgroundColor = '';
+        //     }, 1000);
+        // }
     }
 
     // Quebec Pension Plan Calculation Functions

@@ -38,10 +38,10 @@
       <div class="container">
         <h2 data-i18n="salary">Salaire</h2>
         <div class="input-grid">
-          <label for="BeforeCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 114%)" data-i18n="beforeCurrentYear" data-i18n-tooltip="tooltipBeforeCurrentYear">Avant année courante (%) :</label>
-          <input id="BeforeCurrentYear" type="number" value="114" min="0" max="200">
-          <label for="AfterCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 114%)" data-i18n="afterCurrentYear" data-i18n-tooltip="tooltipAfterCurrentYear">Après année courante (%) :</label>
-          <input id="AfterCurrentYear" type="number" value="114" min="0" max="200">
+          <label for="BeforeCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 100%)" data-i18n="beforeCurrentYear" data-i18n-tooltip="tooltipBeforeCurrentYear">Avant année courante (%) :</label>
+          <input id="BeforeCurrentYear" type="number" value="100" min="0" max="200">
+          <label for="AfterCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 100%)" data-i18n="afterCurrentYear" data-i18n-tooltip="tooltipAfterCurrentYear">Après année courante (%) :</label>
+          <input id="AfterCurrentYear" type="number" value="100" min="0" max="200">
           <label for="InPercent" data-tooltip="Cochez cette case si vous voulez saisir les salaires en pourcentage du MGA plutôt qu'en montants absolus" data-i18n="inPercent" data-i18n-tooltip="tooltipInPercent">Saisie en pourcentage :</label>
           <div class="checkbox-container">
             <input id="InPercent" type="checkbox">
@@ -59,6 +59,16 @@
         <div class="input-grid">
           <label for="RetAge" data-tooltip="Âge auquel vous prévoyez arrêter de travailler et de cotiser au RRQ" data-i18n="retirementAge" data-i18n-tooltip="tooltipRetirementAge">Âge de retraite :</label>
           <select id="RetAge">
+            <option value="60">50</option>
+            <option value="61">51</option>
+            <option value="62">52</option>
+            <option value="63">53</option>
+            <option value="64">54</option>
+            <option value="65">55</option>
+            <option value="66">56</option>
+            <option value="67">57</option>
+            <option value="68">58</option>
+            <option value="69">59</option>
             <option value="60">60</option>
             <option value="61">61</option>
             <option value="62">62</option>
@@ -90,7 +100,7 @@
             <option value="72">72</option>
           </select>
           <label for="AgeExp" data-tooltip="Âge jusqu'auquel vous prévoyez recevoir les prestations du RRQ" data-i18n="lifeExpectancy" data-i18n-tooltip="tooltipLifeExpectancy">Espérance de vie :</label>
-          <input id="AgeExp" type="number" value="85" min="60" max="120">
+          <input id="AgeExp" type="number" value="95" min="60" max="120">
           <label for="SelfEmployed" data-tooltip="Cochez cette case si vous êtes travailleur autonome (cotisations différentes)" data-i18n="selfEmployed" data-i18n-tooltip="tooltipSelfEmployed">Travailleur autonome :</label>
           <div class="checkbox-container">
             <input id="SelfEmployed" type="checkbox">
@@ -106,9 +116,9 @@
         <h2 data-i18n="economicParams">Paramètres économiques</h2>
         <div class="input-grid">
           <label for="InflationRate" data-tooltip="Taux d'inflation annuel prévu pour ajuster les montants futurs" data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
-          <input id="InflationRate" type="number" value="2" min="0" max="100">
+          <input id="InflationRate" type="number" value="2.1" min="0" max="100" step="0.1">
           <label for="SalaryIncrease" data-tooltip="Taux de croissance annuel prévu des salaires au-dessus de l'inflation" data-i18n="salaryIncrease" data-i18n-tooltip="tooltipSalaryIncrease">Croissance des salaires (%) :</label>
-          <input id="SalaryIncrease" type="number" value="3" min="0" max="100">
+          <input id="SalaryIncrease" type="number" value="3.1" min="0" max="100" step="0.1">
         </div>
       </div>
       
@@ -341,6 +351,6 @@
 
   <script src="js/i18n.js"></script>
   <script src="js/animations.js"></script>
-  <script src="integrated-calculator.js"></script>
+  <script src="js/form-management.js"></script>
 </body>
 </html>

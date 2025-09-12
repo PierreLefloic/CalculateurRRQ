@@ -102,12 +102,12 @@ body {
   flex-direction: column;
   gap: 24px;
   flex: 1;
-  max-width: 400px;
+  max-width: 450px;
 }
 
 .right-column {
   flex: 1;
-  max-width: 500px;
+  max-width: 650px;
 }
 
 .container {

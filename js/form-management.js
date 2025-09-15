@@ -125,7 +125,7 @@ class IntegratedCalculator {
     }
 
     fillMissingValues() {
-        const salaryIncrease = this.getConfigValue('SalaryIncrease', 3.0);
+        const salaryIncrease = this.getConfigValue('SalaryIncrease', 3.1);
         
         // Fill non_arrondi values
         for (let i = 0; i < non_arrondi.length; i++) {

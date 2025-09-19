@@ -73,42 +73,139 @@ class MGAData {
         this.taux_sup_v2 = {};
         this.non_arrondi = {};
         this.intro_v1 = {};
+        this.isLoaded = false;
 
         this.loadData(salaryIncrease);
     }
 
     async loadData(salaryIncrease = 3.1) {
-        // For web implementation, you would typically load this from a JSON file or API
-        // For now, we'll include the essential data inline
-        
-        // This would be replaced with actual CSV/JSON data loading
-        const mgaBaseData = this.getBaseData();
-        
-        // Process the data similar to Python version
-        this.processData(mgaBaseData, salaryIncrease);
+        try {
+            // Load CSV data from MGA.csv file
+            const csvData = await this.loadCSVData();
+            
+            // Process the data similar to Python version
+            this.processData(csvData, salaryIncrease);
+            this.isLoaded = true;
+        } catch (error) {
+            console.error("Error loading MGA data:", error);
+        }
     }
 
-    getBaseData() {
-        // This is a simplified version. In a real implementation, you would load this from MGA.csv
-        // For demonstration, including key years of data
-        return {
-            years: [1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054, 2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065, 2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076, 2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087, 2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098, 2099, 2100],
-            mga: [5000, 5000, 5100, 5200, 5300, 5400, 5500, 5900, 6600, 7400, 8300, 9300, 10400, 11700, 13100, 14700, 16500, 18500, 20800, 23400, 25800, 25900, 26500, 27700, 28900, 30500, 32200, 33400, 34400, 34900, 35400, 35800, 36900, 37400, 37600, 38300, 39100, 39900, 40500, 41100, 42100, 43700, 44900, 46300, 47200, 48300, 50100, 51100, 52500, 53600, 54900, 55300, 55900, 57400, 58700, 61600, 64900, 66600, 68500, 71300, 73400, 75600, 77900, 80200, 82700, 85100, 87700, 90300, 93000, 95800, 98700, 101700, 104700, 107900, 111100, 114400, 117900, 121400, 125100, 128800, 132700, 136700, 140800, 145000, 149300, 153800, 158400, 163200, 168100, 173100, 178300, 183700, 189200, 194900, 200700, 206700, 212900, 219300, 225900, 232700, 239700, 246800, 254300, 261900, 269700, 277800, 286200, 294800, 303600, 312700, 322100, 331800, 341700, 352000, 362500, 373400, 384600, 396100, 408000, 420300, 432900, 445900, 459300, 473000, 487200, 501800, 516900, 532400, 548400, 564800, 581800, 599200, 617200, 635700, 654800],
-            taux_base: Array(135).fill(5.25),
-            exemption: Array(135).fill(3500),
-            taux_sup_v1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.15, 0.30, 0.50, 0.75, 1.00, ...Array(77).fill(1.0)],
-            taux_sup_v2: Array(135).fill(1.0),
-            non_arrondi: [5000, 5000, 5100, 5200, 5300, 5400, 5500, 5900, 6600, 7400, 8300, 9300, 10400, 11700, 13100, 14700, 16500, 18500, 20800, 23400, 25800, 25900, 26500, 27700, 28900, 30500, 32200, 33400, 34400, 34900, 35400, 35800, 36900, 37400, 37600, 38300, 39100, 39900, 40500, 41100, 42100, 43700, 44900, 46300, 47200, 48300, 50100, 51100, 52500, 53600, 54900, 55300, 55900, 57400, 58700, 61600, 64900, 66600, 68500],
-            intro_v1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 30, 50, 75, 100, ...Array(77).fill(100)]
-        };
+    async loadCSVData() {
+        // For Node.js environment
+        if (typeof require !== 'undefined') {
+            const fs = require('fs');
+            const path = require('path');
+            const csvContent = fs.readFileSync(path.join(__dirname, '..', 'MGA.csv'), 'utf-8');
+            return this.parseCSV(csvContent);
+        }
+        
+        // For browser environment
+        if (typeof fetch !== 'undefined') {
+            const response = await fetch('./MGA.csv');
+            if (!response.ok) {
+                throw new Error(`Failed to load MGA.csv: ${response.status} ${response.statusText}`);
+            }
+            const csvContent = await response.text();
+            return this.parseCSV(csvContent);
+        }
+        
+        throw new Error("Unable to load CSV data - neither Node.js fs nor fetch API available");
     }
+
+    parseCSV(csvContent) {
+        const lines = csvContent.split('\n');
+        const header = lines[0].split(';').map(col => col.trim());
+        
+        const data = {
+            years: [],
+            mga: [],
+            mgam5: [],
+            mgam5_12: [],
+            msga: [],
+            taux_base: [],
+            exemption: [],
+            taux_sup_v1: [],
+            taux_sup_v2: [],
+            non_arrondi: [],
+            intro_v1: []
+        };
+
+        for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+
+            const columns = line.split(';');
+            
+            // Parse each column with proper data cleaning
+            const year = this.parseNumeric(columns[0]);
+            if (isNaN(year)) continue;
+
+            data.years.push(year);
+            data.mga.push(this.parseNumeric(columns[1]));
+            data.mgam5.push(this.parseNumeric(columns[2]));
+            data.mgam5_12.push(this.parseNumeric(columns[3]));
+            data.msga.push(this.parseNumeric(columns[4]));
+            data.taux_base.push(this.parsePercentage(columns[5]));
+            data.exemption.push(this.parseNumeric(columns[6]));
+            data.taux_sup_v1.push(this.parsePercentage(columns[7]));
+            data.taux_sup_v2.push(this.parsePercentage(columns[8]));
+            data.non_arrondi.push(this.parseNumeric(columns[9]));
+            data.intro_v1.push(this.parsePercentage(columns[10]));
+        }
+
+        return data;
+    }
+
+    parseNumeric(value) {
+        if (!value || value.trim() === '' || value.toLowerCase() === 'nan') {
+            return NaN;
+        }
+        
+        // Remove spaces, dollar signs, and other formatting
+        const cleaned = value.replace(/[\s$,]/g, '');
+        const num = parseFloat(cleaned);
+        return isNaN(num) ? NaN : num;
+    }
+
+    parsePercentage(value) {
+        if (!value || value.trim() === '' || value.toLowerCase() === 'nan') {
+            return NaN;
+        }
+        
+        // Remove spaces and percentage signs
+        const cleaned = value.replace(/[\s%]/g, '');
+        const num = parseFloat(cleaned);
+        return isNaN(num) ? NaN : num;
+    }
+
+    // Alternative method for pre-loaded CSV data (synchronous)
+    loadFromCSVString(csvContent, salaryIncrease = 3.1) {
+        try {
+            const csvData = this.parseCSV(csvContent);
+            this.processData(csvData, salaryIncrease);
+            this.isLoaded = true;
+            return true;
+        } catch (error) {
+            console.error("Error parsing CSV data:", error);
+            return false;
+        }
+    }
+
+    // Check if data is properly loaded
+    isDataValid() {
+        return this.isLoaded && 
+               Object.keys(this.mga).length > 0 && 
+               Object.keys(this.taux_base).length > 0;
+    }
+
 
     processData(data, salaryIncrease) {
         const years = data.years;
         let mga = [...data.mga];
-        let mgam5 = [];
-        let mgam5_12 = [];
-        let msga = [];
+        let mgam5 = [...data.mgam5];
+        let mgam5_12 = [...data.mgam5_12];
+        let msga = [...data.msga];
         let taux_base = [...data.taux_base];
         let exemption = [...data.exemption];
         let taux_sup_v1 = [...data.taux_sup_v1];
@@ -116,38 +213,66 @@ class MGAData {
         let non_arrondi = [...data.non_arrondi];
         let intro_v1 = [...data.intro_v1];
 
+        // Helper functions to check for NaN or missing values
+        const isNanForCalc = (value) => {
+            return isNaN(value) || value === null || value === undefined;
+        };
+
         // Fill missing non_arrondi values
         for (let i = 1; i < non_arrondi.length; i++) {
-            if (isNaN(non_arrondi[i]) || non_arrondi[i] === 0) {
+            if (isNanForCalc(non_arrondi[i])) {
                 non_arrondi[i] = non_arrondi[i-1] * (1 + salaryIncrease / 100);
             }
         }
 
         // Fill missing MGA values
         for (let i = 0; i < mga.length; i++) {
-            if (isNaN(mga[i]) || mga[i] === 0) {
+            if (isNanForCalc(mga[i])) {
                 mga[i] = Math.floor(non_arrondi[i] / 100) * 100;
             }
         }
 
-        // Calculate MGAM5
+        // Calculate MGAM5 for missing values
         for (let i = 0; i < mga.length; i++) {
             if (i < 4) {
-                mgam5[i] = NaN;
+                if (isNanForCalc(mgam5[i])) {
+                    mgam5[i] = NaN;
+                }
             } else {
-                mgam5[i] = (mga[i-4] + mga[i-3] + mga[i-2] + mga[i-1] + mga[i]) / 5;
+                if (isNanForCalc(mgam5[i])) {
+                    mgam5[i] = (mga[i-4] + mga[i-3] + mga[i-2] + mga[i-1] + mga[i]) / 5;
+                }
             }
         }
 
-        // Calculate MGAM5_12
+        // Calculate MGAM5_12 for all values (always recalculate)
         for (let i = 0; i < mgam5.length; i++) {
             mgam5_12[i] = mgam5[i] / 12;
         }
 
-        // Calculate MSGA
+        // Calculate MSGA for missing values
         for (let i = 0; i < mga.length; i++) {
-            if (isNaN(data.msga) || !data.msga) {
+            if (isNanForCalc(msga[i])) {
                 msga[i] = Math.floor(mga[i] * (1 + 0.14) / 100) * 100;
+            }
+        }
+
+        // Fill missing percentage values with defaults
+        for (let i = 0; i < years.length; i++) {
+            if (isNanForCalc(taux_base[i])) {
+                taux_base[i] = 5.25; // Default base rate
+            }
+            if (isNanForCalc(exemption[i])) {
+                exemption[i] = 3500; // Default exemption
+            }
+            if (isNanForCalc(taux_sup_v1[i])) {
+                taux_sup_v1[i] = 0; // Default supplementary rate V1
+            }
+            if (isNanForCalc(taux_sup_v2[i])) {
+                taux_sup_v2[i] = 1.0; // Default supplementary rate V2
+            }
+            if (isNanForCalc(intro_v1[i])) {
+                intro_v1[i] = 0; // Default introduction V1
             }
         }
 
@@ -157,12 +282,12 @@ class MGAData {
             this.mgam5[years[i]] = mgam5[i];
             this.mgam5_12[years[i]] = mgam5_12[i];
             this.msga[years[i]] = msga[i];
-            this.taux_base[years[i]] = taux_base[i] || 5.25;
-            this.exemption[years[i]] = exemption[i] || 3500;
-            this.taux_sup_v1[years[i]] = taux_sup_v1[i] || 0;
-            this.taux_sup_v2[years[i]] = taux_sup_v2[i] || 1.0;
+            this.taux_base[years[i]] = taux_base[i];
+            this.exemption[years[i]] = exemption[i];
+            this.taux_sup_v1[years[i]] = taux_sup_v1[i];
+            this.taux_sup_v2[years[i]] = taux_sup_v2[i];
             this.non_arrondi[years[i]] = non_arrondi[i];
-            this.intro_v1[years[i]] = intro_v1[i] || 0;
+            this.intro_v1[years[i]] = intro_v1[i];
         }
     }
 }
@@ -861,7 +986,8 @@ function results(userObj, mgaObj) {
         cotisationData: cot.save(),
         pensionTable: penTable,
         triTable: triTable,
-        tri: tri
+        tri: tri,
+        benefitStartYear: G1  // Year when benefits start (used for headers)
     };
 }
 
@@ -896,11 +1022,15 @@ if (typeof module !== 'undefined' && module.exports) {
 // Example usage for web implementation:
 /*
 // Initialize the calculator
-const user = new UserInput();
-const mga = new MGAData(user.salary_increase);
+async function runCalculation() {
+    const user = new UserInput();
+    const mga = new MGAData(user.salary_increase);
 
-// Wait for MGA data to load (if async)
-mga.loadData(user.salary_increase).then(() => {
+    // Wait for MGA data to load
+    while (!mga.isLoaded) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    
     // Calculate salary based on MGA data
     user.calculateSalary(mga);
     
@@ -911,9 +1041,13 @@ mga.loadData(user.salary_increase).then(() => {
     console.log("Summary Results:", calculationResults.summaryResults);
     console.log("Detail Table:", calculationResults.detailTable);
     
-    // You can now use these results to populate HTML elements
-    // Example:
-    // document.getElementById('summary-results').innerHTML = 
-    //     JSON.stringify(calculationResults.summaryResults, null, 2);
-});
+    return calculationResults;
+}
+
+// Usage:
+// runCalculation().then(results => {
+//     // Use results to populate HTML elements
+//     document.getElementById('summary-results').innerHTML = 
+//         JSON.stringify(results.summaryResults, null, 2);
+// });
 */

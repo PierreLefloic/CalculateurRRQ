@@ -29,9 +29,22 @@
         <!-- <h2>Simulation Tool</h2> -->
         <div class="input-grid">
           <label for="inputBirth" data-tooltip="Entrez votre date de naissance pour calculer votre âge et les années de cotisation" data-i18n="birthDate" data-i18n-tooltip="tooltipBirthDate">Date de naissance :</label>
-          <input id="inputBirth" type="date" max="9999-12-31">
+          <input id="inputBirth" type="date" min="1900-01-01" max="9999-12-31">
           <label for="inputCurrentYear" data-tooltip="Année de référence pour les calculs de la simulation" data-i18n="currentYear" data-i18n-tooltip="tooltipCurrentYear">Année courante :</label>
-          <input id="inputCurrentYear" type="number" value="2025" min="1900" max="2100" placeholder="YYYY" data-i18n-placeholder="yearPlaceholder">
+          <select id="inputCurrentYear">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025" selected>2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+          </select>
         </div>
       </div>
 
@@ -122,7 +135,7 @@
         </div>
       </div>
       
-      <button id="launchSimulation" data-i18n="launchSimulation">Lancer la simulation</button>
+      <button id="launchSimulation" disabled data-i18n="launchSimulation">Lancer la simulation</button>
     </div>
     
     <div class="right-column">
@@ -199,7 +212,7 @@
     </div>
     
     <!-- Mobile button positioned after salary table -->
-    <button id="launchSimulation-mobile" class="mobile-button" data-i18n="launchSimulation">Lancer la simulation</button>
+    <button id="launchSimulation-mobile" class="mobile-button" disabled data-i18n="launchSimulation">Lancer la simulation</button>
   </div>
 
   <!-- Results Section -->
@@ -216,20 +229,20 @@
           
           <!-- Data Rows -->
           <div class="results-header summary-label" title="Prestation annuelle totale du Régime de rentes du Québec" data-i18n="annualRRQBenefit" data-i18n-title="tooltipAnnualRRQ">Prestation annuelle du RRQ</div>
-          <div class="results-cell">17 898 $</div>
-          <div class="results-cell">21 027 $</div>
+          <div class="results-cell"></div>
+          <div class="results-cell"></div>
           
           <div class="results-header summary-label" title="Montant de la prestation de base du régime" data-i18n="basicRegime" data-i18n-title="tooltipBasicRegime">Régime de base</div>
-          <div class="results-cell">16 645 $</div>
-          <div class="results-cell">19 555 $</div>
+          <div class="results-cell"></div>
+          <div class="results-cell"></div>
           
           <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 1" data-i18n="supplementaryRegime1" data-i18n-title="tooltipSupp1">Régime supplémentaire - volet 1</div>
-          <div class="results-cell">1 252 $</div>
-          <div class="results-cell">1 471 $</div>
+          <div class="results-cell"></div>
+          <div class="results-cell"></div>
           
           <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 2" data-i18n="supplementaryRegime2" data-i18n-title="tooltipSupp2">Régime supplémentaire - volet 2</div>
-          <div class="results-cell">0 $</div>
-          <div class="results-cell">0 $</div>
+          <div class="results-cell"></div>
+          <div class="results-cell"></div>
         </div>
       </div>
     </div>
@@ -258,77 +271,6 @@
           <div class="results-header" title="Montant de la cotisation annuelle au RRQ en dollars de l'année courante" data-i18n="annualContribution" data-i18n-title="tooltipContribution">Cotisation annuelle<br><small>En dollars courant</small></div>
           <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2025" data-i18n="accumulatedBenefit" data-i18n-title="tooltipAccumulated">Accumulée<br><small>En dollars de 2025</small></div>
           <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025" data-i18n="additionalBenefit" data-i18n-title="tooltipAdditional">Additionnelle<br><small>En dollars de 2025</small></div>
-          
-          <!-- Sample Data Rows (we'll replace with real data later) -->
-          <div class="results-cell">28</div>
-          <div class="results-cell">2025</div>
-          <div class="results-cell">6,06%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">1973</div>
-          <div class="results-cell">195</div>
-          
-          <div class="results-cell">29</div>
-          <div class="results-cell">2026</div>
-          <div class="results-cell">6,13%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">2168</div>
-          <div class="results-cell">189</div>
-          
-          <div class="results-cell">30</div>
-          <div class="results-cell">2027</div>
-          <div class="results-cell">6,19%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">2357</div>
-          <div class="results-cell">184</div>
-          
-          <div class="results-cell">31</div>
-          <div class="results-cell">2028</div>
-          <div class="results-cell">6,26%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">2541</div>
-          <div class="results-cell">178</div>
-          
-          <div class="results-cell">32</div>
-          <div class="results-cell">2029</div>
-          <div class="results-cell">6,32%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">2719</div>
-          <div class="results-cell">173</div>
-          
-          <div class="results-cell">33</div>
-          <div class="results-cell">2030</div>
-          <div class="results-cell">6,39%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">2892</div>
-          <div class="results-cell">167</div>
-          
-          <div class="results-cell">34</div>
-          <div class="results-cell">2031</div>
-          <div class="results-cell">6,47%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">3059</div>
-          <div class="results-cell">163</div>
-          
-          <div class="results-cell">35</div>
-          <div class="results-cell">2032</div>
-          <div class="results-cell">6,55%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">3222</div>
-          <div class="results-cell">158</div>
-          
-          <div class="results-cell">36</div>
-          <div class="results-cell">2033</div>
-          <div class="results-cell">6,63%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">3379</div>
-          <div class="results-cell">153</div>
-          
-          <div class="results-cell">37</div>
-          <div class="results-cell">2034</div>
-          <div class="results-cell">6,72%</div>
-          <div class="results-cell">-1056</div>
-          <div class="results-cell">3532</div>
-          <div class="results-cell">148</div>
         </div>
       </div>
     </div>
@@ -354,5 +296,6 @@
   <script src="js/form-management.js"></script>
   <script src="js/pension-calculator.js"></script>
   <script src="js/pension-integration.js"></script>
+ 
 </body>
 </html>

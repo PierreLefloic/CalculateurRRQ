@@ -21,6 +21,92 @@ class PensionSimulation {
         // Launch simulation buttons only
         document.getElementById('launchSimulation').addEventListener('click', () => this.launchSimulation());
         document.getElementById('launchSimulation-mobile').addEventListener('click', () => this.launchSimulation());
+        
+        // Add birthday validation
+        this.initializeBirthdayValidation();
+    }
+
+    /**
+     * Initialize birthday validation to enable/disable simulation buttons
+     */
+    initializeBirthdayValidation() {
+        const birthdayInput = document.getElementById('inputBirth');
+        const launchButton = document.getElementById('launchSimulation');
+        const launchButtonMobile = document.getElementById('launchSimulation-mobile');
+        
+        // Function to validate birthday and enable/disable buttons
+        const validateBirthday = () => {
+            const birthdayValue = birthdayInput.value;
+            const isValid = this.isValidBirthday(birthdayValue);
+            
+            // Enable/disable both buttons
+            launchButton.disabled = !isValid;
+            launchButtonMobile.disabled = !isValid;
+            
+            // Add visual feedback classes to buttons
+            if (isValid) {
+                launchButton.classList.remove('disabled-button');
+                launchButtonMobile.classList.remove('disabled-button');
+            } else {
+                launchButton.classList.add('disabled-button');
+                launchButtonMobile.classList.add('disabled-button');
+            }
+            
+            // Add visual feedback classes to birthday input
+            birthdayInput.classList.remove('valid', 'invalid');
+            if (birthdayValue.trim() !== '') {
+                if (isValid) {
+                    birthdayInput.classList.add('valid');
+                } else {
+                    birthdayInput.classList.add('invalid');
+                }
+            }
+        };
+        
+        // Add event listeners for birthday input changes
+        birthdayInput.addEventListener('input', validateBirthday);
+        birthdayInput.addEventListener('change', validateBirthday);
+        
+        // Initial validation on page load
+        validateBirthday();
+    }
+
+    /**
+     * Validate if the birthday is valid for pension calculation
+     */
+    isValidBirthday(birthdayValue) {
+        if (!birthdayValue || birthdayValue.trim() === '') {
+            return false;
+        }
+        
+        const birthDate = new Date(birthdayValue);
+        const currentYear = parseInt(document.getElementById('inputCurrentYear').value) || new Date().getFullYear();
+        const currentDate = new Date(currentYear, 11, 31); // End of current year
+        
+        // Check if the date is valid
+        if (isNaN(birthDate.getTime())) {
+            return false;
+        }
+        
+        // Check if birth date is in the future
+        if (birthDate > currentDate) {
+            return false;
+        }
+        
+        // Use the same validation logic as validateInputs()
+        const birthYear = birthDate.getFullYear();
+        
+        // Must be at least 17 years old
+        if (currentYear - birthYear < 17) {
+            return false;
+        }
+        
+        // Must not be more than 100 years old (same as validateInputs)
+        if (currentYear - birthYear > 100) {
+            return false;
+        }
+        
+        return true;
     }
 
     /**
@@ -371,7 +457,7 @@ class PensionSimulation {
         const currentYear = parseInt(document.getElementById('inputCurrentYear').value);
         
         if (!birthDate) {
-            alert('Veuillez entrer votre date de naissance.');
+            // alert('Veuillez entrer votre date de naissance.');
             return false;
         }
         
@@ -379,12 +465,12 @@ class PensionSimulation {
         const birthYear = birth.getFullYear();
         
         if (currentYear - birthYear < 17) {
-            alert('Vous devez avoir au moins 17 ans pour utiliser ce simulateur.');
+            // alert('Vous devez avoir au moins 17 ans pour utiliser ce simulateur.');
             return false;
         }
         
         if (currentYear - birthYear > 100) {
-            alert('Veuillez vérifier votre date de naissance.');
+            // alert('Veuillez vérifier votre date de naissance.');
             return false;
         }
         

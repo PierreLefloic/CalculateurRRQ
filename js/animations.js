@@ -502,3 +502,41 @@ function setupBackToTop() {
     requestAnimationFrame(smoothScrollToTop);
   }
 }
+
+// Add global escape key handler to unfocus elements
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    // Remove focus from currently focused element
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
+  }
+  
+  // Add Excel-like navigation for salary inputs with up/down arrows
+  if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+    const activeElement = document.activeElement;
+    
+    // Check if we're in a salary input field
+    if (activeElement && activeElement.id && activeElement.id.startsWith('salary_')) {
+      // Always prevent default behavior for arrow keys in salary inputs
+      event.preventDefault();
+      
+      const currentAge = parseInt(activeElement.id.replace('salary_', ''));
+      let targetAge;
+      
+      if (event.key === 'ArrowUp') {
+        targetAge = currentAge - 1;
+      } else if (event.key === 'ArrowDown') {
+        targetAge = currentAge + 1;
+      }
+      
+      // Check if target input exists and is not disabled
+      const targetInput = document.getElementById(`salary_${targetAge}`);
+      if (targetInput && !targetInput.disabled) {
+        targetInput.focus();
+        targetInput.select(); // Select all text for easy replacement, like Excel
+      }
+      // If no valid target, do nothing (stay in current field without changing value)
+    }
+  }
+});

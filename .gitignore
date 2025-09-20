@@ -1,4 +1,5 @@
 questions.txt
+notes.txt
 testing_csv.csv
 testing.html
 Calculateur_TRI_v11.csv
@@ -9,3 +10,6 @@ temps.xlsx
 method.pdf
 calculateur_RRQ_dev.zip
 python_code/
+floating-labels-experiment.css
+floating-labels-experiment.html
+floating-labels-experiment.js

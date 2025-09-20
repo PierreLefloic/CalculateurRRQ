@@ -102,12 +102,12 @@ body {
   flex-direction: column;
   gap: 24px;
   flex: 1;
-  max-width: 450px;
+  max-width: 400px;
 }
 
 .right-column {
   flex: 1;
-  max-width: 650px;
+  max-width: 550px;
 }
 
 .container {
@@ -172,6 +172,27 @@ body {
 .input-grid input:hover:not(:focus) {
   border-color: #b8c8d9;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Birthday validation styles */
+.input-grid input#inputBirth.valid {
+  border-color: #48bb78;
+  background-color: #f0fff4;
+}
+
+.input-grid input#inputBirth.valid:focus {
+  border-color: #48bb78;
+  box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-grid input#inputBirth.invalid {
+  border-color: #f56565;
+  background-color: #fff5f5;
+}
+
+.input-grid input#inputBirth.invalid:focus {
+  border-color: #f56565;
+  box-shadow: 0 0 0 3px rgba(245, 101, 101, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .input-grid select {
@@ -309,7 +330,7 @@ body {
   grid-template-columns: 0.5fr 0.5fr 5.2fr 1fr 2fr;
   gap: 8px 12px;
   align-items: center;
-  max-height: 2500px;
+  /* max-height: 3000px; */
   overflow-y: auto;
   padding: 10px;
 }
@@ -415,6 +436,33 @@ button.mobile-button:active {
   background: linear-gradient(135deg, #1a5f7a 0%, #154d66 100%);
   transform: translateY(0);
   box-shadow: 0 6px 24px rgba(46, 157, 206, 0.3);
+}
+
+/* Disabled button styles */
+button#launchSimulation:disabled,
+button#launchSimulation-mobile:disabled,
+button.mobile-button:disabled,
+button#launchSimulation.disabled-button,
+button#launchSimulation-mobile.disabled-button,
+button.mobile-button.disabled-button {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  color: #a0aec0;
+  cursor: not-allowed;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: none;
+  opacity: 0.6;
+}
+
+button#launchSimulation:disabled:hover,
+button#launchSimulation-mobile:disabled:hover,
+button.mobile-button:disabled:hover,
+button#launchSimulation.disabled-button:hover,
+button#launchSimulation-mobile.disabled-button:hover,
+button.mobile-button.disabled-button:hover {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: none;
+  cursor: not-allowed;
 }
 
 .results-section {
@@ -753,7 +801,7 @@ label {
 /* Summary Table Styles */
 .summary-table {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2.2fr 1fr 1fr;
   gap: 8px 12px;
   align-items: center;
   padding: 10px;

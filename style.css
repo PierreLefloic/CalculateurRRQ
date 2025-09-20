@@ -1194,11 +1194,24 @@ label {
     padding: 0 10px;
     max-width: none;
     box-sizing: border-box;
+    background: none !important;
   }
   
   .results-container h2 {
     font-size: 1.6em;
     margin-bottom: 20px;
+  }
+  
+  /* Remove all backgrounds from results elements on mobile */
+  .results-wrapper,
+  #simulation-results,
+  #summary-results,
+  .results-table,
+  .prestation-header,
+  .results-header,
+  .results-cell {
+    background: none !important;
+    background-color: transparent !important;
   }
   
   #simulation-results,

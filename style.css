@@ -527,12 +527,12 @@ button.mobile-button.disabled-button:hover {
 
 .results-table {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
-  gap: 8px 12px;
+  grid-template-columns: 0.4fr 0.4fr 0.4fr 0.8fr 0.8fr 0.8fr;
+  gap: 6px 8px;
   align-items: center;
   /* max-height: 1500px; */
   padding: 10px;
-  min-width: 800px;
+  min-width: 400px;
   position: relative;
   overflow: visible;
 }
@@ -1194,9 +1194,9 @@ label {
   
   /* Results table adjustments */
   .results-table {
-    grid-template-columns: 0.5fr 0.5fr 0.8fr 1fr 1fr 1fr;
-    gap: 3px 4px;
-    padding: 4px;
+    grid-template-columns: 0.3fr 0.3fr 0.5fr 0.6fr 0.6fr 0.6fr;
+    gap: 2px 3px;
+    padding: 2px;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
@@ -1205,17 +1205,18 @@ label {
   
   .results-cell,
   .results-header {
-    padding: 6px 4px;
-    font-size: 0.8em;
+    padding: 4px 2px;
+    font-size: 0.7em;
+    line-height: 1.2;
   }
   
   .prestation-header {
-    padding: 8px;
-    font-size: 0.9em;
+    padding: 6px 4px;
+    font-size: 0.75em;
   }
   
   .results-header small {
-    font-size: 0.7em;
+    font-size: 0.9em;
   }
   
   /* Summary table adjustments */
@@ -1353,13 +1354,14 @@ label {
   
   #simulation-results,
   #summary-results {
-    padding: 5px;
+    padding: 3px;
     box-sizing: border-box;
   }
   
   .results-table {
-    grid-template-columns: 0.4fr 0.4fr 0.7fr 0.8fr 0.8fr 0.8fr;
-    gap: 3px 4px;
+    grid-template-columns: 0.25fr 0.25fr 0.4fr 0.5fr 0.5fr 0.5fr;
+    gap: 1px 2px;
+    padding: 1px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -1367,8 +1369,18 @@ label {
   
   .results-cell,
   .results-header {
+    padding: 3px 1px;
+    font-size: 0.65em;
+    line-height: 1.1;
+  }
+  
+  .prestation-header {
     padding: 4px 2px;
-    font-size: 0.75em;
+    font-size: 0.7em;
+  }
+  
+  .results-header small {
+    font-size: 0.8em;
   }
   
   .summary-table {

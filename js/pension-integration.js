@@ -145,12 +145,15 @@ class PensionSimulation {
         // Basic personal information
         const birthDate = document.getElementById('inputBirth').value;
         if (birthDate) {
-            const date = new Date(birthDate);
-            userInput.birth_date = [
-                date.getFullYear(),
-                date.getMonth() + 1, // JavaScript months are 0-based
-                date.getDate()
-            ];
+            // Parse manually to avoid timezone issues (like in form-management.js)
+            const parts = birthDate.split('-');
+            if (parts.length === 3) {
+                userInput.birth_date = [
+                    parseInt(parts[0]),  // year
+                    parseInt(parts[1]),  // month
+                    parseInt(parts[2])   // day
+                ];
+            }
         }
         
         userInput.current_year = parseInt(document.getElementById('inputCurrentYear').value) || 2025;
@@ -170,14 +173,18 @@ class PensionSimulation {
         // Salary data - always collect from computed values for consistency
         userInput.salary = [];
         
-        // Check if birth month is December to determine starting age
+        // Check if birth month is December or January 1st to determine starting age
         const birthDateInput = document.getElementById('inputBirth').value;
         let startAge = 17;
         if (birthDateInput) {
-            const birth = new Date(birthDateInput);
-            const birthMonth = birth.getMonth() + 1; // JavaScript months are 0-based
-            if (birthMonth === 12) {
-                startAge = 18; // Skip age 17 if born in December (grayed out row)
+            // Parse manually to avoid timezone issues
+            const parts = birthDateInput.split('-');
+            if (parts.length === 3) {
+                const birthMonth = parseInt(parts[1]);
+                const birthDay = parseInt(parts[2]);
+                if (birthMonth === 12 || (birthMonth === 1 && birthDay === 1)) {
+                    startAge = 18; // Skip age 17 if born in December or January 1st (grayed out row)
+                }
             }
         }
         

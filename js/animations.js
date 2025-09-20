@@ -503,9 +503,9 @@ function setupBackToTop() {
   }
 }
 
-// Add global escape key handler to unfocus elements
+// Add global escape and enter key handlers to unfocus elements
 document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
+  if (event.key === 'Escape' || event.key === 'Enter') {
     // Remove focus from currently focused element
     if (document.activeElement && document.activeElement !== document.body) {
       document.activeElement.blur();
@@ -538,5 +538,16 @@ document.addEventListener('keydown', function(event) {
       }
       // If no valid target, do nothing (stay in current field without changing value)
     }
+  }
+});
+
+// Add auto-blur functionality for dropdown menus when selection changes
+document.addEventListener('change', function(event) {
+  // Check if the changed element is a select dropdown
+  if (event.target && event.target.tagName === 'SELECT') {
+    // Blur the select element after a short delay to allow the change to process
+    setTimeout(function() {
+      event.target.blur();
+    }, 50);
   }
 });

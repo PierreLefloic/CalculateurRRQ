@@ -221,11 +221,8 @@ class IntegratedCalculator {
             });
         }
 
-        // Age expectancy validation
+        // Age expectancy - trigger calculation on change
         if (this.elements.ageExpInput) {
-            this.elements.ageExpInput.addEventListener('blur', () => {
-                this.validateAgeExpectancy();
-            });
             this.elements.ageExpInput.addEventListener('change', () => {
                 this.calculateAll();
             });
@@ -428,21 +425,6 @@ class IntegratedCalculator {
             this.elements.yearInput.value = currentYear;
         } else {
             this.elements.yearInput.setCustomValidity('');
-        }
-    }
-
-    validateAgeExpectancy() {
-        if (!this.elements.ageExpInput) return;
-        
-        const value = parseInt(this.elements.ageExpInput.value);
-        const defaultValue = 85;
-        
-        if (!Number.isInteger(Number(this.elements.ageExpInput.value)) || value < 60 || value > 120) {
-            this.elements.ageExpInput.setCustomValidity(translations[currentLanguage].ageValidation);
-            this.elements.ageExpInput.reportValidity();
-            this.elements.ageExpInput.value = defaultValue;
-        } else {
-            this.elements.ageExpInput.setCustomValidity('');
         }
     }
 

@@ -315,6 +315,10 @@ class Cotisation {
         if (this.userObj.birth_date[1] === 12) {
             this.ages = Array.from({length: 55}, (_, i) => i + 18);
             this.years = Array.from({length: 55}, (_, i) => this.userObj.birth_date[0] + 17 + 2 + i);
+        } else if (this.userObj.birth_date[1] === 1 && this.userObj.birth_date[2] === 1) {
+            // January 1st births: ages start from 18 but years follow the normal pattern
+            this.ages = Array.from({length: 55}, (_, i) => i + 18);
+            this.years = Array.from({length: 55}, (_, i) => this.userObj.birth_date[0] + 17 + 1 + i);
         } else {
             this.ages = Array.from({length: 55}, (_, i) => i + 17);
             this.years = Array.from({length: 55}, (_, i) => this.userObj.birth_date[0] + 17 + 1 + i);
@@ -339,6 +343,7 @@ class Cotisation {
 
         // Convert to objects for easier access
         for (let i = 0; i < this.years.length; i++) {
+            this.ages[this.years[i]] = this.ages[i];
             this.effectif[this.years[i]] = effectif[i];
             this.maximum[this.years[i]] = maximum[i];
             this.base[this.years[i]] = base[i];
@@ -348,11 +353,55 @@ class Cotisation {
     }
 
     save() {
-        // For web implementation, this would save to local storage or send to server
+        // Print cotisation data to console in table format
+        console.log('\n=== COTISATION DATA ===');
+        
+        // Create formatted table
+        const headers = ['Year', 'Effectif', 'Maximum', 'Base', 'V1', 'V2'];
+        const colWidths = [6, 10, 10, 10, 8, 8];
+        
+        // Print header
+        let headerRow = '';
+        headers.forEach((header, index) => {
+            headerRow += header.padEnd(colWidths[index]) + ' | ';
+        });
+        console.log(headerRow);
+        
+        // Print separator line
+        let separator = '';
+        colWidths.forEach(width => {
+            separator += '-'.repeat(width) + '-+-';
+        });
+        console.log(separator.slice(0, -1)); // Remove last '+'
+        
+        // Sort years for consistent output
+        const sortedYears = Object.keys(this.effectif).sort((a, b) => parseInt(a) - parseInt(b));
+        
+        // Print data rows
+        sortedYears.forEach(year => {
+            const row = [
+                year,
+                this.effectif[year].toFixed(2),
+                this.maximum[year].toFixed(2),
+                this.base[year].toFixed(2),
+                this.V1[year].toFixed(2),
+                this.V2[year].toFixed(2)
+            ];
+            
+            let dataRow = '';
+            row.forEach((value, index) => {
+                dataRow += value.toString().padEnd(colWidths[index]) + ' | ';
+            });
+            console.log(dataRow);
+        });
+        
+        console.log('=== END COTISATION DATA ===\n');
+        
+        // Also return data array for compatibility
         const data = [];
         data.push(["Year", "Effectif", "Maximum", "Base", "V1", "V2"]);
         
-        for (const year of Object.keys(this.effectif)) {
+        for (const year of sortedYears) {
             data.push([
                 year,
                 this.effectif[year].toFixed(2),
@@ -825,12 +874,18 @@ function tabulateDifferenceInPension(userObj, mgaObj, table) {
 }
 
 function tabulateTri(userObj, mgaObj, diffTable) {
-    const ages = userObj.birth_date[1] === 12 ? 
-        Array.from({length: 93}, (_, i) => i + 18) : 
-        Array.from({length: 93}, (_, i) => i + 17);
+    let ages;
+    if (userObj.birth_date[1] === 12 || (userObj.birth_date[1] === 1 && userObj.birth_date[2] === 1)) {
+        // December births or January 1st births: start at age 18
+        ages = Array.from({length: 93}, (_, i) => i + 18);
+    } else {
+        // All other births: start at age 17
+        ages = Array.from({length: 93}, (_, i) => i + 17);
+    }
 
     const cot = new Cotisation(userObj, mgaObj);
     cot.calculateCotisation();
+    // cot.save();
 
     const triTable = Array(93).fill().map(() => Array(55).fill(0));
     const years = cot.years;
@@ -875,7 +930,45 @@ function tabulateTri(userObj, mgaObj, diffTable) {
         tri[years[j]] = irr(cashflows);
     }
 
+    // Optional: Print triTable to console or save to file
+    // if (typeof console !== 'undefined') {
+    //     printTriTable(triTable, ages, years);
+    // }
+
     return [triTable, tri];
+}
+
+// Function to print triTable in a readable format
+function printTriTable(triTable, ages, years, saveToFile = false) {
+    const output = [];
+    
+    // Header row
+    const header = ['Age/Year', ...years.slice(0, 20)]; // Show first 20 years for readability
+    output.push(header.join('\t'));
+    
+    // Data rows
+    for (let i = 0; i < Math.min(20, triTable.length); i++) { // Show first 20 ages for readability
+        const row = [ages[i], ...triTable[i].slice(0, 20).map(val => val.toFixed(2))];
+        output.push(row.join('\t'));
+    }
+    
+    const tableString = output.join('\n');
+    
+    if (saveToFile && typeof require !== 'undefined') {
+        // Node.js environment - save to file
+        const fs = require('fs');
+        const path = require('path');
+        const filename = path.join(__dirname, '..', 'triTable_output.txt');
+        fs.writeFileSync(filename, tableString);
+        console.log(`TRI Table saved to: ${filename}`);
+    } else {
+        // Browser environment or console output
+        console.log('\n=== TRI TABLE (First 20x20) ===');
+        console.log(tableString);
+        console.log('=== END TRI TABLE ===\n');
+    }
+    
+    return tableString;
 }
 
 function results(userObj, mgaObj) {
@@ -907,7 +1000,7 @@ function results(userObj, mgaObj) {
 
     // Calculate detailed table
     const startYear = Math.max(2025, cot.years[0]);
-    const startAge = startYear - userObj.birth_date[0] - 1;
+    const startAge = cot.ages[startYear]; //startYear - userObj.birth_date[0] - 1;
     const yearsToRetirement = Math.max(0, userObj.ret_age - startAge);
 
     const years = Array.from({length: yearsToRetirement + 1}, (_, i) => startYear + i);
@@ -983,7 +1076,7 @@ function results(userObj, mgaObj) {
             tab1_42: tab1_42.toFixed(2)
         },
         detailTable: tab2Data,
-        cotisationData: cot.save(),
+        // cotisationData: cot.save(),
         pensionTable: penTable,
         triTable: triTable,
         tri: tri,
@@ -1001,6 +1094,7 @@ if (typeof module !== 'undefined' && module.exports) {
         tabulatePensionOverYears,
         tabulateDifferenceInPension,
         tabulateTri,
+        printTriTable,
         results,
         irr
     };
@@ -1014,40 +1108,8 @@ if (typeof module !== 'undefined' && module.exports) {
         tabulatePensionOverYears,
         tabulateDifferenceInPension,
         tabulateTri,
+        printTriTable,
         results,
         irr
     };
 }
-
-// Example usage for web implementation:
-/*
-// Initialize the calculator
-async function runCalculation() {
-    const user = new UserInput();
-    const mga = new MGAData(user.salary_increase);
-
-    // Wait for MGA data to load
-    while (!mga.isLoaded) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-    }
-    
-    // Calculate salary based on MGA data
-    user.calculateSalary(mga);
-    
-    // Run the complete calculation
-    const calculationResults = results(user, mga);
-    
-    // Display results on webpage
-    console.log("Summary Results:", calculationResults.summaryResults);
-    console.log("Detail Table:", calculationResults.detailTable);
-    
-    return calculationResults;
-}
-
-// Usage:
-// runCalculation().then(results => {
-//     // Use results to populate HTML elements
-//     document.getElementById('summary-results').innerHTML = 
-//         JSON.stringify(results.summaryResults, null, 2);
-// });
-*/

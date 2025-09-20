@@ -88,16 +88,16 @@ class PensionSimulation {
             return false;
         }
         
-        // Check if birth date is in the future
-        if (birthDate > currentDate) {
-            return false;
-        }
+        // // Check if birth date is in the future
+        // if (birthDate > currentDate) {
+        //     return false;
+        // }
         
         // Use the same validation logic as validateInputs()
         const birthYear = birthDate.getFullYear();
         
         // Must be at least 17 years old
-        if (currentYear - birthYear < 17) {
+        if (birthYear > 2025) {
             return false;
         }
         
@@ -198,14 +198,14 @@ class PensionSimulation {
         console.log('Sample collected salaries (first 10):', userInput.salary.slice(0, 10));
         
         // Apply before/after current year adjustments if in percentage mode
-        const beforeCurrentYear = parseFloat(document.getElementById('BeforeCurrentYear').value) || 100;
-        const afterCurrentYear = parseFloat(document.getElementById('AfterCurrentYear').value) || 100;
+        // const beforeCurrentYear = parseFloat(document.getElementById('BeforeCurrentYear').value) || 100;
+        // const afterCurrentYear = parseFloat(document.getElementById('AfterCurrentYear').value) || 100;
         
-        if (inPercentMode && (beforeCurrentYear !== 100 || afterCurrentYear !== 100)) {
-            // Apply before/after current year adjustments to the computed salaries
-            this.applyCurrentYearAdjustments(userInput, beforeCurrentYear, afterCurrentYear);
-            console.log('Applied current year adjustments - Before:', beforeCurrentYear, '% After:', afterCurrentYear, '%');
-        }
+        // if (inPercentMode && (beforeCurrentYear !== 100 || afterCurrentYear !== 100)) {
+        //     // Apply before/after current year adjustments to the computed salaries
+        //     this.applyCurrentYearAdjustments(userInput, beforeCurrentYear, afterCurrentYear);
+        //     console.log('Applied current year adjustments - Before:', beforeCurrentYear, '% After:', afterCurrentYear, '%');
+        // }
         
         return userInput;
     }
@@ -403,7 +403,7 @@ class PensionSimulation {
             
             const triCell = document.createElement('div');
             triCell.className = 'results-cell';
-            triCell.textContent = `${row.tri.toFixed(2)}%`;
+            triCell.textContent = row.tri === 0 ? '-' : `${row.tri.toFixed(2)}%`;
             
             const contributionCell = document.createElement('div');
             contributionCell.className = 'results-cell';
@@ -464,10 +464,10 @@ class PensionSimulation {
         const birth = new Date(birthDate);
         const birthYear = birth.getFullYear();
         
-        if (currentYear - birthYear < 17) {
-            // alert('Vous devez avoir au moins 17 ans pour utiliser ce simulateur.');
-            return false;
-        }
+        // if (birthYear > 2026) {
+        //     // alert('Vous devez avoir au moins 17 ans pour utiliser ce simulateur.');
+        //     return false;
+        // }
         
         if (currentYear - birthYear > 100) {
             // alert('Veuillez vérifier votre date de naissance.');

@@ -697,6 +697,17 @@ class IntegratedCalculator {
                 const result = (percentages[i] * vlookupResult / 100 * 100 * monthsToWork / 12);
                 return result;
             }
+            // Level 4a3: Special case for January 1st births - prorating happens at age 18 (first active row)
+            else if (ages[i] === 18 && birthdate[1] === 1 && birthdate[2] === 1) {
+                const vlookupResult = mga_lookup_table[years[i]] || 0;
+                const monthFromDate = birthdate[1]; // Month number (1 for January)
+                
+                // For January 1st births, they start contributing in February (month after birth)
+                // So they work 11 months in their first year (February through December)
+                const monthsToWork = Math.max(0, 12 - monthFromDate); // 12 - 1 = 11 months
+                const result = (percentages[i] * vlookupResult / 100 * 100 * monthsToWork / 12);
+                return result;
+            }
             // Level 4b: Input is empty but age is NOT retirement_age-1 or 17
             else {
                 const vlookupResult = mga_lookup_table[years[i]] || 0;

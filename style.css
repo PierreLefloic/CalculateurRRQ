@@ -1168,10 +1168,13 @@ label {
   /* Results section adjustments */
   .results-section {
     padding: 30px 0;
+    width: 100%;
   }
   
   .results-container {
-    padding: 0 15px;
+    padding: 0 10px;
+    max-width: none;
+    box-sizing: border-box;
   }
   
   .results-container h2 {
@@ -1192,9 +1195,12 @@ label {
   /* Results table adjustments */
   .results-table {
     grid-template-columns: 0.5fr 0.5fr 0.8fr 1fr 1fr 1fr;
-    gap: 6px 8px;
-    padding: 8px;
-    min-width: 700px; /* Maintain readability */
+    gap: 3px 4px;
+    padding: 4px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
   }
   
   .results-cell,
@@ -1215,11 +1221,12 @@ label {
   /* Summary table adjustments */
   .summary-table {
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 6px 8px;
-    padding: 8px;
+    gap: 3px 4px;
+    padding: 4px;
     width: 100%;
     max-width: 100%;
-    min-width: 400px;
+    box-sizing: border-box;
+    margin: 0 auto;
   }
   
   .summary-header,
@@ -1346,13 +1353,16 @@ label {
   
   #simulation-results,
   #summary-results {
-    padding: 15px;
+    padding: 5px;
+    box-sizing: border-box;
   }
   
   .results-table {
     grid-template-columns: 0.4fr 0.4fr 0.7fr 0.8fr 0.8fr 0.8fr;
-    gap: 4px 6px;
-    min-width: 600px;
+    gap: 3px 4px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .results-cell,
@@ -1362,7 +1372,10 @@ label {
   }
   
   .summary-table {
-    min-width: 350px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
   }
   
   .custom-tooltip {

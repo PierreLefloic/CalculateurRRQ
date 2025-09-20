@@ -621,8 +621,9 @@ class IntegratedCalculator {
         const inputs = [];
         for (let age = age_start; age <= 72; age++) {
             const input = document.getElementById(`salary_${age}`);
-            if (input && input.value && parseFloat(input.value) > 0) {
-                inputs.push(parseFloat(input.value));
+            if (input && input.value !== '' && input.value !== null && input.value !== undefined) {
+                const value = parseFloat(input.value);
+                inputs.push(isNaN(value) ? null : value); // Allow 0 but reject NaN
             } else {
                 inputs.push(null);
             }

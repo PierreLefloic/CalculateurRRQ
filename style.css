@@ -530,7 +530,7 @@ button.mobile-button.disabled-button:hover {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
   gap: 8px 12px;
   align-items: center;
-  max-height: 1500px;
+  /* max-height: 1500px; */
   padding: 10px;
   min-width: 800px;
   position: relative;

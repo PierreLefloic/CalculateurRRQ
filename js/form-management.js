@@ -322,15 +322,23 @@ class IntegratedCalculator {
                 const birthMonth = parseInt(dateParts[1]);
                 const birthDay = parseInt(dateParts[2]);
                 
+                // Check if birth is January 1st (month=1, day=1) - this shifts years by 1
+                const isJanuary1st = (birthMonth === 1 && birthDay === 1);
+                
                 // Update years for ages 17 to 72
                 for (let age = 17; age <= 72; age++) {
                     const yearElement = document.getElementById(`year_${age}`);
                     if (yearElement) {
-                        yearElement.textContent = birthYear + age + 1;
+                        if (isJanuary1st) {
+                            // Shift years by 1: display year+1 for January 1st births
+                            yearElement.textContent = birthYear + age + 1 - 1;
+                        } else {
+                            yearElement.textContent = birthYear + age + 1;
+                        }
                     }
                 }
                 
-                // Handle graying out for age 17 if birth month is December (12)
+                // Handle graying out for age 17 if birth month is December (12) OR January 1st
                 const age17Elements = [
                     document.getElementById('age_17'),
                     document.getElementById('year_17'),
@@ -339,7 +347,7 @@ class IntegratedCalculator {
                     document.getElementById('computed_salary_17')
                 ];
                 
-                if (birthMonth === 12) {
+                if (birthMonth === 12 || isJanuary1st) {
                     // Gray out age 17 row and disable input
                     age17Elements.forEach(element => {
                         if (element) {
@@ -616,7 +624,12 @@ class IntegratedCalculator {
 
     collectSalaryInputs() {
         const userConfig = this.getConfigFromHTML();
-        const age_start = userConfig.birthdate[1] !== 12 ? 17 : 18;
+        const birthMonth = userConfig.birthdate[1];
+        const birthDay = userConfig.birthdate[2];
+        
+        // Start at age 18 if born in December OR on January 1st, otherwise start at age 17
+        const isJanuary1st = (birthMonth === 1 && birthDay === 1);
+        const age_start = (birthMonth === 12 || isJanuary1st) ? 18 : 17;
         
         const inputs = [];
         for (let age = age_start; age <= 72; age++) {
@@ -716,13 +729,30 @@ class IntegratedCalculator {
         const salaryInputs = this.collectSalaryInputs();
         
         // Calculate age and year ranges
-        const age_start = userConfig.birthdate[1] !== 12 ? 17 : 18;
+        const birthMonth = userConfig.birthdate[1];
+        const birthDay = userConfig.birthdate[2];
+        
+        // Start at age 18 if born in December OR on January 1st, otherwise start at age 17
+        const isJanuary1st = (birthMonth === 1 && birthDay === 1);
+        const age_start = (birthMonth === 12 || isJanuary1st) ? 18 : 17;
+        
         const ages = [];
         const years = [];
         
+        // Use the actual displayed years from the DOM instead of calculating them
+        // This ensures we use the shifted years for January 1st births
         for (let age = age_start; age <= 72; age++) {
             ages.push(age);
-            years.push(userConfig.birthdate[0] + age + 1);
+            
+            // Get the year from the DOM element (which has the correct shift applied)
+            const yearElement = document.getElementById(`year_${age}`);
+            if (yearElement) {
+                const displayedYear = parseInt(yearElement.textContent);
+                years.push(displayedYear);
+            } else {
+                // Fallback to calculated year if DOM element not found
+                years.push(userConfig.birthdate[0] + age + 1);
+            }
         }
         
         // Calculate percentages based on year comparison
@@ -754,7 +784,12 @@ class IntegratedCalculator {
 
     updateResults(results) {
         const userConfig = this.getConfigFromHTML();
-        const age_start = userConfig.birthdate[1] !== 12 ? 17 : 18;
+        const birthMonth = userConfig.birthdate[1];
+        const birthDay = userConfig.birthdate[2];
+        
+        // Start at age 18 if born in December OR on January 1st, otherwise start at age 17
+        const isJanuary1st = (birthMonth === 1 && birthDay === 1);
+        const age_start = (birthMonth === 12 || isJanuary1st) ? 18 : 17;
         
         // Clear all results first
         for (let age = 17; age <= 72; age++) {

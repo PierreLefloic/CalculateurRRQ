@@ -413,19 +413,20 @@ function setupTableHighlighting() {
       const cellRow = Math.floor(relIdx / totalColumns);
       const cellCol = relIdx % totalColumns;
       
-      // Highlight current row (but skip if hovering over header)
-      if (cellRow === currentRow && !isHeaderRow) {
-        allCells[i].classList.add('highlight-row');
-      }
+      // Check if this is the intersection (hovered cell)
+      const isIntersection = cellRow === currentRow && cellCol === currentCol;
       
-      // Highlight current column (always show column highlight)
-      if (cellCol === currentCol) {
-        allCells[i].classList.add('highlight-col');
-      }
-      
-      // Highlight intersection (current cell)
-      if (cellRow === currentRow && cellCol === currentCol) {
+      if (isIntersection) {
+        // Only add intersection class for the hovered cell
         allCells[i].classList.add('highlight-intersection');
+      } else {
+        // Add row/column highlights for other cells
+        if (cellRow === currentRow && !isHeaderRow) {
+          allCells[i].classList.add('highlight-row');
+        }
+        if (cellCol === currentCol) {
+          allCells[i].classList.add('highlight-col');
+        }
       }
     }
     

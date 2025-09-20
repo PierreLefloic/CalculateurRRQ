@@ -559,7 +559,6 @@ button.mobile-button.disabled-button:hover {
   padding: 4px 8px;
   text-align: center;
   font-size: 0.9em;
-  transition: background-color 0.2s ease;
   cursor: pointer;
 }
 
@@ -585,7 +584,7 @@ button.mobile-button.disabled-button:hover {
   bottom: -4px;
   left: -6px;
   right: -6px;
-  background-color: rgba(46, 157, 206, 0.2);
+  background-color: #d6ebf5;
   z-index: -1;
   pointer-events: none;
 }
@@ -601,16 +600,36 @@ button.mobile-button.disabled-button:hover {
   bottom: -4px;
   left: -6px;
   right: -6px;
-  background-color: rgba(46, 157, 206, 0.15);
+  background-color: #d6ebf5;
   z-index: -1;
   pointer-events: none;
 }
 
-/* .results-table .highlight-intersection {
-  background-color: rgba(46, 157, 206, 0.3) !important;
+/* Intersection highlighting - hover cell (takes priority) */
+.results-table .highlight-intersection {
   position: relative;
-  z-index: 1;
-} */
+  z-index: 10;
+  transition: none !important;
+}
+
+.results-table .highlight-intersection::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -6px;
+  right: -6px;
+  background-color: #9ac9e3;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Hide row/col backgrounds when intersection is active */
+.results-table .highlight-intersection::after {
+  display: none;
+}
+
+
 
 label {
   display: block;

@@ -1223,6 +1223,7 @@ label {
     margin: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    box-shadow: none !important;
   }
   
   /* Results table adjustments */
@@ -1389,6 +1390,20 @@ label {
   #summary-results {
     padding: 3px;
     box-sizing: border-box;
+    background: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  /* Remove all backgrounds from results elements on small mobile */
+  .results-wrapper,
+  .results-table,
+  .prestation-header,
+  .results-header,
+  .results-cell {
+    background: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
   }
   
   .results-table {

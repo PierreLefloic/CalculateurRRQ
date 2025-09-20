@@ -644,6 +644,7 @@ label {
 /* Results wrapper for positioning overlay */
 .results-wrapper {
   position: relative;
+  /* padding-bottom: 100px; */
 }
 
 /* Loading overlay */
@@ -1215,6 +1216,11 @@ label {
     box-shadow: none !important;
   }
   
+  /* Extra padding for mobile animation space */
+  .results-wrapper {
+    padding-bottom: 20px !important;
+  }
+  
   #simulation-results,
   #summary-results {
     padding: 20px;
@@ -1404,6 +1410,11 @@ label {
     background: none !important;
     background-color: transparent !important;
     box-shadow: none !important;
+  }
+  
+  /* Extra padding for small mobile animation space */
+  .results-wrapper {
+    padding-bottom: 20px !important;
   }
   
   .results-table {

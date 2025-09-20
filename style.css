@@ -1212,6 +1212,7 @@ label {
   .results-cell {
     background: none !important;
     background-color: transparent !important;
+    box-shadow: none !important;
   }
   
   #simulation-results,

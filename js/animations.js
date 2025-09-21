@@ -393,9 +393,9 @@ function setupTableHighlighting() {
     
     // If we're in the spanning header area, use different logic
     if (cellIndex < dataStartIndex) {
-      // Just highlight the current cell for spanning headers
+      // Just highlight the current cell for spanning headers, but no intersection highlight
       clearHighlights();
-      allCells[cellIndex].classList.add('highlight-intersection');
+      // Don't add any highlighting for the "Prestation annuelle" row
       return;
     }
     
@@ -403,7 +403,7 @@ function setupTableHighlighting() {
     const relativeIndex = cellIndex - dataStartIndex;
     const currentRow = Math.floor(relativeIndex / totalColumns);
     const currentCol = relativeIndex % totalColumns;
-    const isHeaderRow = currentRow === 0; // Check if we're on the header row
+    const isHeaderRow = currentRow === 0; // Check if we're on the column headers row
     
     clearHighlights();
     
@@ -416,8 +416,8 @@ function setupTableHighlighting() {
       // Check if this is the intersection (hovered cell)
       const isIntersection = cellRow === currentRow && cellCol === currentCol;
       
-      if (isIntersection) {
-        // Only add intersection class for the hovered cell
+      if (isIntersection && !isHeaderRow) {
+        // Only add intersection class for data cells, not for column headers
         allCells[i].classList.add('highlight-intersection');
       } else {
         // Add row/column highlights for other cells

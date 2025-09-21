@@ -28,9 +28,9 @@
       <div class="container">
         <!-- <h2>Simulation Tool</h2> -->
         <div class="input-grid">
-          <label for="inputBirth" data-tooltip="Entrez votre date de naissance pour calculer votre âge et les années de cotisation" data-i18n="birthDate" data-i18n-tooltip="tooltipBirthDate">Date de naissance :</label>
+          <label for="inputBirth" data-i18n="birthDate" data-i18n-tooltip="tooltipBirthDate">Date de naissance :</label>
           <input id="inputBirth" type="date" min="1900-01-01" max="9999-12-31">
-          <label for="inputCurrentYear" data-tooltip="Année de référence pour les calculs de la simulation" data-i18n="currentYear" data-i18n-tooltip="tooltipCurrentYear">Année courante :</label>
+          <label for="inputCurrentYear" data-i18n="currentYear" data-i18n-tooltip="tooltipCurrentYear">Année courante :</label>
           <select id="inputCurrentYear">
             <option value="2020">2020</option>
             <option value="2021">2021</option>
@@ -51,11 +51,11 @@
       <div class="container">
         <h2 data-i18n="salary">Salaire</h2>
         <div class="input-grid">
-          <label for="BeforeCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 100%)" data-i18n="beforeCurrentYear" data-i18n-tooltip="tooltipBeforeCurrentYear">Avant année courante (%) :</label>
+          <label for="BeforeCurrentYear" data-i18n="beforeCurrentYear" data-i18n-tooltip="tooltipBeforeCurrentYear">Avant année courante (%) :</label>
           <input id="BeforeCurrentYear" type="number" value="100" min="0" max="200">
-          <label for="AfterCurrentYear" data-tooltip="Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 100%)" data-i18n="afterCurrentYear" data-i18n-tooltip="tooltipAfterCurrentYear">Après année courante (%) :</label>
+          <label for="AfterCurrentYear" data-i18n="afterCurrentYear" data-i18n-tooltip="tooltipAfterCurrentYear">Après année courante (%) :</label>
           <input id="AfterCurrentYear" type="number" value="100" min="0" max="200">
-          <label for="InPercent" data-tooltip="Cochez cette case si vous voulez saisir les salaires en pourcentage du MGA plutôt qu'en montants absolus" data-i18n="inPercent" data-i18n-tooltip="tooltipInPercent">Saisie en pourcentage :</label>
+          <label for="InPercent" data-i18n="inPercent" data-i18n-tooltip="tooltipInPercent">Saisie en pourcentage :</label>
           <div class="checkbox-container">
             <input id="InPercent" type="checkbox">
             <label for="InPercent" class="custom-checkbox">
@@ -70,7 +70,7 @@
       <div class="container">
         <h2 data-i18n="rrqParams">Paramètres RRQ</h2>
         <div class="input-grid">
-          <label for="RetAge" data-tooltip="Âge auquel vous prévoyez arrêter de travailler et de cotiser au RRQ" data-i18n="retirementAge" data-i18n-tooltip="tooltipRetirementAge">Âge de retraite :</label>
+          <label for="RetAge" data-i18n="retirementAge" data-i18n-tooltip="tooltipRetirementAge">Âge de retraite :</label>
           <select id="RetAge">
             <option value="50">50</option>
             <option value="51">51</option>
@@ -96,7 +96,7 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="BenAge" data-tooltip="Âge auquel vous prévoyez commencer à recevoir vos prestations du RRQ" data-i18n="benefitAge" data-i18n-tooltip="tooltipBenefitAge">Âge de la demande de prestation&nbsp:</label>
+          <label for="BenAge" data-i18n="benefitAge" data-i18n-tooltip="tooltipBenefitAge">Âge de la demande de prestation&nbsp:</label>
           <select id="BenAge">
             <option value="60">60</option>
             <option value="61">61</option>
@@ -112,7 +112,7 @@
             <option value="71">71</option>
             <option value="72">72</option>
           </select>
-          <label for="AgeExp" data-tooltip="Âge jusqu'auquel vous prévoyez recevoir les prestations du RRQ" data-i18n="lifeExpectancy" data-i18n-tooltip="tooltipLifeExpectancy">Espérance de vie :</label>
+          <label for="AgeExp" data-i18n="lifeExpectancy" data-i18n-tooltip="tooltipLifeExpectancy">Espérance de vie :</label>
           <select id="AgeExp">
             <option value="70">70</option>
             <option value="71">71</option>
@@ -156,7 +156,7 @@
             <option value="109">109</option>
             <option value="110">110</option>
           </select>
-          <label for="SelfEmployed" data-tooltip="Cochez cette case si vous êtes travailleur autonome (cotisations différentes)" data-i18n="selfEmployed" data-i18n-tooltip="tooltipSelfEmployed">Travailleur autonome :</label>
+          <label for="SelfEmployed" data-i18n="selfEmployed" data-i18n-tooltip="tooltipSelfEmployed">Travailleur autonome :</label>
           <div class="checkbox-container">
             <input id="SelfEmployed" type="checkbox">
             <label for="SelfEmployed" class="custom-checkbox">
@@ -170,9 +170,9 @@
       <div class="container">
         <h2 data-i18n="economicParams">Paramètres économiques</h2>
         <div class="input-grid">
-          <label for="InflationRate" data-tooltip="Taux d'inflation annuel prévu pour ajuster les montants futurs" data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
+          <label for="InflationRate" data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
           <input id="InflationRate" type="number" value="2.1" min="0" max="100" step="0.1">
-          <label for="SalaryIncrease" data-tooltip="Taux de croissance annuel prévu des salaires au-dessus de l'inflation" data-i18n="salaryIncrease" data-i18n-tooltip="tooltipSalaryIncrease">Croissance des salaires (%) :</label>
+          <label for="SalaryIncrease" data-i18n="salaryIncrease" data-i18n-tooltip="tooltipSalaryIncrease">Croissance des salaires (%) :</label>
           <input id="SalaryIncrease" type="number" value="3.1" min="0" max="100" step="0.1">
         </div>
       </div>
@@ -266,23 +266,23 @@
         <div class="summary-table">
           <!-- Column headers spanning -->
           <div class="results-header"></div>
-          <div class="results-header summary-header" title="Montants en dollars constants de 2025" data-i18n="dollarsOf2025" data-i18n-title="tooltipDollars2025">En dollars de<br>2025</div>
-          <div class="results-header summary-header" title="Montants en dollars constants de 2030" data-i18n="dollarsOf2030" data-i18n-title="tooltipDollars2030">En dollars de<br>2030</div>
+          <div class="results-header summary-header" data-i18n="dollarsOf2025" data-i18n-tooltip="tooltipDollars2025">En dollars de<br>2025</div>
+          <div class="results-header summary-header" data-i18n="dollarsOf2030" data-i18n-tooltip="tooltipDollars2030">En dollars de<br>2030</div>
           
           <!-- Data Rows -->
-          <div class="results-header summary-label" title="Prestation annuelle totale du Régime de rentes du Québec" data-i18n="annualRRQBenefit" data-i18n-title="tooltipAnnualRRQ">Prestation annuelle du RRQ</div>
+          <div class="results-header summary-label" data-i18n="annualRRQBenefit" data-i18n-tooltip="tooltipAnnualRRQ">Prestation annuelle du RRQ</div>
           <div class="results-cell"></div>
           <div class="results-cell"></div>
           
-          <div class="results-header summary-label" title="Montant de la prestation de base du régime" data-i18n="basicRegime" data-i18n-title="tooltipBasicRegime">Régime de base</div>
+          <div class="results-header summary-label" data-i18n="basicRegime" data-i18n-tooltip="tooltipBasicRegime">Régime de base</div>
           <div class="results-cell"></div>
           <div class="results-cell"></div>
           
-          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 1" data-i18n="supplementaryRegime1" data-i18n-title="tooltipSupp1">Régime supplémentaire - volet 1</div>
+          <div class="results-header summary-label" data-i18n="supplementaryRegime1" data-i18n-tooltip="tooltipSupp1">Régime supplémentaire - volet 1</div>
           <div class="results-cell"></div>
           <div class="results-cell"></div>
           
-          <div class="results-header summary-label" title="Montant du régime supplémentaire - volet 2" data-i18n="supplementaryRegime2" data-i18n-title="tooltipSupp2">Régime supplémentaire - volet 2</div>
+          <div class="results-header summary-label" data-i18n="supplementaryRegime2" data-i18n-tooltip="tooltipSupp2">Régime supplémentaire - volet 2</div>
           <div class="results-cell"></div>
           <div class="results-cell"></div>
         </div>
@@ -304,15 +304,15 @@
           <div class="results-header"></div>
           <div class="results-header"></div>
           <div class="results-header"></div>
-          <div class="results-header prestation-header" title="Montant total des prestations annuelles" data-i18n="annualBenefit" data-i18n-title="tooltipAnnualTotal">Prestation annuelle</div>
+          <div class="results-header prestation-header" data-i18n="annualBenefit" data-i18n-tooltip="tooltipAnnualTotal">Prestation annuelle</div>
           
           <!-- Header Row -->
-          <div class="results-header" title="Âge de la personne pour cette année de calcul" data-i18n="age" data-i18n-title="tooltipAge">Âge</div>
-          <div class="results-header" title="Année civile correspondant à cet âge" data-i18n="year" data-i18n-title="tooltipYear">Année</div>
-          <div class="results-header" title="Taux de rendement interne calculé pour cette année, exprimé en pourcentage" data-i18n="internalReturnRate" data-i18n-title="tooltipRate">Taux de rendement interne</div>
-          <div class="results-header" title="Montant de la cotisation annuelle au RRQ en dollars de l'année courante" data-i18n="annualContribution" data-i18n-title="tooltipContribution">Cotisation annuelle<br><small>En dollars courant</small></div>
-          <div class="results-header" title="Montant accumulé des prestations RRQ en dollars constants de 2025" data-i18n="accumulatedBenefit" data-i18n-title="tooltipAccumulated">Accumulée<br><small>En dollars de 2025</small></div>
-          <div class="results-header" title="Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025" data-i18n="additionalBenefit" data-i18n-title="tooltipAdditional">Additionnelle<br><small>En dollars de 2025</small></div>
+          <div class="results-header" data-i18n="age" data-i18n-tooltip="tooltipAge">Âge</div>
+          <div class="results-header" data-i18n="year" data-i18n-tooltip="tooltipYear">Année</div>
+          <div class="results-header" data-i18n="internalReturnRate" data-i18n-tooltip="tooltipRate">Taux de rendement interne</div>
+          <div class="results-header" data-i18n="annualContribution" data-i18n-tooltip="tooltipContribution">Cotisation annuelle<br><small>En dollars courant</small></div>
+          <div class="results-header" data-i18n="accumulatedBenefit" data-i18n-tooltip="tooltipAccumulated">Accumulée<br><small>En dollars de 2025</small></div>
+          <div class="results-header" data-i18n="additionalBenefit" data-i18n-tooltip="tooltipAdditional">Additionnelle<br><small>En dollars de 2025</small></div>
         </div>
       </div>
     </div>

@@ -268,15 +268,23 @@ function setupTooltips() {
     const rect = element.getBoundingClientRect();
     const tooltipRect = tooltip.getBoundingClientRect();
     
+    // Get the actual tooltip width from CSS instead of hardcoding
+    const tooltipWidth = tooltipRect.width || 280; // fallback to 280 if measurement fails
+    
     // Calculate ideal centered position
-    let idealLeft = rect.left + (rect.width / 2) - (280 / 2);
+    const idealLeft = rect.left + (rect.width / 2) - (tooltipWidth / 2);
     let top = rect.top - tooltipRect.height - 15;
     
-    // Adjust for viewport boundaries
+    // Store the element center position
+    const elementCenter = rect.left + (rect.width / 2);
+    
+    // Use symmetric logic for both left and right sides with actual tooltip width
     let actualLeft = idealLeft;
-    if (actualLeft < 10) actualLeft = 10;
-    if (actualLeft + 280 > window.innerWidth - 10) {
-      actualLeft = window.innerWidth - 290;
+    if (actualLeft < 10) {
+      actualLeft = 10;
+    }
+    if (actualLeft + tooltipWidth > window.innerWidth - 10) {
+      actualLeft = window.innerWidth - tooltipWidth - 10;
     }
     
     // Position below if no space above
@@ -289,13 +297,11 @@ function setupTooltips() {
     tooltip.style.left = actualLeft + 'px';
     tooltip.style.top = top + 'px';
     
-    // Calculate arrow position relative to the element center
-    const elementCenter = rect.left + (rect.width / 2);
-    const tooltipLeft = actualLeft;
-    const arrowLeft = elementCenter - tooltipLeft;
+    // Calculate arrow position relative to element center and final tooltip position
+    const arrowLeft = elementCenter - actualLeft;
     
-    // Clamp arrow position to stay within tooltip bounds (with some margin)
-    const clampedArrowLeft = Math.max(20, Math.min(260, arrowLeft));
+    // Clamp arrow position to stay within tooltip bounds (20px margins from edges)
+    const clampedArrowLeft = Math.max(20, Math.min(tooltipWidth - 20, arrowLeft));
     
     // Update arrow position
     const existingArrow = tooltip.querySelector('.tooltip-arrow');

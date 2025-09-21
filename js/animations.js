@@ -229,20 +229,55 @@ function setupTooltips() {
   tooltip.className = 'custom-tooltip';
   document.body.appendChild(tooltip);
   
+  // Detect if this is primarily a touch device (mobile/tablet)
+  const isPrimaryTouch = (function() {
+    // Check for touch support and small screen size to identify mobile/tablet
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isSmallScreen = window.innerWidth <= 768;
+    return hasTouch && isSmallScreen;
+  })();
+  
   // Add event listeners to all elements with data-tooltip attributes
   const elementsWithTooltips = document.querySelectorAll('.results-header[data-tooltip], label[data-tooltip]');
   
   elementsWithTooltips.forEach(element => {
-    element.addEventListener('mouseenter', function(e) {
-      showTooltip(this, tooltip);
-    });
-    
-    element.addEventListener('mouseleave', function() {
-      hideTooltip(tooltip);
-    });
+    if (isPrimaryTouch) {
+      // Mobile/Tablet: Use tap to toggle tooltips
+      element.addEventListener('touchstart', function(e) {
+        e.preventDefault(); // Prevent default touch behavior
+        
+        if (tooltip.classList.contains('show') && tooltip.currentElement === this) {
+          // If tooltip is already showing for this element, hide it
+          hideTooltip(tooltip);
+        } else {
+          // Show tooltip for this element
+          showTooltip(this, tooltip);
+          tooltip.currentElement = this; // Track which element is showing tooltip
+        }
+      });
+    } else {
+      // Desktop/Laptop: Use hover behavior (including touch-enabled laptops)
+      element.addEventListener('mouseenter', function(e) {
+        showTooltip(this, tooltip);
+      });
+      
+      element.addEventListener('mouseleave', function() {
+        hideTooltip(tooltip);
+      });
+      
+      // Also add touch support for hybrid devices (touch laptops)
+      element.addEventListener('touchstart', function(e) {
+        if (tooltip.classList.contains('show') && tooltip.currentElement === this) {
+          hideTooltip(tooltip);
+        } else {
+          showTooltip(this, tooltip);
+          tooltip.currentElement = this;
+        }
+      });
+    }
   });
   
-  // Also handle elements that get tooltips added dynamically (like results headers with title attributes)
+  // Also handle elements that get tooltips added dynamically
   const headersWithTitles = document.querySelectorAll('.results-header[title]');
   headersWithTitles.forEach(header => {
     // Store the title content and remove the title attribute to prevent default tooltip
@@ -250,13 +285,63 @@ function setupTooltips() {
     header.removeAttribute('title');
     header.setAttribute('data-tooltip', titleContent);
     
-    header.addEventListener('mouseenter', function(e) {
-      showTooltip(this, tooltip);
-    });
-    
-    header.addEventListener('mouseleave', function() {
+    if (isPrimaryTouch) {
+      // Mobile/Tablet: Use tap to toggle tooltips
+      header.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        
+        if (tooltip.classList.contains('show') && tooltip.currentElement === this) {
+          hideTooltip(tooltip);
+        } else {
+          showTooltip(this, tooltip);
+          tooltip.currentElement = this;
+        }
+      });
+    } else {
+      // Desktop/Laptop: Use hover behavior
+      header.addEventListener('mouseenter', function(e) {
+        showTooltip(this, tooltip);
+      });
+      
+      header.addEventListener('mouseleave', function() {
+        hideTooltip(tooltip);
+      });
+      
+      // Also add touch support for hybrid devices
+      header.addEventListener('touchstart', function(e) {
+        if (tooltip.classList.contains('show') && tooltip.currentElement === this) {
+          hideTooltip(tooltip);
+        } else {
+          showTooltip(this, tooltip);
+          tooltip.currentElement = this;
+        }
+      });
+    }
+  });
+  
+  // Hide tooltips when scrolling (for both desktop and mobile)
+  window.addEventListener('scroll', function() {
+    if (tooltip.classList.contains('show')) {
       hideTooltip(tooltip);
-    });
+    }
+  }, { passive: true });
+  
+  // Hide tooltips when tapping elsewhere (for all devices)
+  document.addEventListener('touchstart', function(e) {
+    // Check if the tap is outside any tooltip-enabled element
+    const isTooltipElement = e.target.closest('[data-tooltip]');
+    if (!isTooltipElement && tooltip.classList.contains('show')) {
+      hideTooltip(tooltip);
+    }
+  });
+  
+  // Hide tooltips when clicking elsewhere on desktop
+  document.addEventListener('click', function(e) {
+    // Check if the click is outside any tooltip-enabled element
+    const isTooltipElement = e.target.closest('[data-tooltip]');
+    if (!isTooltipElement && tooltip.classList.contains('show')) {
+      hideTooltip(tooltip);
+    }
   });
   
   function showTooltip(element, tooltip) {
@@ -329,6 +414,7 @@ function setupTooltips() {
   
   function hideTooltip(tooltip) {
     tooltip.classList.remove('show');
+    tooltip.currentElement = null; // Clear the tracked element
   }
 }
 

@@ -25,7 +25,7 @@ const translations = {
     inPercent: "Saisie en pourcentage :",
     rrqParams: "Paramètres RRQ",
     retirementAge: "Âge de retraite :",
-    benefitAge: "Âge de la demande de prestation :",
+    benefitAge: "Âge de la demande de prestation\u00A0:",
     lifeExpectancy: "Espérance de vie :",
     selfEmployed: "Travailleur autonome :",
     economicParams: "Paramètres économiques",

@@ -87,8 +87,8 @@ const translations = {
     // Input field tooltips
     tooltipBirthDate: "Entrez votre date de naissance pour calculer votre âge et les années de cotisation",
     tooltipCurrentYear: "Année de référence pour les calculs de la simulation",
-    tooltipBeforeCurrentYear: "Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 114%)",
-    tooltipAfterCurrentYear: "Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 114%)",
+    tooltipBeforeCurrentYear: "Pourcentage du salaire à utiliser pour les années avant l'année courante (par défaut 100%)",
+    tooltipAfterCurrentYear: "Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 100%)",
     tooltipInPercent: "Cochez cette case si vous voulez saisir les salaires en pourcentage du MGA plutôt qu'en montants absolus",
     tooltipRetirementAge: "Âge auquel vous prévoyez arrêter de travailler et de cotiser au RRQ",
     tooltipBenefitAge: "Âge auquel vous prévoyez commencer à recevoir vos prestations du RRQ",
@@ -195,8 +195,8 @@ const translations = {
     // Input field tooltips
     tooltipBirthDate: "Enter your date of birth to calculate your age and contribution years",
     tooltipCurrentYear: "Reference year for simulation calculations",
-    tooltipBeforeCurrentYear: "Salary percentage to use for years before the current year (default 114%)",
-    tooltipAfterCurrentYear: "Salary percentage to use for years after the current year (default 114%)",
+    tooltipBeforeCurrentYear: "Salary percentage to use for years before the current year (default 100%)",
+    tooltipAfterCurrentYear: "Salary percentage to use for years after the current year (default 100%)",
     tooltipInPercent: "Check this box if you want to enter salaries as percentage of YMPE rather than absolute amounts",
     tooltipRetirementAge: "Age at which you plan to stop working and contributing to QPP",
     tooltipBenefitAge: "Age at which you plan to start receiving your QPP benefits",

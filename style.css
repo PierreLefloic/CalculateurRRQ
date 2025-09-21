@@ -906,8 +906,8 @@ label {
 /* Back to Top Button */
 .back-to-top-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 2vh;
+  right: 2vw;
   width: 56px;
   height: 56px;
   background: linear-gradient(135deg, #2E9DCE 0%, #247ba3 100%);
@@ -1276,18 +1276,7 @@ label {
     font-size: 0.8em;
   }
   
-  /* Back to top button adjustments */
-  .back-to-top-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
-  }
-  
-  .back-to-top-btn svg {
-    width: 20px;
-    height: 20px;
-  }
+  /* Back to top button - viewport units handle responsiveness automatically */
   
   /* Tooltip adjustments */
   .custom-tooltip {

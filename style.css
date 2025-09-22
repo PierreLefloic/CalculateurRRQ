@@ -276,6 +276,11 @@ body {
 .checkbox-container {
   position: relative;
   display: inline-block;
+  /* Prevent text selection on rapid clicks */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -299,6 +304,11 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  /* Prevent text selection on rapid clicks */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .checkbox-container .custom-checkbox:hover {

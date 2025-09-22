@@ -701,8 +701,28 @@ class IntegratedCalculator {
         else {
             if (in_percent === true) {
                 const vlookupResult = mga_lookup_table[years[i]] || 0;
-                const result = inputValue / 100 * vlookupResult;
-                return result;
+                
+                // Check if this is age 17 and needs prorating (first year calculation)
+                if (ages[i] === 17) {
+                    const monthFromDate = birthdate[1]; // Month number
+                    // Pro-rated calculation: months from month AFTER birth month to end of year (December)
+                    const monthsToWork = Math.max(0, 12 - monthFromDate); // Start contributing month after birthday
+                    const result = inputValue / 100 * vlookupResult * monthsToWork / 12;
+                    return result;
+                }
+                // Check if this is age 18 for January 1st births and needs prorating
+                else if (ages[i] === 18 && birthdate[1] === 1 && birthdate[2] === 1) {
+                    const monthFromDate = birthdate[1]; // Month number (1 for January)
+                    // For January 1st births, they start contributing in February (month after birth)
+                    const monthsToWork = Math.max(0, 12 - monthFromDate); // 12 - 1 = 11 months
+                    const result = inputValue / 100 * vlookupResult * monthsToWork / 12;
+                    return result;
+                }
+                // Regular percentage calculation for all other cases
+                else {
+                    const result = inputValue / 100 * vlookupResult;
+                    return result;
+                }
             } else {
                 return inputValue;
             }

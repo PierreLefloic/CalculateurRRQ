@@ -13,6 +13,7 @@ function initializeAnimations() {
   setupTooltips();
   setupTableHighlighting();
   setupBackToTop();
+  setupInstructionsToggle();
 }
 
 /**
@@ -644,3 +645,34 @@ document.addEventListener('change', function(event) {
     }, 50);
   }
 });
+
+/**
+ * Set up instructions toggle functionality
+ */
+function setupInstructionsToggle() {
+  const toggle = document.getElementById('instructionsToggle');
+  const content = document.getElementById('instructionsContent');
+  const arrow = toggle?.querySelector('.toggle-arrow');
+  
+  if (!toggle || !content || !arrow) return;
+  
+  // Set initial state (collapsed)
+  content.classList.remove('expanded');
+  arrow.classList.remove('expanded');
+  
+  toggle.addEventListener('click', function() {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      // Collapse
+      content.classList.remove('expanded');
+      arrow.classList.remove('expanded');
+      toggle.classList.remove('expanded');
+    } else {
+      // Expand
+      content.classList.add('expanded');
+      arrow.classList.add('expanded');
+      toggle.classList.add('expanded');
+    }
+  });
+}

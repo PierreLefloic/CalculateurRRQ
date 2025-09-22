@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="pageTitle">Calculateur RRQ</title>
+  <title data-i18n="pageTitle">Simulateur RRQ</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 </head>
@@ -20,26 +20,39 @@
 
   <div class="header-box">
     <h1 class="title" data-i18n="title">Simulateur de prestation du RRQ</h1>
-    <div class="description" data-i18n="description">
-      <p><strong>Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur ses futures prestations de retraite.</strong></p>
+    <div class="description">
+      <p data-i18n="description"><strong>Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur ses futures prestations de retraite.</strong></p>
       
-      <h3>Mode d'emploi du simulateur</h3>
-      <ol>
-        <li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année de votre relevé RRQ).</li>
-        <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus.</li>
-        <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
-        <li><strong>Vérifier les paramètres économiques</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse.</li>
-        <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>
-      </ol>
-      
-      <h3>Résultats présentés</h3>
-      <p>Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :</p>
-      <ul>
-        <li><strong>Taux de rendement interne (TRI)</strong> : indicateur financier qui mesure la rentabilité d'une série de flux monétaires associés aux cotisations et aux prestations.</li>
-        <li><strong>Cotisation annuelle</strong> : montant versé au Régime de rentes du Québec (RRQ) pour l'année concernée.</li>
-        <li><strong>Prestation annuelle accumulée</strong> : valeur des prestations additionnelles déjà accumulées grâce aux cotisations des années précédentes.</li>
-        <li><strong>Prestation annuelle additionnelle</strong> : montant de prestation qui découle directement de la cotisation versée pour l'année en cours.</li>
-      </ul>
+      <!-- Collapsible Instructions Section -->
+      <div class="instructions-section">
+        <div class="instructions-toggle" id="instructionsToggle">
+          <h3 data-i18n="instructionsTitle">Mode d'emploi du simulateur</h3>
+          <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </div>
+        
+        <div class="instructions-content" id="instructionsContent">
+          <div class="instructions-inner">
+            <ol data-i18n="instructionsList">
+              <li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année de votre relevé RRQ).</li>
+              <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus.</li>
+              <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
+              <li><strong>Vérifier les paramètres économiques</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse.</li>
+              <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>
+            </ol>
+            
+            <h4 data-i18n="resultsTitle">Résultats présentés</h4>
+            <p data-i18n="resultsDescription">Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :</p>
+            <ul data-i18n="resultsList">
+              <li><strong>Taux de rendement interne (TRI)</strong> : indicateur financier qui mesure la rentabilité d'une série de flux monétaires associés aux cotisations et aux prestations.</li>
+              <li><strong>Cotisation annuelle</strong> : montant versé au Régime de rentes du Québec (RRQ) pour l'année concernée.</li>
+              <li><strong>Prestation annuelle accumulée</strong> : valeur des prestations additionnelles déjà accumulées grâce aux cotisations des années précédentes.</li>
+              <li><strong>Prestation annuelle additionnelle</strong> : montant de prestation qui découle directement de la cotisation versée pour l'année en cours.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -330,7 +343,7 @@
           <div class="results-header" data-i18n="age" data-i18n-tooltip="tooltipAge">Âge</div>
           <div class="results-header" data-i18n="year" data-i18n-tooltip="tooltipYear">Année</div>
           <div class="results-header" data-i18n="internalReturnRate" data-i18n-tooltip="tooltipRate">Taux de rendement interne</div>
-          <div class="results-header" data-i18n="annualContribution" data-i18n-tooltip="tooltipContribution">Cotisation annuelle<br><small>En dollars courant</small></div>
+          <div class="results-header" data-i18n="annualContribution" data-i18n-tooltip="tooltipContribution">Cotisation annuelle<br><small>En dollars de 2025</small></div>
           <div class="results-header" data-i18n="accumulatedBenefit" data-i18n-tooltip="tooltipAccumulated">Accumulée<br><small>En dollars de 2025</small></div>
           <div class="results-header" data-i18n="additionalBenefit" data-i18n-tooltip="tooltipAdditional">Additionnelle<br><small>En dollars de 2025</small></div>
         </div>

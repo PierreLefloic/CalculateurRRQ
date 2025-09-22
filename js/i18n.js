@@ -14,7 +14,25 @@ const translations = {
     
     // Header
     title: "Simulateur de prestation du RRQ",
-    description: "Calculez le Taux de Rendement Interne de vos investissements avec notre outil professionnel. Entrez vos données et obtenez une analyse détaillée de vos projets financiers.",
+    description: `<p><strong>Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur ses futures prestations de retraite.</strong></p>
+      
+      <h3>Mode d'emploi du simulateur</h3>
+      <ol>
+        <li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année de votre relevé RRQ).</li>
+        <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus.</li>
+        <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
+        <li><strong>Vérifier les paramètres économiques</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse.</li>
+        <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>
+      </ol>
+      
+      <h3>Résultats présentés</h3>
+      <p>Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :</p>
+      <ul>
+        <li><strong>Taux de rendement interne (TRI)</strong> : indicateur financier qui mesure la rentabilité d'une série de flux monétaires associés aux cotisations et aux prestations.</li>
+        <li><strong>Cotisation annuelle</strong> : montant versé au Régime de rentes du Québec (RRQ) pour l'année concernée.</li>
+        <li><strong>Prestation annuelle accumulée</strong> : valeur des prestations additionnelles déjà accumulées grâce aux cotisations des années précédentes.</li>
+        <li><strong>Prestation annuelle additionnelle</strong> : montant de prestation qui découle directement de la cotisation versée pour l'année en cours.</li>
+      </ul>`,
     
     // Form labels
     birthDate: "Date de naissance :",
@@ -122,7 +140,25 @@ const translations = {
     
     // Header
     title: "QPP Benefit Simulator",
-    description: "Calculate the Internal Rate of Return of your investments with our professional tool. Enter your data and get a detailed analysis of your financial projects.",
+    description: `<p><strong>The purpose of this simulator is to allow users to evaluate the impact of their contributions to the Quebec Pension Plan (QPP) on their future retirement benefits.</strong></p>
+      
+      <h3>How to use the simulator</h3>
+      <ol>
+        <li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year of your QPP statement).</li>
+        <li><strong>Enter your income</strong>: for each year available in your statement, enter your salary (in dollars or as a percentage). You can also use the Salary box to quickly estimate your income.</li>
+        <li><strong>Define your personal parameters</strong>: specify your expected retirement age (complete work stoppage), benefit application age, life expectancy, and status (self-employed or employee).</li>
+        <li><strong>Check economic parameters</strong>: ensure that the economic assumptions match your situation or analysis needs.</li>
+        <li><strong>Run the simulation</strong>: launch the simulation to get your personalized results.</li>
+      </ol>
+      
+      <h3>Results presented</h3>
+      <p>For each contribution year, the simulator displays the following information:</p>
+      <ul>
+        <li><strong>Internal Rate of Return (IRR)</strong>: financial indicator that measures the profitability of a series of cash flows associated with contributions and benefits.</li>
+        <li><strong>Annual contribution</strong>: amount paid to the Quebec Pension Plan (QPP) for the year in question.</li>
+        <li><strong>Accumulated annual benefit</strong>: value of additional benefits already accumulated through contributions from previous years.</li>
+        <li><strong>Additional annual benefit</strong>: benefit amount that results directly from the contribution paid for the current year.</li>
+      </ul>`,
     
     // Form labels
     birthDate: "Date of birth:",

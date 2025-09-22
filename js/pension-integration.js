@@ -344,18 +344,20 @@ class PensionSimulation {
         const currentYear = this.userInput ? this.userInput.current_year : 2025;
         const firstHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2025"]');
         if (firstHeaderElement) {
-            firstHeaderElement.innerHTML = `En dollars de<br>${currentYear}`;
-            // Update custom tooltip
-            firstHeaderElement.setAttribute('data-tooltip', `Montants en dollars constants de ${currentYear}`);
+            const firstHeaderText = t('dollarsOf2025', { year: currentYear });
+            const firstTooltip = t('tooltipDollars2025', { year: currentYear });
+            firstHeaderElement.innerHTML = firstHeaderText;
+            firstHeaderElement.setAttribute('data-tooltip', firstTooltip);
         }
         
         // Update the second header with the actual benefit start year (G1)
         if (this.results.benefitStartYear) {
             const secondHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2030"]');
             if (secondHeaderElement) {
-                secondHeaderElement.innerHTML = `En dollars de<br>${this.results.benefitStartYear}`;
-                // Update custom tooltip
-                secondHeaderElement.setAttribute('data-tooltip', `Montants en dollars constants de ${this.results.benefitStartYear}`);
+                const secondHeaderText = t('dollarsOf2030', { benefitYear: this.results.benefitStartYear });
+                const secondTooltip = t('tooltipDollars2030', { benefitYear: this.results.benefitStartYear });
+                secondHeaderElement.innerHTML = secondHeaderText;
+                secondHeaderElement.setAttribute('data-tooltip', secondTooltip);
             }
         }
         
@@ -440,19 +442,33 @@ class PensionSimulation {
     updateDetailedResultsHeaders() {
         const currentYear = this.userInput ? this.userInput.current_year : 2025;
         const benefitStartYear = this.results.benefitStartYear;
+        const currentLanguage = getCurrentLanguage();
+        
+        // Update "Cotisation annuelle" header (annual contribution)
+        const contributionHeader = document.querySelector('.results-header[data-i18n="annualContribution"]');
+        if (contributionHeader) {
+            const contributionText = t('annualContribution', { year: currentYear });
+            const contributionTooltip = t('tooltipContribution', { year: currentYear });
+            contributionHeader.innerHTML = contributionText;
+            contributionHeader.setAttribute('data-tooltip', contributionTooltip);
+        }
         
         // Update "Accumulée" header (accumulated benefits) 
         const accumulatedHeader = document.querySelector('.results-header[data-i18n="accumulatedBenefit"]');
         if (accumulatedHeader) {
-            accumulatedHeader.innerHTML = `Accumulée<br><small>En dollars de ${currentYear}</small>`;
-            accumulatedHeader.setAttribute('data-tooltip', `Montant accumulé des prestations RRQ en dollars constants de ${currentYear}`);
+            const accumulatedText = t('accumulatedBenefit', { year: currentYear });
+            const accumulatedTooltip = t('tooltipAccumulated', { year: currentYear });
+            accumulatedHeader.innerHTML = accumulatedText;
+            accumulatedHeader.setAttribute('data-tooltip', accumulatedTooltip);
         }
         
         // Update "Additionnelle" header (additional benefits)
         const additionalHeader = document.querySelector('.results-header[data-i18n="additionalBenefit"]');
         if (additionalHeader) {
-            additionalHeader.innerHTML = `Additionnelle<br><small>En dollars de ${currentYear}</small>`;
-            additionalHeader.setAttribute('data-tooltip', `Montant additionnel des prestations RRQ pour cette année en dollars constants de ${currentYear}`);
+            const additionalText = t('additionalBenefit', { year: currentYear });
+            const additionalTooltip = t('tooltipAdditional', { year: currentYear });
+            additionalHeader.innerHTML = additionalText;
+            additionalHeader.setAttribute('data-tooltip', additionalTooltip);
         }
     }
 

@@ -60,17 +60,17 @@ const translations = {
     // Results
     summaryTitle: "Résumé des prestations",
     detailedResultsTitle: "Résultats détaillés de la simulation",
-    dollarsOf2025: "En dollars de<br>2025",
-    dollarsOf2030: "En dollars de<br>2030",
+    dollarsOf2025: "En dollars de<br>{year}",
+    dollarsOf2030: "En dollars de<br>{benefitYear}",
     annualRRQBenefit: "Prestation annuelle du RRQ",
     basicRegime: "Régime de base",
     supplementaryRegime1: "Régime supplémentaire - volet 1",
     supplementaryRegime2: "Régime supplémentaire - volet 2",
     annualBenefit: "Prestation annuelle",
     internalReturnRate: "Taux de rendement interne",
-    annualContribution: "Cotisation annuelle<br><small>En dollars de 2025</small>",
-    accumulatedBenefit: "Accumulée<br><small>En dollars de 2025</small>",
-    additionalBenefit: "Additionnelle<br><small>En dollars de 2025</small>",
+    annualContribution: "Cotisation annuelle<br><small>En dollars de {year}</small>",
+    accumulatedBenefit: "Accumulée<br><small>En dollars de {year}</small>",
+    additionalBenefit: "Additionnelle<br><small>En dollars de {year}</small>",
     
     // Footer
     footerText1: "Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.",
@@ -85,12 +85,12 @@ const translations = {
     tooltipAge: "Âge de la personne pour cette année de calcul",
     tooltipYear: "Année civile correspondant à cet âge", 
     tooltipRate: "Taux de rendement interne calculé pour cette année, exprimé en pourcentage",
-    tooltipContribution: "Montant de la cotisation annuelle au RRQ en dollars de l'année courante",
-    tooltipAccumulated: "Montant accumulé des prestations RRQ en dollars constants de 2025",
-    tooltipAdditional: "Montant additionnel des prestations RRQ pour cette année en dollars constants de 2025",
+    tooltipContribution: "Montant de la cotisation annuelle au RRQ en dollars de {year}",
+    tooltipAccumulated: "Montant accumulé des prestations RRQ en dollars constants de {year}",
+    tooltipAdditional: "Montant additionnel des prestations RRQ pour cette année en dollars constants de {year}",
     tooltipAnnualTotal: "Montant total des prestations annuelles",
-    tooltipDollars2025: "Montants en dollars constants de 2025",
-    tooltipDollars2030: "Montants en dollars constants de 2030",
+    tooltipDollars2025: "Montants en dollars constants de {year}",
+    tooltipDollars2030: "Montants en dollars constants de {benefitYear}",
     tooltipAnnualRRQ: "Prestation annuelle totale du Régime de rentes du Québec",
     tooltipBasicRegime: "Montant de la prestation de base du régime",
     tooltipSupp1: "Montant du régime supplémentaire - volet 1",
@@ -180,17 +180,17 @@ const translations = {
     // Results
     summaryTitle: "Benefit Summary",
     detailedResultsTitle: "Detailed Simulation Results",
-    dollarsOf2025: "In 2025<br>dollars",
-    dollarsOf2030: "In 2030<br>dollars",
+    dollarsOf2025: "In {year}<br>dollars",
+    dollarsOf2030: "In {benefitYear}<br>dollars",
     annualRRQBenefit: "Annual QPP benefit",
     basicRegime: "Basic plan",
     supplementaryRegime1: "Supplementary plan - component 1",
     supplementaryRegime2: "Supplementary plan - component 2",
     annualBenefit: "Annual benefit",
     internalReturnRate: "Internal rate of return",
-    annualContribution: "Annual contribution<br><small>In 2025 dollars</small>",
-    accumulatedBenefit: "Accumulated<br><small>In 2025 dollars</small>",
-    additionalBenefit: "Additional<br><small>In 2025 dollars</small>",
+    annualContribution: "Annual contribution<br><small>In {year} dollars</small>",
+    accumulatedBenefit: "Accumulated<br><small>In {year} dollars</small>",
+    additionalBenefit: "Additional<br><small>In {year} dollars</small>",
     
     // Footer
     footerText1: "Collective work involving <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> and <strong>Luc Godbout</strong>.",
@@ -205,12 +205,12 @@ const translations = {
     tooltipAge: "Person's age for this calculation year",
     tooltipYear: "Calendar year corresponding to this age",
     tooltipRate: "Internal rate of return calculated for this year, expressed as a percentage",
-    tooltipContribution: "Annual QPP contribution amount in current year dollars",
-    tooltipAccumulated: "Accumulated QPP benefits amount in constant 2025 dollars",
-    tooltipAdditional: "Additional QPP benefits amount for this year in constant 2025 dollars",
+    tooltipContribution: "Annual QPP contribution amount in {year} dollars",
+    tooltipAccumulated: "Accumulated QPP benefits amount in constant {year} dollars",
+    tooltipAdditional: "Additional QPP benefits amount for this year in constant {year} dollars",
     tooltipAnnualTotal: "Total annual benefits amount",
-    tooltipDollars2025: "Amounts in constant 2025 dollars",
-    tooltipDollars2030: "Amounts in constant 2030 dollars",
+    tooltipDollars2025: "Amounts in constant {year} dollars",
+    tooltipDollars2030: "Amounts in constant {benefitYear} dollars",
     tooltipAnnualRRQ: "Total annual Quebec Pension Plan benefit",
     tooltipBasicRegime: "Basic plan benefit amount",
     tooltipSupp1: "Supplementary plan amount - component 1",
@@ -344,6 +344,9 @@ function updateDynamicContent() {
       ageExpInput.setCustomValidity(translations[currentLanguage].ageValidation);
     }
   }
+  
+  // Update dynamic result headers if results are visible
+  updateDynamicResultHeaders();
 }
 
 // Update all text content based on current language
@@ -423,9 +426,93 @@ function updateTranslations() {
   });
 }
 
-// Get translated text
-function t(key) {
-  return translations[currentLanguage][key] || key;
+// Update dynamic result headers when language changes
+function updateDynamicResultHeaders() {
+  // Check if results are visible
+  const resultsSection = document.querySelector('.results-section');
+  if (!resultsSection || !resultsSection.classList.contains('visible')) {
+    return; // No results to update
+  }
+  
+  // Get current year from the current year input
+  const currentYearInput = document.getElementById('inputCurrentYear');
+  const currentYear = currentYearInput ? parseInt(currentYearInput.value) : 2025;
+  
+  // Try to get benefit start year from existing header (if available)
+  let benefitStartYear = null;
+  const secondHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2030"]');
+  if (secondHeaderElement) {
+    // Try to extract year from existing content - works for both languages
+    const yearMatch = secondHeaderElement.textContent.match(/\d{4}/);
+    if (yearMatch) {
+      benefitStartYear = parseInt(yearMatch[0]);
+    } else {
+      // Fallback: if no year found, check if there's a data attribute or use a reasonable default
+      // Try to get it from a global variable if available from the pension calculator
+      if (window.lastSimulationResults && window.lastSimulationResults.benefitStartYear) {
+        benefitStartYear = window.lastSimulationResults.benefitStartYear;
+      } else {
+        // Last resort: use current year + 40 as an estimate (typical retirement age)
+        benefitStartYear = currentYear + 40;
+      }
+    }
+  }
+  
+  // Update summary table headers
+  const firstHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2025"]');
+  if (firstHeaderElement) {
+    const firstHeaderText = t('dollarsOf2025', { year: currentYear });
+    const firstTooltip = t('tooltipDollars2025', { year: currentYear });
+    firstHeaderElement.innerHTML = firstHeaderText;
+    firstHeaderElement.setAttribute('data-tooltip', firstTooltip);
+  }
+  
+  if (secondHeaderElement && benefitStartYear) {
+    const secondHeaderText = t('dollarsOf2030', { benefitYear: benefitStartYear });
+    const secondTooltip = t('tooltipDollars2030', { benefitYear: benefitStartYear });
+    secondHeaderElement.innerHTML = secondHeaderText;
+    secondHeaderElement.setAttribute('data-tooltip', secondTooltip);
+  }
+  
+  // Update detailed results headers
+  const contributionHeader = document.querySelector('.results-header[data-i18n="annualContribution"]');
+  if (contributionHeader) {
+    const contributionText = t('annualContribution', { year: currentYear });
+    const contributionTooltip = t('tooltipContribution', { year: currentYear });
+    contributionHeader.innerHTML = contributionText;
+    contributionHeader.setAttribute('data-tooltip', contributionTooltip);
+  }
+  
+  const accumulatedHeader = document.querySelector('.results-header[data-i18n="accumulatedBenefit"]');
+  if (accumulatedHeader) {
+    const accumulatedText = t('accumulatedBenefit', { year: currentYear });
+    const accumulatedTooltip = t('tooltipAccumulated', { year: currentYear });
+    accumulatedHeader.innerHTML = accumulatedText;
+    accumulatedHeader.setAttribute('data-tooltip', accumulatedTooltip);
+  }
+  
+  const additionalHeader = document.querySelector('.results-header[data-i18n="additionalBenefit"]');
+  if (additionalHeader) {
+    const additionalText = t('additionalBenefit', { year: currentYear });
+    const additionalTooltip = t('tooltipAdditional', { year: currentYear });
+    additionalHeader.innerHTML = additionalText;
+    additionalHeader.setAttribute('data-tooltip', additionalTooltip);
+  }
+}
+
+// Get translated text with placeholder replacement
+function t(key, replacements = {}) {
+  let text = translations[currentLanguage][key] || key;
+  
+  // Replace placeholders in the format {placeholder}
+  if (replacements && typeof replacements === 'object') {
+    Object.keys(replacements).forEach(placeholder => {
+      const regex = new RegExp(`\\{${placeholder}\\}`, 'g');
+      text = text.replace(regex, replacements[placeholder]);
+    });
+  }
+  
+  return text;
 }
 
 // Get current language

@@ -76,7 +76,7 @@ const translations = {
     footerText1: "Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.",
     footerText2: "Les auteurs collaborent aux travaux de la <a href=\"https://cffp.recherche.usherbrooke.ca/\" target=\"_blank\">Chaire de recherche en fiscalité et en finances publiques</a>, qu'ils remercient pour l'appui financier qui a rendu possible la réalisation de cet outil.",
     footerText3: "Outil interactif conçu et réalisé par <strong>Pierre Lefloïc</strong>.",
-    footerText4: "Pour plus d'information, voir l'étude [Lien web à venir].",
+    footerText4: "Pour plus d'information, voir l'étude <a href=\"https://cffp.recherche.usherbrooke.ca/projeter-ses-prestations-futures-du-rrq-quel-rendement-procure-chaque-annee-de-cotisations-additionnelles-a-lapproche-de-la-retraite/\" target=\"_blank\">ici</a>.",
     
     // Loading
     loadingText: "Simulation en cours...",
@@ -196,7 +196,7 @@ const translations = {
     footerText1: "Collective work involving <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> and <strong>Luc Godbout</strong>.",
     footerText2: "The authors collaborate with the <a href=\"https://cffp.recherche.usherbrooke.ca/\" target=\"_blank\">Chaire de recherche en fiscalité et en finances publiques</a>, which they thank for the financial support that made this tool possible.",
     footerText3: "Interactive tool designed and developed by <strong>Pierre Lefloïc</strong>.",
-    footerText4: "For more information, see the study [Web link coming soon].",
+    footerText4: "For more information, see the study <a href=\"https://cffp.recherche.usherbrooke.ca/projeter-ses-prestations-futures-du-rrq-quel-rendement-procure-chaque-annee-de-cotisations-additionnelles-a-lapproche-de-la-retraite/\" target=\"_blank\">here</a>.",
     
     // Loading
     loadingText: "Simulation in progress...",

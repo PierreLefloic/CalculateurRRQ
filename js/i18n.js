@@ -107,7 +107,7 @@ const translations = {
     tooltipLifeExpectancy: "Âge jusqu'auquel vous prévoyez recevoir les prestations du RRQ",
     tooltipSelfEmployed: "Cochez cette case si vous êtes travailleur autonome (cotisations différentes)",
     tooltipInflationRate: "Taux d'inflation annuel prévu pour ajuster les montants futurs",
-    tooltipSalaryIncrease: "Taux de croissance annuel prévu des salaires au-dessus de l'inflation",
+    tooltipSalaryIncrease: "Taux de croissance annuel prévu des salaires",
     
     // JavaScript dynamic text
     simulationInProgress: "Simulation en cours...",
@@ -227,7 +227,7 @@ const translations = {
     tooltipLifeExpectancy: "Age until which you expect to receive QPP benefits",
     tooltipSelfEmployed: "Check this box if you are self-employed (different contribution rates)",
     tooltipInflationRate: "Expected annual inflation rate to adjust future amounts",
-    tooltipSalaryIncrease: "Expected annual salary growth rate above inflation",
+    tooltipSalaryIncrease: "Expected annual salary growth rate",
     
     // JavaScript dynamic text
     simulationInProgress: "Simulation in progress...",

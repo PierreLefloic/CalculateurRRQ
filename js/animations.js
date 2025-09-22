@@ -660,8 +660,21 @@ function setupInstructionsToggle() {
   content.classList.remove('expanded');
   arrow.classList.remove('expanded');
   
+  // Detect if this is a touch device
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
   toggle.addEventListener('click', function() {
     const isExpanded = content.classList.contains('expanded');
+    
+    // Add tap animation on touch devices
+    if (isTouchDevice) {
+      toggle.classList.add('tap-animate');
+      
+      // Remove the animation after a short duration
+      setTimeout(() => {
+        toggle.classList.remove('tap-animate');
+      }, 200);
+    }
     
     if (isExpanded) {
       // Collapse

@@ -13,8 +13,8 @@ const translations = {
     datePlaceholder: "aaaa-mm-jj",
     
     // Header
-    title: "Simulateur de prestation du RRQ",
-    description: "Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur ses futures prestations de retraite.",
+    title: "Simulateur de la prestation du RRQ",
+    description: "Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.",
     instructionsTitle: "Mode d'emploi du simulateur",
     instructionsList: `<li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année de votre relevé RRQ).</li>
         <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus.</li>
@@ -37,7 +37,7 @@ const translations = {
     inPercent: "Saisie en pourcentage :",
     rrqParams: "Paramètres RRQ",
     retirementAge: "Âge de retraite :",
-    benefitAge: "Âge de la demande de prestation\u00A0:",
+    benefitAge: "Âge de la demande de la prestation\u00A0:",
     lifeExpectancy: "Espérance de vie :",
     selfEmployed: "Travailleur autonome :",
     economicParams: "Paramètres économiques",
@@ -103,8 +103,8 @@ const translations = {
     tooltipAfterCurrentYear: "Pourcentage du salaire à utiliser pour les années après l'année courante (par défaut 100%)",
     tooltipInPercent: "Cochez cette case si vous voulez saisir les salaires en pourcentage du MGA plutôt qu'en montants absolus",
     tooltipRetirementAge: "Âge auquel vous prévoyez arrêter de travailler et de cotiser au RRQ",
-    tooltipBenefitAge: "Âge auquel vous prévoyez commencer à recevoir vos prestations du RRQ",
-    tooltipLifeExpectancy: "Âge jusqu'auquel vous prévoyez recevoir les prestations du RRQ",
+    tooltipBenefitAge: "Âge auquel vous prévoyez commencer à recevoir votre prestation du RRQ",
+    tooltipLifeExpectancy: "Âge jusqu'auquel vous prévoyez recevoir votre prestation du RRQ",
     tooltipSelfEmployed: "Cochez cette case si vous êtes travailleur autonome (cotisations différentes)",
     tooltipInflationRate: "Taux d'inflation annuel prévu pour ajuster les montants futurs",
     tooltipSalaryIncrease: "Taux de croissance annuel prévu des salaires",
@@ -134,7 +134,7 @@ const translations = {
     
     // Header
     title: "QPP Benefit Simulator",
-    description: "The purpose of this simulator is to allow users to evaluate the impact of their contributions to the Quebec Pension Plan (QPP) on their future retirement benefits.",
+    description: "The purpose of this simulator is to allow users to evaluate the impact of their contributions to the Quebec Pension Plan (QPP) on their future retirement benefit.",
     instructionsTitle: "How to use the simulator",
     instructionsList: `<li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year of your QPP statement).</li>
         <li><strong>Enter your income</strong>: for each year available in your statement, enter your salary (in dollars or as a percentage). You can also use the Salary box to quickly estimate your income.</li>
@@ -223,8 +223,8 @@ const translations = {
     tooltipAfterCurrentYear: "Salary percentage to use for years after the current year (default 100%)",
     tooltipInPercent: "Check this box if you want to enter salaries as percentage of YMPE rather than absolute amounts",
     tooltipRetirementAge: "Age at which you plan to stop working and contributing to QPP",
-    tooltipBenefitAge: "Age at which you plan to start receiving your QPP benefits",
-    tooltipLifeExpectancy: "Age until which you expect to receive QPP benefits",
+    tooltipBenefitAge: "Age at which you plan to start receiving your QPP benefit",
+    tooltipLifeExpectancy: "Age until which you expect to receive your QPP benefit",
     tooltipSelfEmployed: "Check this box if you are self-employed (different contribution rates)",
     tooltipInflationRate: "Expected annual inflation rate to adjust future amounts",
     tooltipSalaryIncrease: "Expected annual salary growth rate",

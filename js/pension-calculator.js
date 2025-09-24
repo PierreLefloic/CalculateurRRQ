@@ -315,10 +315,6 @@ class Cotisation {
         if (this.userObj.birth_date[1] === 12) {
             this.ages = Array.from({length: 55}, (_, i) => i + 18);
             this.years = Array.from({length: 55}, (_, i) => this.userObj.birth_date[0] + 17 + 2 + i);
-        } else if (this.userObj.birth_date[1] === 1 && this.userObj.birth_date[2] === 1) {
-            // January 1st births: ages start from 18 but years follow the normal pattern
-            this.ages = Array.from({length: 55}, (_, i) => i + 18);
-            this.years = Array.from({length: 55}, (_, i) => this.userObj.birth_date[0] + 17 + 1 + i);
         } else {
             this.ages = Array.from({length: 55}, (_, i) => i + 17);
             this.years = Array.from({length: 55}, (_, i) => this.userObj.birth_date[0] + 17 + 1 + i);
@@ -875,8 +871,8 @@ function tabulateDifferenceInPension(userObj, mgaObj, table) {
 
 function tabulateTri(userObj, mgaObj, diffTable) {
     let ages;
-    if (userObj.birth_date[1] === 12 || (userObj.birth_date[1] === 1 && userObj.birth_date[2] === 1)) {
-        // December births or January 1st births: start at age 18
+    if (userObj.birth_date[1] === 12) {
+        // December births: start at age 18
         ages = Array.from({length: 93}, (_, i) => i + 18);
     } else {
         // All other births: start at age 17

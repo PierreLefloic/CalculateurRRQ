@@ -330,23 +330,15 @@ class IntegratedCalculator {
                 const birthMonth = parseInt(dateParts[1]);
                 const birthDay = parseInt(dateParts[2]);
                 
-                // Check if birth is January 1st (month=1, day=1) - this shifts years by 1
-                const isJanuary1st = (birthMonth === 1 && birthDay === 1);
-                
                 // Update years for ages 17 to 72
                 for (let age = 17; age <= 72; age++) {
                     const yearElement = document.getElementById(`year_${age}`);
                     if (yearElement) {
-                        if (isJanuary1st) {
-                            // Shift years by 1: display year+1 for January 1st births
-                            yearElement.textContent = birthYear + age + 1 - 1;
-                        } else {
-                            yearElement.textContent = birthYear + age + 1;
-                        }
+                        yearElement.textContent = birthYear + age + 1;
                     }
                 }
                 
-                // Handle graying out for age 17 if birth month is December (12) OR January 1st
+                // Handle graying out for age 17 if birth month is December (12)
                 const age17Elements = [
                     document.getElementById('age_17'),
                     document.getElementById('year_17'),
@@ -355,7 +347,7 @@ class IntegratedCalculator {
                     document.getElementById('computed_salary_17')
                 ];
                 
-                if (birthMonth === 12 || isJanuary1st) {
+                if (birthMonth === 12) {
                     // Gray out age 17 row and disable input
                     age17Elements.forEach(element => {
                         if (element) {
@@ -671,9 +663,8 @@ class IntegratedCalculator {
         const birthMonth = userConfig.birthdate[1];
         const birthDay = userConfig.birthdate[2];
         
-        // Start at age 18 if born in December OR on January 1st, otherwise start at age 17
-        const isJanuary1st = (birthMonth === 1 && birthDay === 1);
-        const age_start = (birthMonth === 12 || isJanuary1st) ? 18 : 17;
+        // Start at age 18 if born in December, otherwise start at age 17
+        const age_start = (birthMonth === 12) ? 18 : 17;
         
         const inputs = [];
         for (let age = age_start; age <= 72; age++) {
@@ -741,17 +732,6 @@ class IntegratedCalculator {
                 const result = (percentages[i] * vlookupResult / 100 * 100 * monthsToWork / 12);
                 return result;
             }
-            // Level 4a3: Special case for January 1st births - prorating happens at age 18 (first active row)
-            else if (ages[i] === 18 && birthdate[1] === 1 && birthdate[2] === 1) {
-                const vlookupResult = mga_lookup_table[years[i]] || 0;
-                const monthFromDate = birthdate[1]; // Month number (1 for January)
-                
-                // For January 1st births, they start contributing in February (month after birth)
-                // So they work 11 months in their first year (February through December)
-                const monthsToWork = Math.max(0, 12 - monthFromDate); // 12 - 1 = 11 months
-                const result = (percentages[i] * vlookupResult / 100 * 100 * monthsToWork / 12);
-                return result;
-            }
             // Level 4b: Input is empty but age is NOT retirement_age-1 or 17
             else {
                 const vlookupResult = mga_lookup_table[years[i]] || 0;
@@ -769,14 +749,6 @@ class IntegratedCalculator {
                     const monthFromDate = birthdate[1]; // Month number
                     // Pro-rated calculation: months from month AFTER birth month to end of year (December)
                     const monthsToWork = Math.max(0, 12 - monthFromDate); // Start contributing month after birthday
-                    const result = inputValue / 100 * vlookupResult * monthsToWork / 12;
-                    return result;
-                }
-                // Check if this is age 18 for January 1st births and needs prorating
-                else if (ages[i] === 18 && birthdate[1] === 1 && birthdate[2] === 1) {
-                    const monthFromDate = birthdate[1]; // Month number (1 for January)
-                    // For January 1st births, they start contributing in February (month after birth)
-                    const monthsToWork = Math.max(0, 12 - monthFromDate); // 12 - 1 = 11 months
                     const result = inputValue / 100 * vlookupResult * monthsToWork / 12;
                     return result;
                 }
@@ -807,19 +779,17 @@ class IntegratedCalculator {
         const birthMonth = userConfig.birthdate[1];
         const birthDay = userConfig.birthdate[2];
         
-        // Start at age 18 if born in December OR on January 1st, otherwise start at age 17
-        const isJanuary1st = (birthMonth === 1 && birthDay === 1);
-        const age_start = (birthMonth === 12 || isJanuary1st) ? 18 : 17;
+        // Start at age 18 if born in December, otherwise start at age 17
+        const age_start = (birthMonth === 12) ? 18 : 17;
         
         const ages = [];
         const years = [];
         
         // Use the actual displayed years from the DOM instead of calculating them
-        // This ensures we use the shifted years for January 1st births
         for (let age = age_start; age <= 72; age++) {
             ages.push(age);
             
-            // Get the year from the DOM element (which has the correct shift applied)
+            // Get the year from the DOM element
             const yearElement = document.getElementById(`year_${age}`);
             if (yearElement) {
                 const displayedYear = parseInt(yearElement.textContent);
@@ -862,9 +832,8 @@ class IntegratedCalculator {
         const birthMonth = userConfig.birthdate[1];
         const birthDay = userConfig.birthdate[2];
         
-        // Start at age 18 if born in December OR on January 1st, otherwise start at age 17
-        const isJanuary1st = (birthMonth === 1 && birthDay === 1);
-        const age_start = (birthMonth === 12 || isJanuary1st) ? 18 : 17;
+        // Start at age 18 if born in December, otherwise start at age 17
+        const age_start = (birthMonth === 12) ? 18 : 17;
         
         // Clear all results first
         for (let age = 17; age <= 72; age++) {

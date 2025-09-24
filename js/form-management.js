@@ -251,6 +251,14 @@ class IntegratedCalculator {
             }
         });
 
+        // Special handling for retirement age to update benefit age options
+        if (this.elements.retAgeSelect) {
+            this.elements.retAgeSelect.addEventListener('change', () => {
+                this.updateBenefitAgeOptions();
+                this.calculateAll();
+            });
+        }
+
         // Special handling for SalaryIncrease - needs to reload MGA data
         if (this.elements.salaryIncreaseInput) {
             this.elements.salaryIncreaseInput.addEventListener('change', async () => {
@@ -298,6 +306,9 @@ class IntegratedCalculator {
         setTimeout(() => {
             this.updatePercentageValues();
         }, 100);
+
+        // Initialize benefit age options based on retirement age
+        this.updateBenefitAgeOptions();
     }
 
     handleBirthDateChange() {
@@ -398,6 +409,57 @@ class IntegratedCalculator {
                     }
                 }
             }
+        }
+    }
+
+    updateBenefitAgeOptions() {
+        if (!this.elements.retAgeSelect || !this.elements.benAgeSelect) {
+            return;
+        }
+
+        const selectedRetirementAge = parseInt(this.elements.retAgeSelect.value);
+        const currentBenefitAge = parseInt(this.elements.benAgeSelect.value);
+        const benefitSelect = this.elements.benAgeSelect;
+        
+        // Define the complete range of benefit age options (based on the original HTML)
+        const allPossibleOptions = [];
+        for (let age = 60; age <= 72; age++) {
+            allPossibleOptions.push({
+                value: age.toString(),
+                text: age.toString()
+            });
+        }
+        
+        // Clear current options
+        benefitSelect.innerHTML = '';
+        
+        // The minimum benefit age is the higher of: retirement age or 60 (RRQ minimum)
+        const minimumBenefitAge = Math.max(selectedRetirementAge, 60);
+        
+        // Add all valid options (ages >= minimum benefit age)
+        let newSelectedValue = null;
+        let hasCurrentSelection = false;
+        
+        allPossibleOptions.forEach(option => {
+            const optionAge = parseInt(option.value);
+            if (optionAge >= minimumBenefitAge) {
+                const newOption = new Option(option.text, option.value);
+                benefitSelect.appendChild(newOption);
+                
+                // Keep current selection if it's still valid
+                if (optionAge === currentBenefitAge) {
+                    newSelectedValue = option.value;
+                    hasCurrentSelection = true;
+                }
+            }
+        });
+        
+        // Set the selected value
+        if (hasCurrentSelection) {
+            benefitSelect.value = newSelectedValue;
+        } else {
+            // If current selection is no longer valid, select the minimum valid benefit age
+            benefitSelect.value = minimumBenefitAge.toString();
         }
     }
 

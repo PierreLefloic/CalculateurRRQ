@@ -313,6 +313,9 @@ class PensionSimulation {
             this.results = results(this.userInput, this.mgaData);
             console.log('Calculation completed:', this.results);
             
+            // Update user parameters summary
+            this.updateUserParametersSummary();
+            
             // Step 2: Update summary table
             this.updateSummaryTable();
             
@@ -328,6 +331,35 @@ class PensionSimulation {
         } finally {
             this.hideLoadingOverlay();
             this.isCalculating = false;
+        }
+    }
+
+    /**
+     * Update user parameters summary display
+     */
+    updateUserParametersSummary() {
+        if (!this.userInput) return;
+        
+        // Get the display elements by ID (they should be within the translated template)
+        const retirementAgeDisplay = document.getElementById('retirementAgeDisplay');
+        const benefitAgeDisplay = document.getElementById('benefitAgeDisplay');
+        const benefitYearDisplay = document.getElementById('benefitYearDisplay');
+        const currentYearDisplay = document.getElementById('currentYearDisplay');
+        
+        if (retirementAgeDisplay && benefitAgeDisplay && benefitYearDisplay && currentYearDisplay) {
+            // Update retirement age
+            retirementAgeDisplay.textContent = this.userInput.ret_age;
+            
+            // Update benefit age
+            benefitAgeDisplay.textContent = this.userInput.benefit_age;
+            
+            // Calculate benefit year from birth year and benefit age
+            const birthYear = this.userInput.birth_date[0]; // birth_date is [year, month, day]
+            const benefitYear = birthYear + this.userInput.benefit_age;
+            benefitYearDisplay.textContent = benefitYear;
+            
+            // Update current year
+            currentYearDisplay.textContent = this.userInput.current_year;
         }
     }
 
@@ -415,7 +447,7 @@ class PensionSimulation {
             
             const contributionCell = document.createElement('div');
             contributionCell.className = 'results-cell';
-            contributionCell.textContent = this.formatCurrency(row.cotisation_annuelle, false);
+            contributionCell.textContent = this.formatCurrency(Math.abs(row.cotisation_annuelle), false);
             
             const accumulatedCell = document.createElement('div');
             accumulatedCell.className = 'results-cell';

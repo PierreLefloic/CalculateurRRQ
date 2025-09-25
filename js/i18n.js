@@ -60,6 +60,7 @@ const translations = {
     
     // Results
     summaryTitle: "Résumé des prestations",
+    summaryText: "Vous avez indiqué cotiser au RRQ jusqu'à <span id=\"retirementAgeDisplay\">65</span> ans et demander la prestation à <span id=\"benefitAgeDisplay\">65</span> ans, soit en <span id=\"benefitYearDisplay\">2090</span>. Les résultats sont également présentés en dollars de <span id=\"currentYearDisplay\">2025</span>.",
     detailedResultsTitle: "Résultats détaillés de la simulation",
     dollarsOf2025: "En dollars de<br>{year}",
     dollarsOf2030: "En dollars de<br>{benefitYear}",
@@ -182,6 +183,7 @@ const translations = {
     
     // Results
     summaryTitle: "Benefit Summary",
+    summaryText: "You indicated that you will contribute to the QPP until age <span id=\"retirementAgeDisplay\">65</span> and apply for the benefit at age <span id=\"benefitAgeDisplay\">65</span>, in <span id=\"benefitYearDisplay\">2090</span>. The results are also presented in <span id=\"currentYearDisplay\">2025</span> dollars.",
     detailedResultsTitle: "Detailed Simulation Results",
     dollarsOf2025: "In {year}<br>dollars",
     dollarsOf2030: "In {benefitYear}<br>dollars",
@@ -351,6 +353,11 @@ function updateDynamicContent() {
   
   // Update dynamic result headers if results are visible
   updateDynamicResultHeaders();
+  
+  // Update user parameters summary if it has been calculated
+  if (window.pensionSimulation && window.pensionSimulation.userInput) {
+    window.pensionSimulation.updateUserParametersSummary();
+  }
 }
 
 // Update all text content based on current language
@@ -442,19 +449,19 @@ function updateDynamicResultHeaders() {
   const currentYearInput = document.getElementById('inputCurrentYear');
   const currentYear = currentYearInput ? parseInt(currentYearInput.value) : 2025;
   
-  // Try to get benefit start year from existing header (if available)
+  // Try to get benefit start year from pension simulation results first
   let benefitStartYear = null;
-  const secondHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2030"]');
-  if (secondHeaderElement) {
-    // Try to extract year from existing content - works for both languages
-    const yearMatch = secondHeaderElement.textContent.match(/\d{4}/);
-    if (yearMatch) {
-      benefitStartYear = parseInt(yearMatch[0]);
-    } else {
-      // Fallback: if no year found, check if there's a data attribute or use a reasonable default
-      // Try to get it from a global variable if available from the pension calculator
-      if (window.lastSimulationResults && window.lastSimulationResults.benefitStartYear) {
-        benefitStartYear = window.lastSimulationResults.benefitStartYear;
+  
+  // Check if we have pension simulation results with benefit start year
+  if (window.pensionSimulation && window.pensionSimulation.results && window.pensionSimulation.results.benefitStartYear) {
+    benefitStartYear = window.pensionSimulation.results.benefitStartYear;
+  } else {
+    // Fallback: try to extract year from existing header content
+    const secondHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2030"]');
+    if (secondHeaderElement) {
+      const yearMatch = secondHeaderElement.textContent.match(/\d{4}/);
+      if (yearMatch) {
+        benefitStartYear = parseInt(yearMatch[0]);
       } else {
         // Last resort: use current year + 40 as an estimate (typical retirement age)
         benefitStartYear = currentYear + 40;
@@ -471,6 +478,7 @@ function updateDynamicResultHeaders() {
     firstHeaderElement.setAttribute('data-tooltip', firstTooltip);
   }
   
+  const secondHeaderElement = document.querySelector('.summary-table .summary-header[data-i18n="dollarsOf2030"]');
   if (secondHeaderElement && benefitStartYear) {
     const secondHeaderText = t('dollarsOf2030', { benefitYear: benefitStartYear });
     const secondTooltip = t('tooltipDollars2030', { benefitYear: benefitStartYear });

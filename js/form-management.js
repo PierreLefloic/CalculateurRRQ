@@ -75,7 +75,8 @@ class IntegratedCalculator {
             salaryIncreaseInput: document.getElementById('SalaryIncrease'),
             retAgeSelect: document.getElementById('RetAge'),
             benAgeSelect: document.getElementById('BenAge'),
-            inflationRateInput: document.getElementById('InflationRate')
+            inflationRateInput: document.getElementById('InflationRate'),
+            clearAllButton: document.getElementById('clearAllSalaries')
         };
     }
 
@@ -292,6 +293,13 @@ class IntegratedCalculator {
 
         // Auto-select input content functionality
         this.setupAutoSelectInputs();
+
+        // Clear all button functionality
+        if (this.elements.clearAllButton) {
+            this.elements.clearAllButton.addEventListener('click', () => {
+                this.clearAllSalaryInputs();
+            });
+        }
     }
 
     initializePageState() {
@@ -686,6 +694,19 @@ class IntegratedCalculator {
                 computedElement.textContent = '';
             }
         }
+    }
+
+    clearAllSalaryInputs() {
+        // Clear all salary input fields from age 17 to 72
+        for (let age = 17; age <= 72; age++) {
+            const input = document.getElementById(`salary_${age}`);
+            if (input) {
+                input.value = '';
+            }
+        }
+        
+        // Trigger recalculation after clearing
+        this.calculateAll();
     }
 
     // Excel formula converted to JavaScript

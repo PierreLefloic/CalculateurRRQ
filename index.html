@@ -35,12 +35,13 @@
         <div class="instructions-content" id="instructionsContent">
           <div class="instructions-inner">
             <ol data-i18n="instructionsList">
-              <li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année de votre relevé RRQ).</li>
-              <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus.</li>
-              <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
-              <li><strong>Vérifier les paramètres économiques</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse.</li>
+              <li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année où votre relevé de participation au RRQ a été produit).</li>
+              <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus en pourcentage du maximum des gains admissibles (MGA).</li>
+              <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de la prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
+              <li><strong>Vérifier les paramètres économiques prévus</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse. Les paramètres économiques prévus proviennent des Normes d'hypothèses de projection 2025 de FP Canada et de l'Institut de planification financière. Ces paramètres ne devraient pas être modifiés sauf pour des analyses de sensibilité.</li>
               <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>
             </ol>
+            <p data-i18n="instructionsNote">Note : Des infobulles sont intégrées au simulateur pour plus de précisions sur chaque champ.</p>
             
             <h4 data-i18n="resultsTitle">Résultats présentés</h4>
             <p data-i18n="resultsDescription">Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :</p>
@@ -201,7 +202,7 @@
         </div>
       </div>
       <div class="container">
-        <h2 data-i18n="economicParams">Paramètres économiques</h2>
+        <h2 data-i18n="economicParams">Paramètres économiques prévus</h2>
         <div class="input-grid">
           <label data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
           <input id="InflationRate" type="number" value="2.1" min="0" max="100" step="0.1">
@@ -352,6 +353,11 @@
           <div class="results-header" data-i18n="additionalBenefit" data-i18n-tooltip="tooltipAdditional">Additionnelle<br><small>En dollars de 2025</small></div>
         </div>
       </div>
+    </div>
+    
+    <!-- Discrete note about simulation limitations -->
+    <div class="simulation-note" data-i18n="simulationNote">
+      <p><small><em>La simulation ne tient pas compte des années exclues pour maternité ni du supplément à la rente en cas de cotisation après le début de la retraite.</em></small></p>
     </div>
   </div>
 

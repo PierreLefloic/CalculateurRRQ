@@ -16,11 +16,12 @@ const translations = {
     title: "Simulateur de la prestation du RRQ",
     description: "Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.",
     instructionsTitle: "Mode d'emploi du simulateur",
-    instructionsList: `<li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année de votre relevé RRQ).</li>
-        <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus.</li>
-        <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
-        <li><strong>Vérifier les paramètres économiques</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse.</li>
+    instructionsList: `<li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année où votre relevé de participation au RRQ a été produit).</li>
+        <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus  en pourcentage du maximum des gains admissibles (MGA).</li>
+        <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de la prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
+        <li><strong>Vérifier les paramètres économiques prévus</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse. Les paramètres économiques prévus proviennent des Normes d'hypothèses de projection 2025 de FP Canada et de l'Institut de planification financière. Ces paramètres ne devraient pas être modifiés sauf pour des analyses de sensibilité.</li>
         <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>`,
+    instructionsNote: "Note : Des infobulles sont intégrées au simulateur pour plus de précisions sur chaque champ.",
     resultsTitle: "Résultats présentés",
     resultsDescription: "Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :",
     resultsList: `<li><strong>Taux de rendement interne (TRI)</strong> : indicateur financier qui mesure la rentabilité d'une série de flux monétaires associés aux cotisations et aux prestations.</li>
@@ -40,7 +41,7 @@ const translations = {
     benefitAge: "Âge de la demande de la prestation\u00A0:",
     lifeExpectancy: "Espérance de vie :",
     selfEmployed: "Travailleur autonome :",
-    economicParams: "Paramètres économiques",
+    economicParams: "Paramètres économiques prévus",
     inflationRate: "Taux d'inflation (%) :",
     salaryIncrease: "Croissance des salaires (%) :",
     
@@ -71,6 +72,7 @@ const translations = {
     annualContribution: "Cotisation annuelle<br><small>En dollars de {year}</small>",
     accumulatedBenefit: "Accumulée<br><small>En dollars de {year}</small>",
     additionalBenefit: "Additionnelle<br><small>En dollars de {year}</small>",
+    simulationNote: "<small><em>La simulation ne tient pas compte des années exclues pour maternité ni du supplément à la rente en cas de cotisation après le début de la retraite.</em></small>",
     
     // Footer
     footerText1: "Travail collectif auquel ont participé <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> et <strong>Luc Godbout</strong>.",
@@ -136,11 +138,12 @@ const translations = {
     title: "QPP Benefit Simulator",
     description: "The purpose of this simulator is to allow users to evaluate the impact of their contributions to the Quebec Pension Plan (QPP) on their future retirement benefit.",
     instructionsTitle: "How to use the simulator",
-    instructionsList: `<li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year of your QPP statement).</li>
-        <li><strong>Enter your income</strong>: for each year available in your statement, enter your salary (in dollars or as a percentage). You can also use the Salary box to quickly estimate your income.</li>
+    instructionsList: `<li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year when your Quebec Pension Plan (QPP) participation statement was issued).</li>
+        <li><strong>Enter your income</strong>: for each year available in your statement, enter your salary (in dollars or as a percentage). You can also use the Salary box to quickly estimate your income in percentage of the year's maximum pensionable earnings (YMPE).</li>
         <li><strong>Define your personal parameters</strong>: specify your expected retirement age (complete work stoppage), benefit application age, life expectancy, and status (self-employed or employee).</li>
-        <li><strong>Check economic parameters</strong>: ensure that the economic assumptions match your situation or analysis needs.</li>
-        <li><strong>Run the simulation</strong>: launch the simulation to get your personalized results.</li>`,
+        <li><strong>Check projected economic parameters</strong>: ensure that the economic assumptions match your situation or analysis needs. The projected economic parameters come from the 2025 FP Canada Projection Assumption Standards and the Financial Planning Institute. These parameters should not be modified except for sensitivity analyses.</li>
+        <li><strong>Run the simulation</strong>: launch the simulation to get your personalized results. </li>`,
+    instructionsNote: "Note: Tooltips are integrated into the simulator for more details on each field.",
     resultsTitle: "Results presented",
     resultsDescription: "For each contribution year, the simulator displays the following information:",
     resultsList: `<li><strong>Internal Rate of Return (IRR)</strong>: financial indicator that measures the profitability of a series of cash flows associated with contributions and benefits.</li>
@@ -160,7 +163,7 @@ const translations = {
     benefitAge: "Benefit application age:",
     lifeExpectancy: "Life expectancy:",
     selfEmployed: "Self-employed:",
-    economicParams: "Economic Parameters",
+    economicParams: "Projected Economic Parameters",
     inflationRate: "Inflation rate (%):",
     salaryIncrease: "Salary growth (%):",
     
@@ -191,6 +194,7 @@ const translations = {
     annualContribution: "Annual contribution<br><small>In {year} dollars</small>",
     accumulatedBenefit: "Accumulated<br><small>In {year} dollars</small>",
     additionalBenefit: "Additional<br><small>In {year} dollars</small>",
+    simulationNote: "<small><em>The simulation does not account for years excluded for maternity or the pension supplement in case of contribution after the start of retirement.</em></small>",
     
     // Footer
     footerText1: "Collective work involving <strong>Frédérick Hallé-Rochon</strong>, <strong>Daniel Laverdière</strong> and <strong>Luc Godbout</strong>.",

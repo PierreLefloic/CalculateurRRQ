@@ -1272,6 +1272,26 @@ label {
   transition: 0.2s;
 }
 
+/* Simulation note - discrete styling */
+.simulation-note {
+  max-width: 700px;
+  margin: 20px auto 0 auto;
+  padding: 0 30px;
+  text-align: center;
+}
+
+.simulation-note p {
+  color: #6f747e;
+  font-size: 0.90em;
+  font-weight: 300;
+  margin: 0;
+  font-style: italic;
+}
+
+.simulation-note em {
+  color: #6f747e;
+}
+
 /* Hide mobile button on desktop */
 .mobile-button {
   display: none !important;

@@ -111,6 +111,7 @@ const translations = {
     tooltipSelfEmployed: "Cochez cette case si vous êtes travailleur autonome (cotisations différentes)",
     tooltipInflationRate: "Taux d'inflation annuel prévu pour ajuster les montants futurs",
     tooltipSalaryIncrease: "Taux de croissance annuel prévu des salaires",
+    tooltipAgeSalaire: "Âge au 1er janvier",
     
     // JavaScript dynamic text
     simulationInProgress: "Simulation en cours...",
@@ -234,6 +235,7 @@ const translations = {
     tooltipSelfEmployed: "Check this box if you are self-employed (different contribution rates)",
     tooltipInflationRate: "Expected annual inflation rate to adjust future amounts",
     tooltipSalaryIncrease: "Expected annual salary growth rate",
+    tooltipAgeSalaire: "Age on January 1st",
     
     // JavaScript dynamic text
     simulationInProgress: "Simulation in progress...",

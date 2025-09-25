@@ -240,7 +240,7 @@ function setupTooltips() {
   })();
   
   // Add event listeners to all elements with data-tooltip attributes
-  const elementsWithTooltips = document.querySelectorAll('.results-header[data-tooltip], label[data-tooltip]');
+  const elementsWithTooltips = document.querySelectorAll('.results-header[data-tooltip], label[data-tooltip], .salary-grid strong[data-tooltip], .salary-grid p[data-tooltip]');
   
   elementsWithTooltips.forEach(element => {
     if (isPrimaryTouch) {

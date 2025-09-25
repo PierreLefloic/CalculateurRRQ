@@ -360,6 +360,7 @@ body {
 .container h2 {
   margin-top: 0;
   margin-bottom: 15px;
+  font-size: 1.2em;  /* Add this line - adjust value as needed */
 }
 
 .tall-container {

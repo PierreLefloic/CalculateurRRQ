@@ -201,13 +201,27 @@
           </div>
         </div>
       </div>
+      
+      <!-- Collapsible Economic Parameters Section -->
       <div class="container">
-        <h2 data-i18n="economicParams">Paramètres économiques prévus</h2>
-        <div class="input-grid">
-          <label data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
-          <input id="InflationRate" type="number" value="2.1" min="0" max="100" step="0.1">
-          <label data-i18n="salaryIncrease" data-i18n-tooltip="tooltipSalaryIncrease">Croissance des salaires (%) :</label>
-          <input id="SalaryIncrease" type="number" value="3.1" min="0" max="100" step="0.1">
+        <div class="economic-section">
+          <div class="economic-toggle" id="economicToggle">
+            <h2 data-i18n="economicParams">Paramètres économiques prévus</h2>
+            <svg class="toggle-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6,9 12,15 18,9"></polyline>
+            </svg>
+          </div>
+          
+          <div class="economic-content" id="economicContent">
+            <div class="economic-inner">
+              <div class="input-grid">
+                <label data-i18n="inflationRate" data-i18n-tooltip="tooltipInflationRate">Taux d'inflation (%) :</label>
+                <input id="InflationRate" type="number" value="2.1" min="0" max="100" step="0.1">
+                <label data-i18n="salaryIncrease" data-i18n-tooltip="tooltipSalaryIncrease">Croissance des salaires (%) :</label>
+                <input id="SalaryIncrease" type="number" value="3.1" min="0" max="100" step="0.1">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       

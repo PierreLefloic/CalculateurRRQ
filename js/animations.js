@@ -14,6 +14,7 @@ function initializeAnimations() {
   setupTableHighlighting();
   setupBackToTop();
   setupInstructionsToggle();
+  setupEconomicToggle();
 }
 
 /**
@@ -652,6 +653,50 @@ document.addEventListener('change', function(event) {
 function setupInstructionsToggle() {
   const toggle = document.getElementById('instructionsToggle');
   const content = document.getElementById('instructionsContent');
+  const arrow = toggle?.querySelector('.toggle-arrow');
+  
+  if (!toggle || !content || !arrow) return;
+  
+  // Set initial state (collapsed)
+  content.classList.remove('expanded');
+  arrow.classList.remove('expanded');
+  
+  // Detect if this is a touch device
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  toggle.addEventListener('click', function() {
+    const isExpanded = content.classList.contains('expanded');
+    
+    // Add tap animation on touch devices
+    if (isTouchDevice) {
+      toggle.classList.add('tap-animate');
+      
+      // Remove the animation after a short duration
+      setTimeout(() => {
+        toggle.classList.remove('tap-animate');
+      }, 200);
+    }
+    
+    if (isExpanded) {
+      // Collapse
+      content.classList.remove('expanded');
+      arrow.classList.remove('expanded');
+      toggle.classList.remove('expanded');
+    } else {
+      // Expand
+      content.classList.add('expanded');
+      arrow.classList.add('expanded');
+      toggle.classList.add('expanded');
+    }
+  });
+}
+
+/**
+ * Set up economic parameters toggle functionality
+ */
+function setupEconomicToggle() {
+  const toggle = document.getElementById('economicToggle');
+  const content = document.getElementById('economicContent');
   const arrow = toggle?.querySelector('.toggle-arrow');
   
   if (!toggle || !content || !arrow) return;

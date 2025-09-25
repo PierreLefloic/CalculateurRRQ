@@ -657,6 +657,68 @@ button.mobile-button.disabled-button:hover {
   cursor: not-allowed;
 }
 
+
+/* Clear All button styles - expanding banner effect */
+.clear-all-btn {
+  position: relative;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 32px;
+  min-width: 32px;
+  margin: 0px 0 0px auto;
+}
+
+.clear-btn-x {
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.clear-btn-text {
+  margin-left: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clear-all-btn:hover {
+  background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+  color: #b91c1c;
+  border-color: #b91c1c;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  transform: translateY(-1px);
+  width: 120px;
+  padding: 8px 16px;
+}
+
+.clear-all-btn:hover .clear-btn-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.clear-all-btn:active {
+  background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+  color: #991b1b;
+  border-color: #991b1b;
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.15);
+}
+
 .results-section {
   background-color: white;
   width: 100%;

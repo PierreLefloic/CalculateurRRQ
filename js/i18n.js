@@ -141,7 +141,7 @@ const translations = {
     instructionsTitle: "How to use the simulator",
     instructionsList: `<li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year when your Quebec Pension Plan (QPP) participation statement was issued).</li>
         <li><strong>Enter your income</strong>: for each year available in your statement, enter your salary (in dollars or as a percentage). You can also use the Salary box to quickly estimate your income in percentage of the year's maximum pensionable earnings (YMPE).</li>
-        <li><strong>Define your personal parameters</strong>: specify your expected retirement age (complete exit from workforce), benefit application age, life expectancy, and status (self-employed or employee).</li>
+        <li><strong>Define your personal parameters</strong>: specify your expected retirement age (full retirement), benefit application age, life expectancy, and status (self-employed or employee).</li>
         <li><strong>Check projected economic parameters</strong>: ensure that the economic assumptions match your situation or analysis needs. The projected economic parameters come from the 2025 FP Canada Projection Assumption Standards and the Financial Planning Institute. These parameters should not be modified except for sensitivity analyses.</li>
         <li><strong>Run the simulation</strong>: launch the simulation to get your personalized results. </li>`,
     instructionsNote: "Note: Tooltips are integrated into the simulator for more details on each field.",

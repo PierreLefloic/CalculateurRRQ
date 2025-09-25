@@ -57,6 +57,7 @@ const translations = {
     launchSimulation: "Lancer la simulation",
     simulationInProgress: "Simulation en cours...",
     backToTop: "Retour en haut",
+    clearAllSalaries: "Effacer tout",
     
     // Results
     summaryTitle: "Résumé des prestations",
@@ -181,6 +182,7 @@ const translations = {
     launchSimulation: "Launch simulation",
     simulationInProgress: "Simulation in progress...",
     backToTop: "Back to top",
+    clearAllSalaries: "\u00A0\u00A0\u00A0\u00A0Clear all", // non-breaking spaces to center the text
     
     // Results
     summaryTitle: "Benefit Summary",

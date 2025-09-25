@@ -15,6 +15,7 @@ function initializeAnimations() {
   setupBackToTop();
   setupInstructionsToggle();
   setupEconomicToggle();
+  setupVisitorCounter();
 }
 
 /**
@@ -731,6 +732,33 @@ function setupEconomicToggle() {
       content.classList.add('expanded');
       arrow.classList.add('expanded');
       toggle.classList.add('expanded');
+    }
+  });
+}
+
+/**
+ * Set up visitor counter easter egg
+ * Shows visitor counter when -123456789 is entered in first salary input
+ */
+function setupVisitorCounter() {
+  const firstSalaryInput = document.getElementById('salary_17');
+  const visitorCounter = document.getElementById('visitor-counter');
+  
+  if (!firstSalaryInput || !visitorCounter) return;
+  
+  // Track if visitor counter is currently shown
+  let visitorCounterShown = false;
+  
+  firstSalaryInput.addEventListener('input', function() {
+    const value = this.value;
+    
+    // Check if the magic number is entered
+    if (value === '-123456789') {
+      if (!visitorCounterShown) {
+        // Show the visitor counter with animation
+        visitorCounter.classList.remove('hidden');
+        visitorCounterShown = true;
+      }
     }
   });
 }

@@ -345,8 +345,9 @@ class PensionSimulation {
         const benefitAgeDisplay = document.getElementById('benefitAgeDisplay');
         const benefitYearDisplay = document.getElementById('benefitYearDisplay');
         const currentYearDisplay = document.getElementById('currentYearDisplay');
+        const lifeExpectancyDisplay = document.getElementById('lifeExpectancyDisplay');
         
-        if (retirementAgeDisplay && benefitAgeDisplay && benefitYearDisplay && currentYearDisplay) {
+        if (retirementAgeDisplay && benefitAgeDisplay && benefitYearDisplay && currentYearDisplay && lifeExpectancyDisplay) {
             // Update retirement age
             retirementAgeDisplay.textContent = this.userInput.ret_age;
             
@@ -360,6 +361,9 @@ class PensionSimulation {
             
             // Update current year
             currentYearDisplay.textContent = this.userInput.current_year;
+            
+            // Update life expectancy
+            lifeExpectancyDisplay.textContent = this.userInput.lifespan;
         }
     }
 

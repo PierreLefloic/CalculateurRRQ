@@ -38,7 +38,7 @@
               <li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année où votre relevé de participation au RRQ a été produit).</li>
               <li><strong>Entrer vos revenus</strong> : pour chaque année disponible dans votre relevé, saisissez votre salaire (en dollars ou en pourcentage). Vous pouvez également utiliser la boîte Salaire pour estimer rapidement vos revenus en pourcentage du maximum des gains admissibles (MGA).</li>
               <li><strong>Définir vos paramètres personnels</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de la prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
-              <li><strong>Vérifier les paramètres économiques prévus</strong> : assurez-vous que les hypothèses économiques correspondent à votre situation ou à vos besoins d'analyse. Les paramètres économiques prévus proviennent des Normes d'hypothèses de projection 2025 de FP Canada et de l'Institut de planification financière. Ces paramètres ne devraient pas être modifiés sauf pour des analyses de sensibilité.</li>
+              <li><strong>Conserver les paramètres économiques prévus (sauf exception)</strong> : les paramètres économiques prévus proviennent des Normes d'hypothèses de projection 2025 de FP Canada et de l'Institut de planification financière. Ces paramètres ne devraient pas être modifiés sauf pour des analyses de sensibilité.</li>
               <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>
             </ol>
             <p data-i18n="instructionsNote">Note : Des infobulles sont intégrées au simulateur pour plus de précisions sur chaque champ.</p>
@@ -322,7 +322,7 @@
 
       <!-- Dynamic user parameters summary -->
       <div class="user-parameters-summary">
-        <p id="parametersText" data-i18n="summaryText">Vous avez indiqué cotiser au RRQ jusqu'à <span id="retirementAgeDisplay">65</span> ans et demander la prestation à <span id="benefitAgeDisplay">65</span> ans, soit en <span id="benefitYearDisplay">2090</span>. Les résultats sont également présentés en dollars de <span id="currentYearDisplay">2025</span>.</p>
+        <p id="parametersText" data-i18n="summaryText">Vous avez indiqué cotiser au RRQ jusqu'à <span id="retirementAgeDisplay">65</span> ans et demander votre prestation à <span id="benefitAgeDisplay">65</span> ans, soit en <span id="benefitYearDisplay">2090</span> et avoir une espérance de vie de <span id="lifeExpectancyDisplay">95</span> ans. Les résultats de votre prestation annuelle sont également présentés en dollars de <span id="currentYearDisplay">2025</span>.</p>
       </div>
       
       <div id="summary-results" class="results-wrapper">
@@ -382,7 +382,7 @@
     
     <!-- Discrete note about simulation limitations -->
     <div class="simulation-note" data-i18n="simulationNote">
-      <p><small><em>La simulation ne tient pas compte des années exclues pour maternité ni du supplément à la rente en cas de cotisation après le début de la retraite.</em></small></p>
+      <p><small><em>Comme pour le relevé de participation au RRQ, la simulation ne tient pas compte des années exclues pour période de prise en charge d'un enfant en bas âge, des périodes d'invalidités reconnues, ni du supplément à la rente en cas de cotisation après le début de la retraite.</em></small></p>
     </div>
   </div>
 

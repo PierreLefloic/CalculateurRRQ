@@ -13,7 +13,7 @@
 const translations = {
   fr: {
     // Meta
-    pageTitle: "Simulateur RRQ",
+    pageTitle: "Simulateur RRQ - CFFP",
     logoAlt: "Logo CFFP",
     yearPlaceholder: "AAAA",
     datePlaceholder: "aaaa-mm-jj",
@@ -138,7 +138,7 @@ const translations = {
   
   en: {
     // Meta
-    pageTitle: "QPP Simulator",
+    pageTitle: "QPP Simulator - CFFP",
     logoAlt: "CFFP Logo",
     yearPlaceholder: "YYYY",
     datePlaceholder: "yyyy-mm-dd",

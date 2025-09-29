@@ -1,7 +1,10 @@
 /**
- * Known Issues:
- * first year prorated calculation does not work if in percentage (1980-10-10 with 100% for example)
+ * Gestion des entrées de l'utilisateur et validations.
+ * Effectues également les calculs pour l'affichage du salaire en fonction des entrées de l'utilisateur.
  * 
+ * Auteur : Pierre Lefloic
+ * Date de création : 2025-09-29
+ * Date de dernière modification : 2025-09-29
  */
 
 // Global variables for MGA data

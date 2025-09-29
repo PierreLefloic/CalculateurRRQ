@@ -1,18 +1,16 @@
 /**
- * Quebec Pension Plan Calculator - JavaScript Implementation
+ * Calculateur de prestations RRQ
+ * Adaptation JavaScript de l'outil Excel original (V12)
+ * Code très convolué, mais suivant fidèlement la logique de l'Excel
  * 
- * This calculator performs pension benefit calculations including:
- * - User input processing
- * - MGA (Maximum des gains admissibles) data handling
- * - Contribution calculations
- * - Internal Rate of Return (IRR) calculations
- * - Pension benefit tabulations
- * - Final results generation
+ * Auteur : Pierre Lefloic
+ * Date de création : 2025-09-29
+ * Date de dernière modification : 2025-09-29
  */
 
 class UserInput {
     constructor() {
-        // Example data, will be overridden by user input
+        // Example data, will be overridden by user input. Used for testing.
         this.salary = [
             3690, 22440, 22560, 22980, 23460, 23940, 24300, 24660, 25260, 26220,
             26940, 27780, 28320, 28980, 75150, 76650, 78750, 80400, 82350, 82950,
@@ -30,7 +28,7 @@ class UserInput {
         this.inflation = 2.1;
     }
 
-    calculateSalary(mgaObj) {
+    calculateSalary(mgaObj) { // not used by the calculator, but useful for testing
         const x = this.birth_date[1] === 12 ? 1 : 0;
 
         for (let i = 0; i < 55; i++) {

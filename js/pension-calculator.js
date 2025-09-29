@@ -1,14 +1,10 @@
 /**
- * Quebec Pension Plan Calculator - JavaScript Implementation
- * Translated from Python simulation_calculator.py
+ * Calculateur de prestations RRQ
+ * Adaptation JavaScript de l'outil Excel original
  * 
- * This calculator performs complex pension benefit calculations including:
- * - User input processing
- * - MGA (Maximum General Average) data handling
- * - Contribution calculations
- * - Internal Rate of Return (IRR) calculations
- * - Pension benefit tabulations
- * - Final results generation
+ * Auteur : Pierre Lefloic
+ * Date de création : 2025-09-29
+ * Date de dernière modification : 2025-09-29
  */
 
 class UserInput {

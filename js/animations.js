@@ -1,6 +1,10 @@
 /**
- * TRI Calculator - Animation and UI Effects
- * Handles simulation animations, tooltips, table highlighting, and back-to-top functionality
+ * Animations et effets UI
+ * Gestion des boutons, animations de chargement, info-bulles, surbrillance des tableaux, bouton retour en haut, et autres interactions UI.
+ * 
+ * Auteur : Pierre Lefloic
+ * Date de création : 2025-09-29
+ * Date de dernière modification : 2025-09-29
  */
 
 // Initialize animations when DOM is ready

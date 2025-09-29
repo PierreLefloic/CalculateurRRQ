@@ -1,6 +1,12 @@
 /**
- * TRI Calculator - Internationalization (i18n)
- * Handles French/English translations
+ * Fichier de gestion de l'internationalisation (i18n)
+ * Gère les traductions français/anglais
+ * Le texte du fichier index.html est marqué avec des attributs data-i18n qui font référence aux clés dans ce fichier.
+ * Le texte peut être modifié ici.
+ * 
+ * Auteur : Pierre Lefloic
+ * Date de création : 2025-09-29
+ * Date de dernière modification : 2025-09-29
  */
 
 // Translation object

@@ -1,6 +1,10 @@
 /**
- * Integration layer between HTML form and pension calculator
- * Handles user input collection, calculation execution, and results display
+ * Couche d'intégration entre le calcul des prestations RRQ et l'interface utilisateur
+ * Collecte les entrées utilisateur, exécute le calcul et affiche les résultats
+ * 
+ * Auteur : Pierre Lefloic
+ * Date de création : 2025-09-29
+ * Date de dernière modification : 2025-09-29
  */
 
 class PensionSimulation {

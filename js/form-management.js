@@ -275,7 +275,15 @@ class IntegratedCalculator {
         for (let age = 17; age <= 72; age++) {
             const input = document.getElementById(`salary_${age}`);
             if (input) {
-                input.addEventListener('change', () => this.calculateAll());
+                input.addEventListener('change', () => {
+                    this.updatePercentageValues();
+                    this.calculateAll();
+                });
+                
+                // Also update percentage on input (real-time)
+                input.addEventListener('input', () => {
+                    this.updatePercentageValues();
+                });
                 
                 // Make Enter key behave like Tab for salary inputs
                 input.addEventListener('keydown', (e) => {
@@ -393,21 +401,30 @@ class IntegratedCalculator {
         const currentYear = parseInt(this.elements.yearInput.value);
         const beforeCurrentYearValue = this.elements.beforeCurrentYearInput.value;
         const afterCurrentYearValue = this.elements.afterCurrentYearInput.value;
+        const isInPercentMode = this.elements.inPercentCheckbox && this.elements.inPercentCheckbox.checked;
         
         if (!isNaN(currentYear) && beforeCurrentYearValue && afterCurrentYearValue) {
             // Update percentage values for ages 17 to 72
             for (let age = 17; age <= 72; age++) {
                 const yearElement = document.getElementById(`year_${age}`);
                 const percentageElement = document.getElementById(`percentage_${age}`);
+                const salaryInput = document.getElementById(`salary_${age}`);
                 
                 if (yearElement && percentageElement) {
                     const rowYear = parseInt(yearElement.textContent);
                     
                     if (!isNaN(rowYear)) {
-                        if (rowYear < currentYear) {
-                            percentageElement.textContent = beforeCurrentYearValue + '%';
+                        // Check if InPercent checkbox is checked and salary input has a value
+                        if (isInPercentMode && salaryInput && salaryInput.value && salaryInput.value.trim() !== '') {
+                            // Display the actual input value as percentage
+                            percentageElement.textContent = salaryInput.value + '%';
                         } else {
-                            percentageElement.textContent = afterCurrentYearValue + '%';
+                            // Use the default logic (beforeCurrentYear/afterCurrentYear values)
+                            if (rowYear < currentYear) {
+                                percentageElement.textContent = beforeCurrentYearValue + '%';
+                            } else {
+                                percentageElement.textContent = afterCurrentYearValue + '%';
+                            }
                         }
                     }
                 }
@@ -501,6 +518,9 @@ class IntegratedCalculator {
         } else {
             this.elements.saisieHeader.innerHTML = '<strong>' + translations[currentLanguage].inputDollar + '</strong>';
         }
+        
+        // Update percentage values when checkbox state changes
+        this.updatePercentageValues();
     }
 
     setupAutoSelectInputs() {

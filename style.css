@@ -1974,3 +1974,18 @@ label {
     max-height: 400px;
   }
 }
+
+/* Ensure date input is wide enough on all browsers, especially Safari */
+#inputBirth {
+  min-width: 160px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Safari-specific fix for date input width */
+@supports (-webkit-touch-callout: none) {
+  #inputBirth {
+    min-width: 180px;
+    font-size: 1em;
+  }
+}

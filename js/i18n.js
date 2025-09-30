@@ -1,5 +1,22 @@
 /**
- * Fichier de gestion de l'internationalisation (i18n)
+ * Fichi  fr: {
+    // Meta
+    pageTitle: "Simulateur RRQ - Calculateur de prestation de retraite du Québec | CFFP",
+    logoAlt: "Logo CF  en: {
+    // Meta
+    pageTitle: "QPP Simulator - Quebec Pension Plan Calculator | CFFP",
+    logoAlt: "CFFP Logo",
+    yearPlaceholder: "YYYY",
+    datePlaceholder: "yyyy-mm-dd",
+    
+    // Header
+    title: "QPP Benefit Simulator - Quebec Pension Plan Calculator",
+    description: "The purpose of this simulator is to allow users to evaluate the impact of their contributions to the Quebec Pension Plan (QPP) on their future retirement benefit. This simulator does not apply to Canadian Pension Plan (CPP).",yearPlaceholder: "AAAA",
+    datePlaceholder: "aaaa-mm-jj",
+    
+    // Header
+    title: "Simulateur de la prestation du RRQ - Calculateur de retraite du Québec",
+    description: "Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.",ion de l'internationalisation (i18n)
  * Gère les traductions français/anglais
  * Le texte du fichier index.html est marqué avec des attributs data-i18n qui font référence aux clés dans ce fichier.
  * Le texte peut être modifié ici.
@@ -38,7 +55,7 @@ const translations = {
     // Form labels
     birthDate: "Date de naissance :",
     currentYear: "Année courante :",
-    salary: "Salaire",
+    salary: "Paramètres de salaire",
     beforeCurrentYear: "Avant année courante (%) :",
     afterCurrentYear: "Après année courante (%) :",
     inPercent: "Saisie en pourcentage :",
@@ -163,7 +180,7 @@ const translations = {
     // Form labels
     birthDate: "Date of birth:",
     currentYear: "Current year:",
-    salary: "Salary",
+    salary: "Salary Parameters",
     beforeCurrentYear: "Before current year (%):",
     afterCurrentYear: "After current year (%):",
     inPercent: "Enter as percentage:",

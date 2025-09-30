@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <!-- 
-Auteur du code : Pierre Lefloic
+Auteur du code : Pierre Lefloïc
 Date de création : 2025-09-29
 Date de dernière modification : 2025-09-29
 
@@ -21,14 +22,102 @@ Structure de la page :
 - favicon-32x32.png : icône du site web (pour onglet du navigateur et favoris)
 - logo_CFFP.png : logo affiché en haut de la page
 -->
-<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
   <title data-i18n="pageTitle">Simulateur RRQ - CFFP</title>
+  <meta name="title" content="Simulateur RRQ - Calculateur de prestation de retraite du Québec | CFFP">
+  <meta name="description" content="Simulateur conçu pour simuler et évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite. ">
+  <meta name="keywords" content="RRQ, Régime de rentes du Québec, simulateur pension, calculateur retraite, prestation retraite, cotisation RRQ, planification retraite, CFFP, Chaire en fiscalité et en finances publiques, Université de Sherbrooke">
+  <meta name="author" content="Chaire de recherche en fiscalité et en finances publiques - Université de Sherbrooke">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="French">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/">
+  <meta property="og:title" content="Simulateur RRQ - Calculateur de prestation de retraite du Québec">
+  <meta property="og:description" content="Simulateur conçu pour simuler et évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.">
+  <meta property="og:image" content="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/img/logo_CFFP.png">
+  <meta property="og:site_name" content="CFFP - Université de Sherbrooke">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:locale:alternate" content="en_CA">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/">
+  <meta property="twitter:title" content="Simulateur RRQ - Calculateur de prestation de retraite du Québec">
+  <meta property="twitter:description" content="Simulateur conçu pour simuler et évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.">
+  <meta property="twitter:image" content="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/img/logo_CFFP.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/">
+  
+  <!-- Alternate language versions -->
+  <link rel="alternate" hreflang="fr-ca" href="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/">
+  <link rel="alternate" hreflang="en-ca" href="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/">
+  <link rel="alternate" hreflang="x-default" href="https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/">
+  
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-32x32.png">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Simulateur RRQ - Régime de rentes du Québec",
+    "description": "Simulateur conçu pour simuler et évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.",
+    "url": "https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CAD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Chaire de recherche en fiscalité et en finances publiques",
+      "url": "https://cffp.recherche.usherbrooke.ca/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cffp.recherche.usherbrooke.ca/simulateur-prestation-rrq/img/logo_CFFP.png"
+      },
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Université de Sherbrooke",
+        "url": "https://www.usherbrooke.ca/"
+      }
+    },
+    "creator": [
+      {
+        "@type": "Person",
+        "name": "Frédérick Hallé-Rochon"
+      },
+      {
+        "@type": "Person", 
+        "name": "Daniel Laverdière"
+      },
+      {
+        "@type": "Person",
+        "name": "Luc Godbout"
+      },
+      {
+        "@type": "Person",
+        "name": "Pierre Lefloïc"
+      }
+    ],
+    "inLanguage": ["fr-CA", "en-CA"],
+    "keywords": "RRQ, Régime de rentes du Québec, simulateur pension, calculateur retraite, prestation retraite, cotisation RRQ, planification retraite",
+    "datePublished": "2025-09-29",
+    "dateModified": "2025-09-29"
+  }
+  </script>
 </head>
 <body>
   <div class="logo-wrapper">
@@ -42,7 +131,7 @@ Structure de la page :
   </div>
 
   <div class="header-box">
-    <h1 class="title" data-i18n="title">Simulateur de la prestation du RRQ</h1>
+    <h1 class="title" data-i18n="title">Simulateur de la prestation du RRQ - Calculateur de retraite du Québec</h1>
     <div class="description">
       <p data-i18n="description"><strong>Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.</strong></p>
       
@@ -111,7 +200,7 @@ Structure de la page :
       </div>
 
       <div class="container">
-        <h2 data-i18n="salary">Salaire</h2>
+        <h2 data-i18n="salary">Paramètres de salaire</h2>
         <div class="input-grid">
           <label data-i18n="beforeCurrentYear" data-i18n-tooltip="tooltipBeforeCurrentYear">Avant année courante (%) :</label>
           <input id="BeforeCurrentYear" type="number" value="100" min="0" max="200">

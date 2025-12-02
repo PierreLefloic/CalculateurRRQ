@@ -81,6 +81,7 @@ const translations = {
     simulationInProgress: "Simulation en cours...",
     backToTop: "Retour en haut",
     clearAllSalaries: "Effacer tout",
+    printResults: "Imprimer / Exporter en PDF",
     
     // Results
     summaryTitle: "Résumé des prestations",
@@ -206,6 +207,7 @@ const translations = {
     simulationInProgress: "Simulation in progress...",
     backToTop: "Back to top",
     clearAllSalaries: "\u00A0\u00A0\u00A0\u00A0Clear all", // non-breaking spaces to center the text
+    printResults: "Print / Export to PDF",
     
     // Results
     summaryTitle: "Benefit Summary",

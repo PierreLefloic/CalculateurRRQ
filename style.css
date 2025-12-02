@@ -1396,6 +1396,95 @@ label {
   transform: translateY(-2px);
 }
 
+/* Print Results Button Styles */
+.print-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 20px 0;
+}
+
+.print-results-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #2e9dce 0%, #1e7db5 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(46, 157, 206, 0.3);
+}
+
+.print-results-btn:hover {
+  background: linear-gradient(135deg, #1e7db5 0%, #0e6da5 100%);
+  box-shadow: 0 6px 16px rgba(46, 157, 206, 0.4);
+  transform: translateY(-2px);
+}
+
+.print-results-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(46, 157, 206, 0.3);
+}
+
+.print-results-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+/* Hide print button when printing */
+@media print {
+  .print-button-container {
+    display: none;
+  }
+  
+  /* Also hide other non-essential elements when printing */
+  .logo-wrapper,
+  .header-box,
+  .container-row,
+  .back-to-top-btn,
+  footer {
+    display: none;
+  }
+  
+  /* Ensure results are visible */
+  .results-section {
+    display: block;
+  }
+  
+  /* Adjust page styling for print */
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .results-container {
+    background-color: white;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+  
+  .results-wrapper {
+    background-color: white;
+  }
+  
+  .results-header,
+  .results-cell {
+    color: black;
+    background-color: white;
+    border-color: #ddd;
+  }
+  
+  .simulation-note {
+    color: black;
+  }
+}
+
 /* Visitor Counter Styles */
 .visitor-counter {
   text-align: center;

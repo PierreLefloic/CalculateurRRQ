@@ -17,6 +17,7 @@ function initializeAnimations() {
   setupTooltips();
   setupTableHighlighting();
   setupBackToTop();
+  setupPrintButton();
   setupInstructionsToggle();
   setupEconomicToggle();
   setupVisitorCounter();
@@ -601,6 +602,19 @@ function setupBackToTop() {
     
     requestAnimationFrame(smoothScrollToTop);
   }
+}
+
+/**
+ * Set up print button functionality
+ */
+function setupPrintButton() {
+  const printBtn = document.getElementById('printResults');
+  if (!printBtn) return;
+  
+  printBtn.addEventListener('click', function() {
+    // Trigger browser print dialog (users can save as PDF from there)
+    window.print();
+  });
 }
 
 // Add global escape and enter key handlers to unfocus elements

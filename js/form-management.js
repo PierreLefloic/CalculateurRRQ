@@ -263,6 +263,14 @@ class IntegratedCalculator {
             });
         }
 
+        // Special handling for benefit age to update life expectancy options
+        if (this.elements.benAgeSelect) {
+            this.elements.benAgeSelect.addEventListener('change', () => {
+                this.updateLifeExpectancyOptions();
+                this.calculateAll();
+            });
+        }
+
         // Special handling for SalaryIncrease - needs to reload MGA data
         if (this.elements.salaryIncreaseInput) {
             this.elements.salaryIncreaseInput.addEventListener('change', async () => {
@@ -328,6 +336,9 @@ class IntegratedCalculator {
 
         // Initialize benefit age options based on retirement age
         this.updateBenefitAgeOptions();
+        
+        // Initialize life expectancy options based on benefit age
+        this.updateLifeExpectancyOptions();
     }
 
     handleBirthDateChange() {
@@ -480,6 +491,65 @@ class IntegratedCalculator {
         } else {
             // If current selection is no longer valid, select the minimum valid benefit age
             benefitSelect.value = minimumBenefitAge.toString();
+        }
+
+        // Update life expectancy options when benefit age changes
+        this.updateLifeExpectancyOptions();
+    }
+
+    updateLifeExpectancyOptions() {
+        if (!this.elements.benAgeSelect || !this.elements.ageExpInput) {
+            return;
+        }
+
+        const selectedBenefitAge = parseInt(this.elements.benAgeSelect.value);
+        const currentLifeExpectancy = parseInt(this.elements.ageExpInput.value);
+        const lifeExpectancySelect = this.elements.ageExpInput;
+        
+        // Define the complete range of life expectancy options (70 to 110)
+        const allPossibleOptions = [];
+        for (let age = 70; age <= 110; age++) {
+            allPossibleOptions.push({
+                value: age.toString(),
+                text: age.toString()
+            });
+        }
+        
+        // Clear current options
+        lifeExpectancySelect.innerHTML = '';
+        
+        // The minimum life expectancy age is benefit age + 1
+        const minimumLifeExpectancy = selectedBenefitAge + 1;
+        
+        // Add all valid options (ages > benefit age)
+        let newSelectedValue = null;
+        let hasCurrentSelection = false;
+        
+        allPossibleOptions.forEach(option => {
+            const optionAge = parseInt(option.value);
+            if (optionAge >= minimumLifeExpectancy) {
+                const newOption = new Option(option.text, option.value);
+                lifeExpectancySelect.appendChild(newOption);
+                
+                // Keep current selection if it's still valid
+                if (optionAge === currentLifeExpectancy) {
+                    newSelectedValue = option.value;
+                    hasCurrentSelection = true;
+                }
+            }
+        });
+        
+        // Set the selected value
+        if (hasCurrentSelection) {
+            lifeExpectancySelect.value = newSelectedValue;
+        } else {
+            // If current selection is no longer valid, select a reasonable default (95 or minimum)
+            const defaultValue = Math.max(minimumLifeExpectancy, 95);
+            if (defaultValue <= 110) {
+                lifeExpectancySelect.value = defaultValue.toString();
+            } else {
+                lifeExpectancySelect.value = minimumLifeExpectancy.toString();
+            }
         }
     }
 

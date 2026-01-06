@@ -157,7 +157,7 @@ const translations = {
   
   en: {
     // Meta
-    pageTitle: "QPP Simulator - CFFP",
+    pageTitle: "QPP Benefit Simulator - CFFP",
     logoAlt: "CFFP Logo",
     yearPlaceholder: "YYYY",
     datePlaceholder: "yyyy-mm-dd",
@@ -292,13 +292,9 @@ function initializeI18n() {
   const savedLanguage = localStorage.getItem('language');
   if (savedLanguage && translations[savedLanguage]) {
     currentLanguage = savedLanguage;
-  } else {
-    // Try to detect browser language
-    const browserLang = navigator.language.toLowerCase();
-    if (browserLang.startsWith('en')) {
-      currentLanguage = 'en';
-    }
   }
+  // Default to French (fr) - no automatic browser language detection
+  // Users can manually switch to English using the language switcher
   
   // Add event listeners to existing language buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {

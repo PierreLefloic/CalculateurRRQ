@@ -44,8 +44,8 @@ const translations = {
         <li><strong>Définir les paramètres RRQ</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de la prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
         <li><strong>Conserver les paramètres économiques prévus (sauf exception)</strong> : les paramètres économiques prévus proviennent des Normes d'hypothèses de projection 2025 de FP Canada et de l'Institut de planification financière. Ces paramètres ne devraient pas être modifiés sauf pour des analyses de sensibilité.</li>
         <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>`,
-    instructionsNote: "Note : Des infobulles sont intégrées au simulateur pour plus de précisions sur chaque champ.",
-    instructionsData: "<strong>Important :</strong> Aucune donnée entrée par l'utilisateur n'est enregistrée, conservée ou transmise ; toutes les informations demeurent strictement temporaires et sont utilisées uniquement aux fins de la simulation.",
+    instructionsNote: "Des infobulles sont intégrées au simulateur pour plus de précisions sur chaque champ.",
+    instructionsData: "<strong>Précisions :</strong> Aucune donnée entrée par l'utilisateur n'est enregistrée, conservée, transmise ou même visible par la CFFP. Toutes les informations inscrites ne sont que temporaires et ne servent qu'à la simulation de l'utilisateur au moment où cette dernière est effectuée.",
     resultsTitle: "Résultats présentés",
     resultsDescription: "Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :",
     resultsList: `<li><strong>Taux de rendement interne (TRI)</strong> : indicateur financier qui mesure la rentabilité d'une série de flux monétaires associés aux cotisations et aux prestations.</li>
@@ -171,8 +171,8 @@ const translations = {
         <li><strong>Define the QPP parameters</strong>: specify your expected retirement age (full retirement), benefit application age, life expectancy, and status (self-employed or employee).</li>
         <li><strong>Keep projected economic parameters (except for analysis needs)</strong>: the projected economic parameters come from the 2025 FP Canada Projection Assumption Standards and the Financial Planning Institute. These parameters should not be modified except for sensitivity analyses.</li>
         <li><strong>Run the simulation</strong>: launch the simulation to get your personalized results. </li>`,
-    instructionsNote: "Note: Tooltips are integrated into the simulator for more details on each field.",
-    instructionsData: "<strong>Important:</strong> No user-entered data is recorded, stored, or transmitted; all information remains strictly temporary and is used solely for simulation purposes.",
+    instructionsNote: "Tooltips are integrated into the simulator for more details on each field.",
+    instructionsData: "<strong>Details:</strong> No data entered by the user is recorded, stored, transmitted, or even visible to the CFFP. All information entered is temporary and only serves the user's simulation at the time it is performed.",
     resultsTitle: "Results presented",
     resultsDescription: "For each contribution year, the simulator displays the following information:",
     resultsList: `<li><strong>Internal Rate of Return (IRR)</strong>: financial indicator that measures the profitability of a series of cash flows associated with contributions and benefits.</li>

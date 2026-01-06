@@ -23,7 +23,7 @@
  * 
  * Auteur : Pierre Lefloic
  * Date de création : 2025-09-29
- * Date de dernière modification : 2025-09-29
+ * Date de dernière modification : 2026-01-06
  */
 
 // Translation object

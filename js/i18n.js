@@ -39,12 +39,13 @@ const translations = {
     title: "Simulateur de la prestation du RRQ",
     description: "Le but du simulateur est de permettre à un utilisateur d'évaluer l'impact de ses cotisations au Régime de rentes du Québec (RRQ) sur sa future prestation de retraite.",
     instructionsTitle: "Mode d'emploi du simulateur",
-    instructionsList: `<li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année où votre relevé de participation au RRQ a été produit).</li>
+    instructionsList: `<li><strong>Saisir vos informations de base</strong> : indiquez votre date de naissance ainsi que l'année courante (ou l'année où votre relevé de participation au RRQ a été produit). La date de naissance peut être saisie manuellement ou sélectionnée à l'aide du calendrier. En cliquant sur l'année dans le calendrier, il est possible de naviguer et de sélectionner plus rapidement l'année souhaitée.</li>
         <li><strong>Entrer vos revenus</strong> : pour chaque année figurant sur votre relevé de participation au RRQ, saisissez votre salaire en dollars. La boîte <em>Saisie rapide du salaire</em> vous permet également d'estimer rapidement vos salaires passés et de prévoir ceux des années à venir en pourcentage du maximum des gains admissibles (MGA).</li>
         <li><strong>Définir les paramètres RRQ</strong> : précisez l'âge prévu de la retraite (arrêt complet du travail), l'âge de demande de la prestation, votre espérance de vie ainsi que votre statut (travailleur autonome ou salarié).</li>
         <li><strong>Conserver les paramètres économiques prévus (sauf exception)</strong> : les paramètres économiques prévus proviennent des Normes d'hypothèses de projection 2025 de FP Canada et de l'Institut de planification financière. Ces paramètres ne devraient pas être modifiés sauf pour des analyses de sensibilité.</li>
         <li><strong>Exécuter la simulation</strong> : lancez la simulation pour obtenir vos résultats personnalisés.</li>`,
     instructionsNote: "Note : Des infobulles sont intégrées au simulateur pour plus de précisions sur chaque champ.",
+    instructionsData: "<strong>Important :</strong> Aucune donnée entrée par l'utilisateur n'est enregistrée, conservée ou transmise ; toutes les informations demeurent strictement temporaires et sont utilisées uniquement aux fins de la simulation.",
     resultsTitle: "Résultats présentés",
     resultsDescription: "Pour chacune des années de cotisation, le simulateur affiche les informations suivantes :",
     resultsList: `<li><strong>Taux de rendement interne (TRI)</strong> : indicateur financier qui mesure la rentabilité d'une série de flux monétaires associés aux cotisations et aux prestations.</li>
@@ -165,12 +166,13 @@ const translations = {
     title: "QPP Benefit Simulator",
     description: "The purpose of this simulator is to allow users to evaluate the impact of their contributions to the Quebec Pension Plan (QPP) on their future retirement benefit. This simulator does not apply to Canadian Pension Plan (CPP).",
     instructionsTitle: "How to use the simulator",
-    instructionsList: `<li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year when your Quebec Pension Plan (QPP) participation statement was issued).</li>
+    instructionsList: `<li><strong>Enter your basic information</strong>: indicate your date of birth and the current year (or the year when your Quebec Pension Plan (QPP) participation statement was issued). The date of birth can be entered manually or selected using the calendar. By clicking on the year in the calendar, it is possible to navigate and select the desired year more quickly.</li>
         <li><strong>Enter your income</strong>: for each year shown on your Québec Pension Plan (QPP) participation statement, enter your salary in dollars. The <em>Quick Salary Entry</em> box also allows you to quickly estimate your past salaries and forecast future ones as a percentage of the year's maximum pensionable earnings (YMPE).</li>
         <li><strong>Define the QPP parameters</strong>: specify your expected retirement age (full retirement), benefit application age, life expectancy, and status (self-employed or employee).</li>
         <li><strong>Keep projected economic parameters (except for analysis needs)</strong>: the projected economic parameters come from the 2025 FP Canada Projection Assumption Standards and the Financial Planning Institute. These parameters should not be modified except for sensitivity analyses.</li>
         <li><strong>Run the simulation</strong>: launch the simulation to get your personalized results. </li>`,
     instructionsNote: "Note: Tooltips are integrated into the simulator for more details on each field.",
+    instructionsData: "<strong>Important:</strong> No user-entered data is recorded, stored, or transmitted; all information remains strictly temporary and is used solely for simulation purposes.",
     resultsTitle: "Results presented",
     resultsDescription: "For each contribution year, the simulator displays the following information:",
     resultsList: `<li><strong>Internal Rate of Return (IRR)</strong>: financial indicator that measures the profitability of a series of cash flows associated with contributions and benefits.</li>
